@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased cursor-auto;
+  }
+
+  ::selection {
+    @apply bg-brand-500/30 text-brand-900 dark:text-white;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-400 via-brand-500 to-brand-600 bg-clip-text text-transparent;
+  }
+
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 dark:bg-white/5 dark:border-white/10;
+  }
+
+  .glass-dark {
+    @apply bg-gray-900/70 backdrop-blur-xl border border-white/10;
+  }
+
+  .glow-brand {
+    box-shadow: 0 0 40px rgba(51, 136, 255, 0.15);
+  }
+
+  .glow-brand-strong {
+    box-shadow: 0 0 60px rgba(51, 136, 255, 0.25), 0 0 120px rgba(51, 136, 255, 0.1);
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(51, 136, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(51, 136, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .dark .grid-bg {
+    background-image:
+      linear-gradient(rgba(51, 136, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(51, 136, 255, 0.06) 1px, transparent 1px);
+  }
+
+  /* Premium 3D Card Effects */
+  .card-3d {
+    @apply relative overflow-hidden;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  .card-3d::before {
+    content: '';
+    @apply absolute inset-0 rounded-2xl;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 50%);
+    pointer-events: none;
+  }
+
+  /* Floating 3D elements */
+  .float-3d {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  /* Premium gradient backgrounds */
+  .gradient-premium {
+    background: linear-gradient(135deg, rgba(51, 136, 255, 0.1) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(59, 130, 246, 0.1) 100%);
+  }
+
+  /* 3D Cube Animation */
+  .cube-3d {
+    width: 200px;
+    height: 200px;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  /* Premium hover glow */
+  .hover-glow {
+    @apply transition-all duration-300 relative;
+  }
+
+  .hover-glow::before {
+    content: '';
+    @apply absolute -inset-1 bg-gradient-to-r from-brand-500 to-indigo-600 rounded-lg opacity-0 blur transition-opacity duration-300;
+    z-index: -1;
+  }
+
+  .hover-glow:hover::before {
+    @apply opacity-50;
+  }
+
+  /* Tech particle effect */
+  .particle-bg {
+    @apply relative overflow-hidden;
+    background: linear-gradient(135deg, rgba(51, 136, 255, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

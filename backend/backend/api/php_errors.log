@@ -1,0 +1,2501 @@
+[15-Aug-2026 19:27:39 Europe/Berlin] Starting approve_request
+[15-Aug-2026 19:27:39 Europe/Berlin] Request ID: 1, Employee Code: MM-EMP-001
+[15-Aug-2026 19:27:39 Europe/Berlin] Checking for duplicate employee code
+[15-Aug-2026 19:27:39 Europe/Berlin] Getting request details
+[15-Aug-2026 19:27:39 Europe/Berlin] Request data: Array
+(
+    [id] => 1
+    [employee_id] => 179
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a8048b65fe12_1786792118.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => defwdqw
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a80483df0128_1786791997.png
+    [aadhaar_back] => uploads/6a80484074321_1786792000.png
+    [pan_front] => uploads/6a804843549bd_1786792003.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a8048549693b_1786792020.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8048b0baa2e_1786792112.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786792096394-U621MR","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"defwdqw","start_date":"2026-01-01","reporting_manager":"intern","company_address":"","accepted_at_client":"2026-08-15T11:08:16.394Z","accepted_at_server":"2026-08-15T11:08:41+00:00"}
+    [nda_agreement_id] => MM-INT-1786792096394-U621MR
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 881902874191
+    [pan_number] => ldips5881d
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-15 16:38:41
+    [updated_at] => 2026-08-15 16:38:41
+)
+
+[15-Aug-2026 19:27:39 Europe/Berlin] Checking for duplicates
+[15-Aug-2026 19:27:39 Europe/Berlin] Starting transaction
+[15-Aug-2026 19:27:39 Europe/Berlin] Debug: user_id from request = 179
+[15-Aug-2026 19:27:39 Europe/Berlin] Debug: request data = Array
+(
+    [id] => 1
+    [employee_id] => 179
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a8048b65fe12_1786792118.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => defwdqw
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a80483df0128_1786791997.png
+    [aadhaar_back] => uploads/6a80484074321_1786792000.png
+    [pan_front] => uploads/6a804843549bd_1786792003.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a8048549693b_1786792020.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8048b0baa2e_1786792112.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786792096394-U621MR","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"defwdqw","start_date":"2026-01-01","reporting_manager":"intern","company_address":"","accepted_at_client":"2026-08-15T11:08:16.394Z","accepted_at_server":"2026-08-15T11:08:41+00:00"}
+    [nda_agreement_id] => MM-INT-1786792096394-U621MR
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 881902874191
+    [pan_number] => ldips5881d
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-15 16:38:41
+    [updated_at] => 2026-08-15 16:38:41
+)
+
+[15-Aug-2026 19:27:39 Europe/Berlin] POST Error: Column count doesn't match value count at row 1
+[15-Aug-2026 19:29:47 Europe/Berlin] Starting approve_request
+[15-Aug-2026 19:29:47 Europe/Berlin] Request ID: 1, Employee Code: MM-EMP-001
+[15-Aug-2026 19:29:47 Europe/Berlin] Checking for duplicate employee code
+[15-Aug-2026 19:29:47 Europe/Berlin] Getting request details
+[15-Aug-2026 19:29:47 Europe/Berlin] Request data: Array
+(
+    [id] => 1
+    [employee_id] => 179
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a8048b65fe12_1786792118.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => defwdqw
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a80483df0128_1786791997.png
+    [aadhaar_back] => uploads/6a80484074321_1786792000.png
+    [pan_front] => uploads/6a804843549bd_1786792003.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a8048549693b_1786792020.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8048b0baa2e_1786792112.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786792096394-U621MR","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"defwdqw","start_date":"2026-01-01","reporting_manager":"intern","company_address":"","accepted_at_client":"2026-08-15T11:08:16.394Z","accepted_at_server":"2026-08-15T11:08:41+00:00"}
+    [nda_agreement_id] => MM-INT-1786792096394-U621MR
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 881902874191
+    [pan_number] => ldips5881d
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-15 16:38:41
+    [updated_at] => 2026-08-15 16:38:41
+)
+
+[15-Aug-2026 19:29:47 Europe/Berlin] Checking for duplicates
+[15-Aug-2026 19:29:47 Europe/Berlin] Starting transaction
+[15-Aug-2026 19:29:47 Europe/Berlin] Debug: user_id from request = 179
+[15-Aug-2026 19:29:47 Europe/Berlin] Debug: request data = Array
+(
+    [id] => 1
+    [employee_id] => 179
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a8048b65fe12_1786792118.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => defwdqw
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a80483df0128_1786791997.png
+    [aadhaar_back] => uploads/6a80484074321_1786792000.png
+    [pan_front] => uploads/6a804843549bd_1786792003.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a8048549693b_1786792020.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8048b0baa2e_1786792112.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786792096394-U621MR","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"defwdqw","start_date":"2026-01-01","reporting_manager":"intern","company_address":"","accepted_at_client":"2026-08-15T11:08:16.394Z","accepted_at_server":"2026-08-15T11:08:41+00:00"}
+    [nda_agreement_id] => MM-INT-1786792096394-U621MR
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 881902874191
+    [pan_number] => ldips5881d
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-15 16:38:41
+    [updated_at] => 2026-08-15 16:38:41
+)
+
+[15-Aug-2026 19:29:47 Europe/Berlin] POST Error: Column count doesn't match value count at row 1
+[15-Aug-2026 19:33:17 Europe/Berlin] Starting approve_request
+[15-Aug-2026 19:33:17 Europe/Berlin] Request ID: 1, Employee Code: EMO-001
+[15-Aug-2026 19:33:17 Europe/Berlin] Checking for duplicate employee code
+[15-Aug-2026 19:33:17 Europe/Berlin] Getting request details
+[15-Aug-2026 19:33:17 Europe/Berlin] Request data: Array
+(
+    [id] => 1
+    [employee_id] => 179
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a8048b65fe12_1786792118.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => defwdqw
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a80483df0128_1786791997.png
+    [aadhaar_back] => uploads/6a80484074321_1786792000.png
+    [pan_front] => uploads/6a804843549bd_1786792003.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a8048549693b_1786792020.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8048b0baa2e_1786792112.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786792096394-U621MR","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"defwdqw","start_date":"2026-01-01","reporting_manager":"intern","company_address":"","accepted_at_client":"2026-08-15T11:08:16.394Z","accepted_at_server":"2026-08-15T11:08:41+00:00"}
+    [nda_agreement_id] => MM-INT-1786792096394-U621MR
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 881902874191
+    [pan_number] => ldips5881d
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-15 16:38:41
+    [updated_at] => 2026-08-15 16:38:41
+)
+
+[15-Aug-2026 19:33:17 Europe/Berlin] Checking for duplicates
+[15-Aug-2026 19:33:17 Europe/Berlin] Starting transaction
+[15-Aug-2026 19:33:17 Europe/Berlin] Debug: user_id from request = 179
+[15-Aug-2026 19:33:17 Europe/Berlin] Debug: request data = Array
+(
+    [id] => 1
+    [employee_id] => 179
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a8048b65fe12_1786792118.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => defwdqw
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a80483df0128_1786791997.png
+    [aadhaar_back] => uploads/6a80484074321_1786792000.png
+    [pan_front] => uploads/6a804843549bd_1786792003.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a8048549693b_1786792020.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8048b0baa2e_1786792112.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786792096394-U621MR","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"defwdqw","start_date":"2026-01-01","reporting_manager":"intern","company_address":"","accepted_at_client":"2026-08-15T11:08:16.394Z","accepted_at_server":"2026-08-15T11:08:41+00:00"}
+    [nda_agreement_id] => MM-INT-1786792096394-U621MR
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 881902874191
+    [pan_number] => ldips5881d
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-15 16:38:41
+    [updated_at] => 2026-08-15 16:38:41
+)
+
+[15-Aug-2026 19:33:17 Europe/Berlin] POST Error: Column count doesn't match value count at row 1
+[15-Aug-2026 19:33:37 Europe/Berlin] Starting approve_request
+[15-Aug-2026 19:33:37 Europe/Berlin] Request ID: 1, Employee Code: EMO-001
+[15-Aug-2026 19:33:37 Europe/Berlin] Checking for duplicate employee code
+[15-Aug-2026 19:33:37 Europe/Berlin] Getting request details
+[15-Aug-2026 19:33:37 Europe/Berlin] Request data: Array
+(
+    [id] => 1
+    [employee_id] => 179
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a8048b65fe12_1786792118.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => defwdqw
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a80483df0128_1786791997.png
+    [aadhaar_back] => uploads/6a80484074321_1786792000.png
+    [pan_front] => uploads/6a804843549bd_1786792003.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a8048549693b_1786792020.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8048b0baa2e_1786792112.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786792096394-U621MR","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"defwdqw","start_date":"2026-01-01","reporting_manager":"intern","company_address":"","accepted_at_client":"2026-08-15T11:08:16.394Z","accepted_at_server":"2026-08-15T11:08:41+00:00"}
+    [nda_agreement_id] => MM-INT-1786792096394-U621MR
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 881902874191
+    [pan_number] => ldips5881d
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-15 16:38:41
+    [updated_at] => 2026-08-15 16:38:41
+)
+
+[15-Aug-2026 19:33:37 Europe/Berlin] Checking for duplicates
+[15-Aug-2026 19:33:37 Europe/Berlin] Starting transaction
+[15-Aug-2026 19:33:37 Europe/Berlin] Debug: user_id from request = 179
+[15-Aug-2026 19:33:37 Europe/Berlin] Debug: request data = Array
+(
+    [id] => 1
+    [employee_id] => 179
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a8048b65fe12_1786792118.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => defwdqw
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a80483df0128_1786791997.png
+    [aadhaar_back] => uploads/6a80484074321_1786792000.png
+    [pan_front] => uploads/6a804843549bd_1786792003.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a8048549693b_1786792020.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8048b0baa2e_1786792112.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786792096394-U621MR","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"defwdqw","start_date":"2026-01-01","reporting_manager":"intern","company_address":"","accepted_at_client":"2026-08-15T11:08:16.394Z","accepted_at_server":"2026-08-15T11:08:41+00:00"}
+    [nda_agreement_id] => MM-INT-1786792096394-U621MR
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 881902874191
+    [pan_number] => ldips5881d
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-15 16:38:41
+    [updated_at] => 2026-08-15 16:38:41
+)
+
+[15-Aug-2026 19:33:37 Europe/Berlin] POST Error: Column count doesn't match value count at row 1
+[15-Aug-2026 19:34:13 Europe/Berlin] Starting approve_request
+[15-Aug-2026 19:34:13 Europe/Berlin] Request ID: 1, Employee Code: EMO-001
+[15-Aug-2026 19:34:13 Europe/Berlin] Checking for duplicate employee code
+[15-Aug-2026 19:34:13 Europe/Berlin] Getting request details
+[15-Aug-2026 19:34:13 Europe/Berlin] Request data: Array
+(
+    [id] => 1
+    [employee_id] => 179
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a8048b65fe12_1786792118.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => defwdqw
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a80483df0128_1786791997.png
+    [aadhaar_back] => uploads/6a80484074321_1786792000.png
+    [pan_front] => uploads/6a804843549bd_1786792003.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a8048549693b_1786792020.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8048b0baa2e_1786792112.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786792096394-U621MR","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"defwdqw","start_date":"2026-01-01","reporting_manager":"intern","company_address":"","accepted_at_client":"2026-08-15T11:08:16.394Z","accepted_at_server":"2026-08-15T11:08:41+00:00"}
+    [nda_agreement_id] => MM-INT-1786792096394-U621MR
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 881902874191
+    [pan_number] => ldips5881d
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-15 16:38:41
+    [updated_at] => 2026-08-15 16:38:41
+)
+
+[15-Aug-2026 19:34:13 Europe/Berlin] Checking for duplicates
+[15-Aug-2026 19:34:13 Europe/Berlin] Starting transaction
+[15-Aug-2026 19:34:13 Europe/Berlin] Debug: user_id from request = 179
+[15-Aug-2026 19:34:13 Europe/Berlin] Debug: request data = Array
+(
+    [id] => 1
+    [employee_id] => 179
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a8048b65fe12_1786792118.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => defwdqw
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a80483df0128_1786791997.png
+    [aadhaar_back] => uploads/6a80484074321_1786792000.png
+    [pan_front] => uploads/6a804843549bd_1786792003.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a8048549693b_1786792020.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8048b0baa2e_1786792112.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786792096394-U621MR","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"defwdqw","start_date":"2026-01-01","reporting_manager":"intern","company_address":"","accepted_at_client":"2026-08-15T11:08:16.394Z","accepted_at_server":"2026-08-15T11:08:41+00:00"}
+    [nda_agreement_id] => MM-INT-1786792096394-U621MR
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 881902874191
+    [pan_number] => ldips5881d
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-15 16:38:41
+    [updated_at] => 2026-08-15 16:38:41
+)
+
+[15-Aug-2026 19:39:34 Europe/Berlin] Starting approve_request
+[15-Aug-2026 19:39:34 Europe/Berlin] Request ID: 2, Employee Code: MM-EMP-001
+[15-Aug-2026 19:39:34 Europe/Berlin] Checking for duplicate employee code
+[15-Aug-2026 19:39:34 Europe/Berlin] Getting request details
+[15-Aug-2026 19:39:34 Europe/Berlin] Request data: Array
+(
+    [id] => 2
+    [employee_id] => 180
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a80a439c03da_1786815545.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => asdfghj
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a80a3a7cab2e_1786815399.png
+    [aadhaar_back] => uploads/6a80a3ab9b820_1786815403.png
+    [pan_front] => uploads/6a80a3b04d9c1_1786815408.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a80a3ce15397_1786815438.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a80a42ebec52_1786815534.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1786815519926-5UCBTH","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"asdfghj","start_date":"2026-08-17","reporting_manager":"narendra","company_address":"PEDHARAMALAYAM VEEDHI RATANALA CHERUVU, MANGALAGIRI, GUNTUR DIST","accepted_at_client":"2026-08-15T17:38:39.926Z","accepted_at_server":"2026-08-15T17:39:09+00:00"}
+    [nda_agreement_id] => MM-EMP-1786815519926-5UCBTH
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 24
+    [blood_group] => B+
+    [aadhaar_number] => 123456789098
+    [pan_number] => hdcpr4897e
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-15 23:09:09
+    [updated_at] => 2026-08-15 23:09:09
+)
+
+[15-Aug-2026 19:39:34 Europe/Berlin] Checking for duplicates
+[15-Aug-2026 19:39:34 Europe/Berlin] Starting transaction
+[15-Aug-2026 19:39:34 Europe/Berlin] Debug: user_id from request = 180
+[15-Aug-2026 19:39:34 Europe/Berlin] Debug: request data = Array
+(
+    [id] => 2
+    [employee_id] => 180
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a80a439c03da_1786815545.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => asdfghj
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a80a3a7cab2e_1786815399.png
+    [aadhaar_back] => uploads/6a80a3ab9b820_1786815403.png
+    [pan_front] => uploads/6a80a3b04d9c1_1786815408.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a80a3ce15397_1786815438.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a80a42ebec52_1786815534.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1786815519926-5UCBTH","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"asdfghj","start_date":"2026-08-17","reporting_manager":"narendra","company_address":"PEDHARAMALAYAM VEEDHI RATANALA CHERUVU, MANGALAGIRI, GUNTUR DIST","accepted_at_client":"2026-08-15T17:38:39.926Z","accepted_at_server":"2026-08-15T17:39:09+00:00"}
+    [nda_agreement_id] => MM-EMP-1786815519926-5UCBTH
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 24
+    [blood_group] => B+
+    [aadhaar_number] => 123456789098
+    [pan_number] => hdcpr4897e
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-15 23:09:09
+    [updated_at] => 2026-08-15 23:09:09
+)
+
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 19
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 20
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 21
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 22
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 23
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 24
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 25
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 25
+[16-Aug-2026 08:14:16 Europe/Berlin] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[16-Aug-2026 08:14:16 Europe/Berlin] SMTP credentials missing
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 19
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 20
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 21
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 22
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 23
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 24
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 25
+[16-Aug-2026 08:14:16 Europe/Berlin] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 25
+[16-Aug-2026 08:14:16 Europe/Berlin] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[16-Aug-2026 08:14:16 Europe/Berlin] SMTP credentials missing
+[16-Aug-2026 08:14:39 Europe/Berlin] Starting approve_request
+[16-Aug-2026 08:14:39 Europe/Berlin] Request ID: 3, Employee Code: MM-EMP-001
+[16-Aug-2026 08:14:39 Europe/Berlin] Checking for duplicate employee code
+[16-Aug-2026 08:14:39 Europe/Berlin] Getting request details
+[16-Aug-2026 08:14:39 Europe/Berlin] Request data: Array
+(
+    [id] => 3
+    [employee_id] => 181
+    [full_name] => Potteti Subhash
+    [email] => pavanthumma0607@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a815534f1f1c_1786860852.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => DEV
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a8154a94f96b_1786860713.png
+    [aadhaar_back] => uploads/6a8154ad62cfd_1786860717.png
+    [pan_front] => uploads/6a8154b283524_1786860722.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a8154cae0f89_1786860746.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a815529ca266_1786860841.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786860828136-E2GSKQ","full_name":"Potteti Subhash","email":"pavanthumma0607@gmail.com","mobile":"6302684089","department":"IT","designation":"DEV","start_date":"2026-08-17","reporting_manager":"PAVAN","company_address":"","accepted_at_client":"2026-08-16T06:13:48.136Z","accepted_at_server":"2026-08-16T06:14:16+00:00"}
+    [nda_agreement_id] => MM-INT-1786860828136-E2GSKQ
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 23
+    [blood_group] => A+
+    [aadhaar_number] => 458373528771
+    [pan_number] => HDCPR4897E
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-16 11:44:16
+    [updated_at] => 2026-08-16 11:44:16
+)
+
+[16-Aug-2026 08:14:39 Europe/Berlin] Checking for duplicates
+[16-Aug-2026 08:14:39 Europe/Berlin] Starting transaction
+[16-Aug-2026 08:14:39 Europe/Berlin] Debug: user_id from request = 181
+[16-Aug-2026 08:14:39 Europe/Berlin] Debug: request data = Array
+(
+    [id] => 3
+    [employee_id] => 181
+    [full_name] => Potteti Subhash
+    [email] => pavanthumma0607@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a815534f1f1c_1786860852.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => DEV
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a8154a94f96b_1786860713.png
+    [aadhaar_back] => uploads/6a8154ad62cfd_1786860717.png
+    [pan_front] => uploads/6a8154b283524_1786860722.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a8154cae0f89_1786860746.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a815529ca266_1786860841.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786860828136-E2GSKQ","full_name":"Potteti Subhash","email":"pavanthumma0607@gmail.com","mobile":"6302684089","department":"IT","designation":"DEV","start_date":"2026-08-17","reporting_manager":"PAVAN","company_address":"","accepted_at_client":"2026-08-16T06:13:48.136Z","accepted_at_server":"2026-08-16T06:14:16+00:00"}
+    [nda_agreement_id] => MM-INT-1786860828136-E2GSKQ
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 23
+    [blood_group] => A+
+    [aadhaar_number] => 458373528771
+    [pan_number] => HDCPR4897E
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-16 11:44:16
+    [updated_at] => 2026-08-16 11:44:16
+)
+
+[16-Aug-2026 08:14:39 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 08:14:39 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 08:14:43 Europe/Berlin] Starting approve_request
+[16-Aug-2026 08:14:43 Europe/Berlin] Request ID: 3, Employee Code: MM-EMP-001
+[16-Aug-2026 08:14:43 Europe/Berlin] Checking for duplicate employee code
+[16-Aug-2026 08:14:57 Europe/Berlin] Email sent successfully to pavanthumma0607@gmail.com
+[16-Aug-2026 08:14:57 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 08:14:57 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 08:15:15 Europe/Berlin] Email sent successfully to admin@metaminds.com
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 19
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 20
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 21
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 22
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 23
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 24
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 25
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 25
+[16-Aug-2026 08:21:09 Europe/Berlin] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[16-Aug-2026 08:21:09 Europe/Berlin] SMTP credentials missing
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 19
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 20
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 21
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 22
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 23
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 24
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 25
+[16-Aug-2026 08:21:09 Europe/Berlin] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 25
+[16-Aug-2026 08:21:09 Europe/Berlin] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[16-Aug-2026 08:21:09 Europe/Berlin] SMTP credentials missing
+[16-Aug-2026 08:21:40 Europe/Berlin] Starting approve_request
+[16-Aug-2026 08:21:40 Europe/Berlin] Request ID: 4, Employee Code: MM-EMP-001
+[16-Aug-2026 08:21:40 Europe/Berlin] Checking for duplicate employee code
+[16-Aug-2026 08:21:40 Europe/Berlin] Getting request details
+[16-Aug-2026 08:21:40 Europe/Berlin] Request data: Array
+(
+    [id] => 4
+    [employee_id] => 182
+    [full_name] => THUMMA PAVAN
+    [email] => pavanthumma0607@gmail.com
+    [phone] => 8919340460
+    [photo] => uploads/6a8156a7bf9ab_1786861223.jpg
+    [date_of_birth] => 2002-07-06
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, chirala, Andhra Pradesh - 523166
+    [city] => chirala
+    [state] => Andhra Pradesh
+    [pincode] => 523166
+    [department] => IT
+    [designation] => DEVELOPER
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a815614cb038_1786861076.png
+    [aadhaar_back] => uploads/6a81561894501_1786861080.png
+    [pan_front] => uploads/6a81561c3b6b4_1786861084.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a815637dcf51_1786861111.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8156a246744_1786861218.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786861181002-65384O","full_name":"THUMMA PAVAN","email":"pavanthumma0607@gmail.com","mobile":"9701849967","department":"IT","designation":"DEVELOPER","start_date":"2026-08-17","reporting_manager":"SUBHASH","company_address":"","accepted_at_client":"2026-08-16T06:19:41.002Z","accepted_at_server":"2026-08-16T06:21:09+00:00"}
+    [nda_agreement_id] => MM-INT-1786861181002-65384O
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 23
+    [blood_group] => A+
+    [aadhaar_number] => 458373528771
+    [pan_number] => HDCPR4897E
+    [emergency_contact_name] => Potteti Subhash
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 6302684089
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-16 11:51:09
+    [updated_at] => 2026-08-16 11:51:09
+)
+
+[16-Aug-2026 08:21:40 Europe/Berlin] Checking for duplicates
+[16-Aug-2026 08:21:40 Europe/Berlin] Starting transaction
+[16-Aug-2026 08:21:40 Europe/Berlin] Debug: user_id from request = 182
+[16-Aug-2026 08:21:40 Europe/Berlin] Debug: request data = Array
+(
+    [id] => 4
+    [employee_id] => 182
+    [full_name] => THUMMA PAVAN
+    [email] => pavanthumma0607@gmail.com
+    [phone] => 8919340460
+    [photo] => uploads/6a8156a7bf9ab_1786861223.jpg
+    [date_of_birth] => 2002-07-06
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, chirala, Andhra Pradesh - 523166
+    [city] => chirala
+    [state] => Andhra Pradesh
+    [pincode] => 523166
+    [department] => IT
+    [designation] => DEVELOPER
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a815614cb038_1786861076.png
+    [aadhaar_back] => uploads/6a81561894501_1786861080.png
+    [pan_front] => uploads/6a81561c3b6b4_1786861084.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a815637dcf51_1786861111.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8156a246744_1786861218.png
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786861181002-65384O","full_name":"THUMMA PAVAN","email":"pavanthumma0607@gmail.com","mobile":"9701849967","department":"IT","designation":"DEVELOPER","start_date":"2026-08-17","reporting_manager":"SUBHASH","company_address":"","accepted_at_client":"2026-08-16T06:19:41.002Z","accepted_at_server":"2026-08-16T06:21:09+00:00"}
+    [nda_agreement_id] => MM-INT-1786861181002-65384O
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 23
+    [blood_group] => A+
+    [aadhaar_number] => 458373528771
+    [pan_number] => HDCPR4897E
+    [emergency_contact_name] => Potteti Subhash
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 6302684089
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-16 11:51:09
+    [updated_at] => 2026-08-16 11:51:09
+)
+
+[16-Aug-2026 08:21:40 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 08:21:40 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 08:21:44 Europe/Berlin] Starting approve_request
+[16-Aug-2026 08:21:44 Europe/Berlin] Request ID: 4, Employee Code: MM-EMP-001
+[16-Aug-2026 08:21:44 Europe/Berlin] Checking for duplicate employee code
+[16-Aug-2026 08:21:47 Europe/Berlin] Email sent successfully to pavanthumma0607@gmail.com
+[16-Aug-2026 08:21:47 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 08:21:47 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 08:21:55 Europe/Berlin] Email sent successfully to admin@metaminds.com
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 19
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 20
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 21
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 22
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 23
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 24
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 25
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 25
+[16-Aug-2026 08:55:34 Europe/Berlin] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[16-Aug-2026 08:55:34 Europe/Berlin] SMTP credentials missing
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 19
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 20
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 21
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 22
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 23
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 24
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 25
+[16-Aug-2026 08:55:34 Europe/Berlin] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in C:\Workspace\8.2.12_new\htdocs\metaminds\backend\config\mailer.php on line 25
+[16-Aug-2026 08:55:34 Europe/Berlin] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[16-Aug-2026 08:55:34 Europe/Berlin] SMTP credentials missing
+[16-Aug-2026 08:56:43 Europe/Berlin] Starting approve_request
+[16-Aug-2026 08:56:43 Europe/Berlin] Request ID: 5, Employee Code: MM-EMP-002
+[16-Aug-2026 08:56:43 Europe/Berlin] Checking for duplicate employee code
+[16-Aug-2026 08:56:43 Europe/Berlin] Getting request details
+[16-Aug-2026 08:56:43 Europe/Berlin] Request data: Array
+(
+    [id] => 5
+    [employee_id] => 183
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a815ec6e6c98_1786863302.jpg
+    [date_of_birth] => 2002-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => developer
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a815e3a871d9_1786863162.png
+    [aadhaar_back] => uploads/6a815e3e0d5e9_1786863166.png
+    [pan_front] => uploads/6a815e4175478_1786863169.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a815e5a6adf0_1786863194.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a815ec0e7c08_1786863296.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1786863283843-50LFNZ","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"developer","start_date":"2026-08-17","reporting_manager":"narendra","company_address":"Thotavaripalemchirala523166","accepted_at_client":"2026-08-16T06:54:43.843Z","accepted_at_server":"2026-08-16T06:55:34+00:00"}
+    [nda_agreement_id] => MM-EMP-1786863283843-50LFNZ
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 111111111111
+    [pan_number] => hdcpr4897e
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-16 12:25:34
+    [updated_at] => 2026-08-16 12:25:34
+)
+
+[16-Aug-2026 08:56:43 Europe/Berlin] Checking for duplicates
+[16-Aug-2026 08:56:43 Europe/Berlin] Starting transaction
+[16-Aug-2026 08:56:43 Europe/Berlin] Debug: user_id from request = 183
+[16-Aug-2026 08:56:43 Europe/Berlin] Debug: request data = Array
+(
+    [id] => 5
+    [employee_id] => 183
+    [full_name] => Potteti Subhash
+    [email] => subhashpotteti@gmail.com
+    [phone] => 6302684089
+    [photo] => uploads/6a815ec6e6c98_1786863302.jpg
+    [date_of_birth] => 2002-06-08
+    [gender] => male
+    [address] => 11-176, 2nd line, weavers colony, bapatla, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => developer
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a815e3a871d9_1786863162.png
+    [aadhaar_back] => uploads/6a815e3e0d5e9_1786863166.png
+    [pan_front] => uploads/6a815e4175478_1786863169.png
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a815e5a6adf0_1786863194.png"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a815ec0e7c08_1786863296.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1786863283843-50LFNZ","full_name":"Potteti Subhash","email":"subhashpotteti@gmail.com","mobile":"6302684089","department":"IT","designation":"developer","start_date":"2026-08-17","reporting_manager":"narendra","company_address":"Thotavaripalemchirala523166","accepted_at_client":"2026-08-16T06:54:43.843Z","accepted_at_server":"2026-08-16T06:55:34+00:00"}
+    [nda_agreement_id] => MM-EMP-1786863283843-50LFNZ
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 111111111111
+    [pan_number] => hdcpr4897e
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => friend
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-176
+    [street] => 2nd line
+    [area_locality] => weavers colony
+    [district] => bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-16 12:25:34
+    [updated_at] => 2026-08-16 12:25:34
+)
+
+[16-Aug-2026 08:56:43 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 08:56:43 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 08:56:50 Europe/Berlin] Email sent successfully to subhashpotteti@gmail.com
+[16-Aug-2026 08:56:50 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 08:56:50 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 08:56:52 Europe/Berlin] Starting approve_request
+[16-Aug-2026 08:56:52 Europe/Berlin] Request ID: 5, Employee Code: MM-EMP-002
+[16-Aug-2026 08:56:52 Europe/Berlin] Checking for duplicate employee code
+[16-Aug-2026 08:56:53 Europe/Berlin] Starting approve_request
+[16-Aug-2026 08:56:53 Europe/Berlin] Request ID: 5, Employee Code: MM-EMP-002
+[16-Aug-2026 08:56:53 Europe/Berlin] Checking for duplicate employee code
+[16-Aug-2026 08:56:58 Europe/Berlin] Email sent successfully to admin@metaminds.com
+[16-Aug-2026 08:56:58 Europe/Berlin] Starting approve_request
+[16-Aug-2026 08:56:58 Europe/Berlin] Request ID: 5, Employee Code: MM-EMP-002
+[16-Aug-2026 08:56:58 Europe/Berlin] Checking for duplicate employee code
+[16-Aug-2026 09:02:44 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 09:02:44 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 09:02:51 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 09:02:51 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 09:02:53 Europe/Berlin] Email sent successfully to admin@metaminds.com
+[16-Aug-2026 09:02:53 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 09:02:53 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 09:02:58 Europe/Berlin] Email sent successfully to admin@metaminds.com
+[16-Aug-2026 09:02:58 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 09:02:58 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 09:03:00 Europe/Berlin] Email sent successfully to subhashpotteti@gmail.com
+[16-Aug-2026 09:03:05 Europe/Berlin] Email sent successfully to subhashpotteti@gmail.com
+[16-Aug-2026 09:04:04 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 09:04:04 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 09:04:11 Europe/Berlin] Email sent successfully to subhashpotteti@gmail.com
+[16-Aug-2026 09:04:11 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 09:04:11 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 09:04:18 Europe/Berlin] Email sent successfully to admin@metaminds.com
+[16-Aug-2026 09:05:25 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 09:05:25 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 09:05:32 Europe/Berlin] Email sent successfully to subhashpotteti@gmail.com
+[16-Aug-2026 09:05:32 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 09:05:32 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 09:05:40 Europe/Berlin] Email sent successfully to admin@metaminds.com
+[16-Aug-2026 09:16:45 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 09:16:45 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 09:16:52 Europe/Berlin] Email sent successfully to subhashpotteti@gmail.com
+[16-Aug-2026 09:16:52 Europe/Berlin] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 09:16:52 Europe/Berlin] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 09:16:59 Europe/Berlin] Email sent successfully to admin@metaminds.com
+[16-Aug-2026 09:34:42 Europe/Berlin] POST Error: Unknown column 'email' in 'field list'
+[16-Aug-2026 09:35:17 Europe/Berlin] POST Error: Unknown column 'email' in 'field list'
+[16-Aug-2026 09:37:07 Europe/Berlin] POST Error: Unknown column 'email' in 'field list'
+[16-Aug-2026 09:37:22 Europe/Berlin] POST Error: Unknown column 'email' in 'field list'
+[16-Aug-2026 09:39:40 Europe/Berlin] POST Error: Unknown column 'email' in 'field list'
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[16-Aug-2026 16:17:47 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[16-Aug-2026 16:17:47 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[16-Aug-2026 16:17:47 UTC] SMTP credentials missing
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[16-Aug-2026 16:17:47 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[16-Aug-2026 16:17:47 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[16-Aug-2026 16:17:47 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[16-Aug-2026 16:17:47 UTC] SMTP credentials missing
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[16-Aug-2026 16:18:41 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[16-Aug-2026 16:18:41 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[16-Aug-2026 16:18:41 UTC] SMTP credentials missing
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[16-Aug-2026 16:18:41 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[16-Aug-2026 16:18:41 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[16-Aug-2026 16:18:41 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[16-Aug-2026 16:18:41 UTC] SMTP credentials missing
+[16-Aug-2026 16:22:31 UTC] Starting approve_request
+[16-Aug-2026 16:22:31 UTC] Request ID: 1, Employee Code: MM-EMP-001
+[16-Aug-2026 16:22:31 UTC] Checking for duplicate employee code
+[16-Aug-2026 16:22:31 UTC] Getting request details
+[16-Aug-2026 16:22:31 UTC] Request data: Array
+(
+    [id] => 1
+    [employee_id] => 184
+    [full_name] => THUMMA PAVAN VENKATA DURGA SAI RAM
+    [email] => pavanthumma0607@gmail.com
+    [phone] => 8919340460
+    [photo] => uploads/6a81e213a9ff6_1786896915.jpg
+    [date_of_birth] => 2002-07-06
+    [gender] => male
+    [address] => 11-714B, PEDHA RAMALAYAM VEEDHI, RATANALA CHERUVU, GUNTUR, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => DEVELOPER
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a81e1b1f1e98_1786896817.JPG
+    [aadhaar_back] => uploads/6a81e1b6094f8_1786896822.JPG
+    [pan_front] => uploads/6a81e1baf2860_1786896826.JPG
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a81e1c94c519_1786896841.JPG"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a81e20c827b7_1786896908.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1786896893360-ONPM9Z","full_name":"THUMMA PAVAN VENKATA DURGA SAI RAM","email":"pavanthumma0607@gmail.com","mobile":"9701849967","department":"IT","designation":"DEVELOPER","start_date":"2026-08-03","reporting_manager":"NARENDRA","company_address":"MANGALAGIRI","accepted_at_client":"2026-08-16T16:14:53.360Z","accepted_at_server":"2026-08-16T16:17:47+00:00"}
+    [nda_agreement_id] => MM-EMP-1786896893360-ONPM9Z
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => 103.122.61.12
+    [password] => 
+    [age] => 23
+    [blood_group] => A+
+    [aadhaar_number] => 111111111111
+    [pan_number] => HDCPR4897E
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => SELF
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-714B
+    [street] => PEDHA RAMALAYAM VEEDHI
+    [area_locality] => RATANALA CHERUVU
+    [district] => GUNTUR
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-16 16:17:47
+    [updated_at] => 2026-08-16 16:17:47
+)
+
+[16-Aug-2026 16:22:31 UTC] Checking for duplicates
+[16-Aug-2026 16:22:31 UTC] Starting transaction
+[16-Aug-2026 16:22:31 UTC] Debug: user_id from request = 184
+[16-Aug-2026 16:22:31 UTC] Debug: request data = Array
+(
+    [id] => 1
+    [employee_id] => 184
+    [full_name] => THUMMA PAVAN VENKATA DURGA SAI RAM
+    [email] => pavanthumma0607@gmail.com
+    [phone] => 8919340460
+    [photo] => uploads/6a81e213a9ff6_1786896915.jpg
+    [date_of_birth] => 2002-07-06
+    [gender] => male
+    [address] => 11-714B, PEDHA RAMALAYAM VEEDHI, RATANALA CHERUVU, GUNTUR, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => DEVELOPER
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a81e1b1f1e98_1786896817.JPG
+    [aadhaar_back] => uploads/6a81e1b6094f8_1786896822.JPG
+    [pan_front] => uploads/6a81e1baf2860_1786896826.JPG
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a81e1c94c519_1786896841.JPG"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a81e20c827b7_1786896908.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1786896893360-ONPM9Z","full_name":"THUMMA PAVAN VENKATA DURGA SAI RAM","email":"pavanthumma0607@gmail.com","mobile":"9701849967","department":"IT","designation":"DEVELOPER","start_date":"2026-08-03","reporting_manager":"NARENDRA","company_address":"MANGALAGIRI","accepted_at_client":"2026-08-16T16:14:53.360Z","accepted_at_server":"2026-08-16T16:17:47+00:00"}
+    [nda_agreement_id] => MM-EMP-1786896893360-ONPM9Z
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => 103.122.61.12
+    [password] => 
+    [age] => 23
+    [blood_group] => A+
+    [aadhaar_number] => 111111111111
+    [pan_number] => HDCPR4897E
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => SELF
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-714B
+    [street] => PEDHA RAMALAYAM VEEDHI
+    [area_locality] => RATANALA CHERUVU
+    [district] => GUNTUR
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-16 16:17:47
+    [updated_at] => 2026-08-16 16:17:47
+)
+
+[16-Aug-2026 16:22:31 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 16:22:31 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 16:22:35 UTC] Email sent successfully to pavanthumma0607@gmail.com
+[16-Aug-2026 16:22:35 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 16:22:35 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 16:22:39 UTC] Email sent successfully to admin@metaminds.com
+[16-Aug-2026 16:24:12 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 16:24:12 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 16:24:16 UTC] Email sent successfully to admin@metaminds.com
+[16-Aug-2026 16:24:16 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 16:24:16 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 16:24:20 UTC] Email sent successfully to pavanthumma0607@gmail.com
+[16-Aug-2026 16:30:35 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 16:30:35 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 16:30:39 UTC] Email sent successfully to pavanthumma0607@gmail.com
+[16-Aug-2026 16:30:39 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[16-Aug-2026 16:30:39 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[16-Aug-2026 16:30:43 UTC] Email sent successfully to admin@metaminds.com
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 07:45:03 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 07:45:03 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 07:45:03 UTC] SMTP credentials missing
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 07:45:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 07:45:03 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 07:45:03 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 07:45:03 UTC] SMTP credentials missing
+[17-Aug-2026 07:46:06 UTC] Starting approve_request
+[17-Aug-2026 07:46:06 UTC] Request ID: 3, Employee Code: MM-EMP-005
+[17-Aug-2026 07:46:06 UTC] Checking for duplicate employee code
+[17-Aug-2026 07:46:06 UTC] Getting request details
+[17-Aug-2026 07:46:06 UTC] Request data: Array
+(
+    [id] => 3
+    [employee_id] => 186
+    [full_name] => SUBHASH POTTETI
+    [email] => subhashpotteti@gmail.com
+    [phone] => 9515592296
+    [photo] => uploads/6a82bbfacd62b_1786952698.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-714B, PEDHA RAMALAYAM VEEDHI, RATANALA CHERUVU, GUNTUR, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => DEVELOPER
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a82bb077852a_1786952455.JPG
+    [aadhaar_back] => uploads/6a82bb127fab1_1786952466.JPG
+    [pan_front] => uploads/6a82bb20a1773_1786952480.JPG
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a82bb3c4f0f4_1786952508.JPG"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a82bbe528093_1786952677.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1786952631287-LX99SX","full_name":"SUBHASH POTTETI","email":"subhashpotteti@gmail.com","mobile":"9515592296","department":"IT","designation":"DEVELOPER","start_date":"2026-08-17","reporting_manager":"NARENDRA","company_address":"MANGALAGIRI","accepted_at_client":"2026-08-17T07:43:51.287Z","accepted_at_server":"2026-08-17T07:45:03+00:00"}
+    [nda_agreement_id] => MM-EMP-1786952631287-LX99SX
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => 2402:8100:21e6:901b:c8be:685b:97eb:e04f
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 458373528771
+    [pan_number] => HDCPR4897E
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => SELF
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-714B
+    [street] => PEDHA RAMALAYAM VEEDHI
+    [area_locality] => RATANALA CHERUVU
+    [district] => GUNTUR
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 07:45:03
+    [updated_at] => 2026-08-17 07:45:03
+)
+
+[17-Aug-2026 07:46:06 UTC] Checking for duplicates
+[17-Aug-2026 07:46:06 UTC] Starting transaction
+[17-Aug-2026 07:46:06 UTC] Debug: user_id from request = 186
+[17-Aug-2026 07:46:06 UTC] Debug: request data = Array
+(
+    [id] => 3
+    [employee_id] => 186
+    [full_name] => SUBHASH POTTETI
+    [email] => subhashpotteti@gmail.com
+    [phone] => 9515592296
+    [photo] => uploads/6a82bbfacd62b_1786952698.jpg
+    [date_of_birth] => 2001-06-08
+    [gender] => male
+    [address] => 11-714B, PEDHA RAMALAYAM VEEDHI, RATANALA CHERUVU, GUNTUR, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => DEVELOPER
+    [higher_education] => 10th
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a82bb077852a_1786952455.JPG
+    [aadhaar_back] => uploads/6a82bb127fab1_1786952466.JPG
+    [pan_front] => uploads/6a82bb20a1773_1786952480.JPG
+    [education_docs] => {"tenth_marks_memo":"uploads\/6a82bb3c4f0f4_1786952508.JPG"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a82bbe528093_1786952677.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1786952631287-LX99SX","full_name":"SUBHASH POTTETI","email":"subhashpotteti@gmail.com","mobile":"9515592296","department":"IT","designation":"DEVELOPER","start_date":"2026-08-17","reporting_manager":"NARENDRA","company_address":"MANGALAGIRI","accepted_at_client":"2026-08-17T07:43:51.287Z","accepted_at_server":"2026-08-17T07:45:03+00:00"}
+    [nda_agreement_id] => MM-EMP-1786952631287-LX99SX
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => 2402:8100:21e6:901b:c8be:685b:97eb:e04f
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 458373528771
+    [pan_number] => HDCPR4897E
+    [emergency_contact_name] => THUMMA PAVAN
+    [emergency_contact_relationship] => SELF
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-714B
+    [street] => PEDHA RAMALAYAM VEEDHI
+    [area_locality] => RATANALA CHERUVU
+    [district] => GUNTUR
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 07:45:03
+    [updated_at] => 2026-08-17 07:45:03
+)
+
+[17-Aug-2026 07:46:06 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 07:46:06 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 07:46:10 UTC] Email sent successfully to subhashpotteti@gmail.com
+[17-Aug-2026 07:46:10 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 07:46:10 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 07:46:15 UTC] Email sent successfully to admin@metaminds.com
+[17-Aug-2026 07:49:56 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 07:49:56 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 07:50:00 UTC] Email sent successfully to admin@metaminds.com
+[17-Aug-2026 07:50:00 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 07:50:00 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 07:50:04 UTC] Email sent successfully to subhashpotteti@gmail.com
+[17-Aug-2026 07:50:59 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 07:50:59 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 07:51:03 UTC] Email sent successfully to subhashpotteti@gmail.com
+[17-Aug-2026 07:51:03 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 07:51:03 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 07:51:07 UTC] Email sent successfully to admin@metaminds.com
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 11:10:49 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 11:10:49 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 11:10:49 UTC] SMTP credentials missing
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 11:10:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 11:10:49 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 11:10:49 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 11:10:49 UTC] SMTP credentials missing
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 13:03:53 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 13:03:53 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 13:03:53 UTC] SMTP credentials missing
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 13:03:53 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 13:03:53 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 13:03:53 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 13:03:53 UTC] SMTP credentials missing
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 13:10:55 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 13:10:55 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 13:10:55 UTC] SMTP credentials missing
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 13:10:55 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 13:10:55 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 13:10:55 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 13:10:55 UTC] SMTP credentials missing
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 15:04:00 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 15:04:00 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 15:04:00 UTC] SMTP credentials missing
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 15:04:00 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 15:04:00 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 15:04:00 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 15:04:00 UTC] SMTP credentials missing
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 15:36:15 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 15:36:15 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 15:36:15 UTC] SMTP credentials missing
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 15:36:15 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 15:36:15 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 15:36:15 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 15:36:15 UTC] SMTP credentials missing
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 15:40:30 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 15:40:30 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 15:40:30 UTC] SMTP credentials missing
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 15:40:30 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 15:40:30 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 15:40:30 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 15:40:30 UTC] SMTP credentials missing
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 16:25:21 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 16:25:21 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 16:25:21 UTC] SMTP credentials missing
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 16:25:21 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 16:25:21 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 16:25:21 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 16:25:21 UTC] SMTP credentials missing
+[17-Aug-2026 17:50:00 UTC] Starting approve_request
+[17-Aug-2026 17:50:00 UTC] Request ID: 7, Employee Code: MM-INTN-006
+[17-Aug-2026 17:50:00 UTC] Checking for duplicate employee code
+[17-Aug-2026 17:50:00 UTC] Getting request details
+[17-Aug-2026 17:50:00 UTC] Request data: Array
+(
+    [id] => 7
+    [employee_id] => 190
+    [full_name] => Yamini Alaparthi
+    [email] => narendrametaminds@gmail.com
+    [phone] => 9100177931
+    [photo] => uploads/6a8322d8c1b52_1786979032.jpg
+    [date_of_birth] => 1996-10-27
+    [gender] => female
+    [address] => 2-380/3, Old public school back street, Vuyyuru, Krishna, Vuyyuru, Andhra Pradesh - 521165
+    [city] => Vuyyuru
+    [state] => Andhra Pradesh
+    [pincode] => 521165
+    [department] => IT
+    [designation] => Intern
+    [higher_education] => diploma
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a8320aeb8b51_1786978478.jpg
+    [aadhaar_back] => uploads/6a8320c8cacb2_1786978504.jpg
+    [pan_front] => uploads/6a8320d6a725d_1786978518.jpg
+    [education_docs] => {"tenth_certificate":"uploads\/6a832148d8b89_1786978632.jpg","diploma_certificate":"uploads\/6a83215cd6018_1786978652.jpg"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8322682ad98_1786978920.jpg
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786978826856-WGLOB7","full_name":"Yamini Alaparthi","email":"narendrametaminds@gmail.com","mobile":"9100177931","department":"IT","designation":"Intern","start_date":"2026-08-17","reporting_manager":"Narendra babu Maradani","company_address":"","accepted_at_client":"2026-08-17T15:00:26.865Z","accepted_at_server":"2026-08-17T15:04:00+00:00"}
+    [nda_agreement_id] => MM-INT-1786978826856-WGLOB7
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => 2401:4900:4ced:768::631:8f5a
+    [password] => 
+    [age] => 29
+    [blood_group] => O+
+    [aadhaar_number] => 978222439670
+    [pan_number] => CYFPP0772F
+    [emergency_contact_name] => Varun alaparthi
+    [emergency_contact_relationship] => Husband
+    [emergency_contact_number] => 9100177913
+    [door_number] => 2-380/3
+    [street] => Old public school back street
+    [area_locality] => Vuyyuru
+    [district] => Krishna
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 15:04:00
+    [updated_at] => 2026-08-17 15:04:00
+)
+
+[17-Aug-2026 17:50:00 UTC] Checking for duplicates
+[17-Aug-2026 17:50:00 UTC] Starting transaction
+[17-Aug-2026 17:50:00 UTC] Debug: user_id from request = 190
+[17-Aug-2026 17:50:00 UTC] Debug: request data = Array
+(
+    [id] => 7
+    [employee_id] => 190
+    [full_name] => Yamini Alaparthi
+    [email] => narendrametaminds@gmail.com
+    [phone] => 9100177931
+    [photo] => uploads/6a8322d8c1b52_1786979032.jpg
+    [date_of_birth] => 1996-10-27
+    [gender] => female
+    [address] => 2-380/3, Old public school back street, Vuyyuru, Krishna, Vuyyuru, Andhra Pradesh - 521165
+    [city] => Vuyyuru
+    [state] => Andhra Pradesh
+    [pincode] => 521165
+    [department] => IT
+    [designation] => Intern
+    [higher_education] => diploma
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a8320aeb8b51_1786978478.jpg
+    [aadhaar_back] => uploads/6a8320c8cacb2_1786978504.jpg
+    [pan_front] => uploads/6a8320d6a725d_1786978518.jpg
+    [education_docs] => {"tenth_certificate":"uploads\/6a832148d8b89_1786978632.jpg","diploma_certificate":"uploads\/6a83215cd6018_1786978652.jpg"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8322682ad98_1786978920.jpg
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786978826856-WGLOB7","full_name":"Yamini Alaparthi","email":"narendrametaminds@gmail.com","mobile":"9100177931","department":"IT","designation":"Intern","start_date":"2026-08-17","reporting_manager":"Narendra babu Maradani","company_address":"","accepted_at_client":"2026-08-17T15:00:26.865Z","accepted_at_server":"2026-08-17T15:04:00+00:00"}
+    [nda_agreement_id] => MM-INT-1786978826856-WGLOB7
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => 2401:4900:4ced:768::631:8f5a
+    [password] => 
+    [age] => 29
+    [blood_group] => O+
+    [aadhaar_number] => 978222439670
+    [pan_number] => CYFPP0772F
+    [emergency_contact_name] => Varun alaparthi
+    [emergency_contact_relationship] => Husband
+    [emergency_contact_number] => 9100177913
+    [door_number] => 2-380/3
+    [street] => Old public school back street
+    [area_locality] => Vuyyuru
+    [district] => Krishna
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 15:04:00
+    [updated_at] => 2026-08-17 15:04:00
+)
+
+[17-Aug-2026 17:50:00 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 17:50:00 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 17:50:05 UTC] Email sent successfully to narendrametaminds@gmail.com
+[17-Aug-2026 17:50:05 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 17:50:05 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 17:50:10 UTC] Email sent successfully to admin@metaminds.com
+[17-Aug-2026 17:54:00 UTC] Starting approve_request
+[17-Aug-2026 17:54:00 UTC] Request ID: 6, Employee Code: MM-INTN-007
+[17-Aug-2026 17:54:00 UTC] Checking for duplicate employee code
+[17-Aug-2026 17:54:00 UTC] Getting request details
+[17-Aug-2026 17:54:00 UTC] Request data: Array
+(
+    [id] => 6
+    [employee_id] => 189
+    [full_name] => Naga Venkata Vijay Kumar Yenuganti
+    [email] => vijaykumaryenuganti1@gmail.com
+    [phone] => 6304689849
+    [photo] => uploads/6a8308566f65c_1786972246.jpg
+    [date_of_birth] => 2001-06-17
+    [gender] => male
+    [address] => 74-13-764/2, 2/3 Line, Wokers Colony, Guntur, Guntur, Andhra Pradesh - 522003
+    [city] => Guntur
+    [state] => Andhra Pradesh
+    [pincode] => 522003
+    [department] => IT
+    [designation] => Intern
+    [higher_education] => btech
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a82fd869a6ec_1786969478.jpeg
+    [aadhaar_back] => uploads/6a82fd8dd4e7e_1786969485.jpeg
+    [pan_front] => uploads/6a8300973389a_1786970263.jpeg
+    [education_docs] => {"tenth_certificate":"uploads\/6a8305439f18e_1786971459.jpeg","btech_certificate":"uploads\/6a83054dede63_1786971469.jpeg","intermediate_certificate":"uploads\/6a8305861eb7f_1786971526.jpeg"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8307f146e3e_1786972145.jpeg
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786971965346-K2PEOI","full_name":"Naga Venkata Vijay Kumar Yenuganti","email":"vijaykumaryenuganti1@gmail.com","mobile":"6304689849","department":"IT","designation":"Intern","start_date":"2026-08-17","reporting_manager":"Narendra Babu Maradani","company_address":"","accepted_at_client":"2026-08-17T13:06:05.346Z","accepted_at_server":"2026-08-17T13:10:55+00:00"}
+    [nda_agreement_id] => MM-INT-1786971965346-K2PEOI
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => 2405:201:c073:e81d:a1b2:5f06:20ef:4cbd
+    [password] => 
+    [age] => 25
+    [blood_group] => O+
+    [aadhaar_number] => 399470240907
+    [pan_number] => BBHPY3708E
+    [emergency_contact_name] => Gummalla Venkatarao
+    [emergency_contact_relationship] => Uncle
+    [emergency_contact_number] => 8919873998
+    [door_number] => 74-13-764/2
+    [street] => 2/3 Line
+    [area_locality] => Wokers Colony
+    [district] => Guntur
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 13:10:55
+    [updated_at] => 2026-08-17 13:10:55
+)
+
+[17-Aug-2026 17:54:00 UTC] Checking for duplicates
+[17-Aug-2026 17:54:00 UTC] Starting transaction
+[17-Aug-2026 17:54:00 UTC] Debug: user_id from request = 189
+[17-Aug-2026 17:54:00 UTC] Debug: request data = Array
+(
+    [id] => 6
+    [employee_id] => 189
+    [full_name] => Naga Venkata Vijay Kumar Yenuganti
+    [email] => vijaykumaryenuganti1@gmail.com
+    [phone] => 6304689849
+    [photo] => uploads/6a8308566f65c_1786972246.jpg
+    [date_of_birth] => 2001-06-17
+    [gender] => male
+    [address] => 74-13-764/2, 2/3 Line, Wokers Colony, Guntur, Guntur, Andhra Pradesh - 522003
+    [city] => Guntur
+    [state] => Andhra Pradesh
+    [pincode] => 522003
+    [department] => IT
+    [designation] => Intern
+    [higher_education] => btech
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a82fd869a6ec_1786969478.jpeg
+    [aadhaar_back] => uploads/6a82fd8dd4e7e_1786969485.jpeg
+    [pan_front] => uploads/6a8300973389a_1786970263.jpeg
+    [education_docs] => {"tenth_certificate":"uploads\/6a8305439f18e_1786971459.jpeg","btech_certificate":"uploads\/6a83054dede63_1786971469.jpeg","intermediate_certificate":"uploads\/6a8305861eb7f_1786971526.jpeg"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a8307f146e3e_1786972145.jpeg
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786971965346-K2PEOI","full_name":"Naga Venkata Vijay Kumar Yenuganti","email":"vijaykumaryenuganti1@gmail.com","mobile":"6304689849","department":"IT","designation":"Intern","start_date":"2026-08-17","reporting_manager":"Narendra Babu Maradani","company_address":"","accepted_at_client":"2026-08-17T13:06:05.346Z","accepted_at_server":"2026-08-17T13:10:55+00:00"}
+    [nda_agreement_id] => MM-INT-1786971965346-K2PEOI
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => 2405:201:c073:e81d:a1b2:5f06:20ef:4cbd
+    [password] => 
+    [age] => 25
+    [blood_group] => O+
+    [aadhaar_number] => 399470240907
+    [pan_number] => BBHPY3708E
+    [emergency_contact_name] => Gummalla Venkatarao
+    [emergency_contact_relationship] => Uncle
+    [emergency_contact_number] => 8919873998
+    [door_number] => 74-13-764/2
+    [street] => 2/3 Line
+    [area_locality] => Wokers Colony
+    [district] => Guntur
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 13:10:55
+    [updated_at] => 2026-08-17 13:10:55
+)
+
+[17-Aug-2026 17:54:00 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 17:54:00 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 17:54:04 UTC] Email sent successfully to vijaykumaryenuganti1@gmail.com
+[17-Aug-2026 17:54:04 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 17:54:04 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 17:54:08 UTC] Email sent successfully to admin@metaminds.com
+[17-Aug-2026 17:54:28 UTC] Starting approve_request
+[17-Aug-2026 17:54:28 UTC] Request ID: 4, Employee Code: MM-INTN-008
+[17-Aug-2026 17:54:28 UTC] Checking for duplicate employee code
+[17-Aug-2026 17:54:28 UTC] Getting request details
+[17-Aug-2026 17:54:28 UTC] Request data: Array
+(
+    [id] => 4
+    [employee_id] => 187
+    [full_name] => Siva Saranya Puvvada
+    [email] => psaranya083@gmail.com
+    [phone] => 9492953561
+    [photo] => uploads/6a82ec31eadbd_1786965041.jpg
+    [date_of_birth] => 2002-04-11
+    [gender] => female
+    [address] => 4-135/A, Near Mosque, Chinamatlapudi, Bapatla, Chinamatlapudi, Andhra Pradesh - 522314
+    [city] => Chinamatlapudi
+    [state] => Andhra Pradesh
+    [pincode] => 522314
+    [department] => IT
+    [designation] => Intern
+    [higher_education] => btech
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a82eb71a99c4_1786964849.jpg
+    [aadhaar_back] => uploads/6a82eb768c67c_1786964854.jpg
+    [pan_front] => uploads/6a82eb7d9e6b9_1786964861.jpg
+    [education_docs] => {"tenth_certificate":"uploads\/6a82ebaa8f3fa_1786964906.jpg","intermediate_certificate":"uploads\/6a82ebb186082_1786964913.jpg","btech_certificate":"uploads\/6a82ebb6c3d2c_1786964918.jpg"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a82ec2b4c18d_1786965035.jpg
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786965004302-7HMW0S","full_name":"Siva Saranya Puvvada","email":"psaranya083@gmail.com","mobile":"9492953561","department":"IT","designation":"Intern","start_date":"2026-08-17","reporting_manager":"Narendra Kumar Maradani","company_address":"","accepted_at_client":"2026-08-17T11:10:04.308Z","accepted_at_server":"2026-08-17T11:10:49+00:00"}
+    [nda_agreement_id] => MM-INT-1786965004302-7HMW0S
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => 49.204.210.204
+    [password] => 
+    [age] => 24
+    [blood_group] => AB+
+    [aadhaar_number] => 324938420148
+    [pan_number] => KNFPS6908P
+    [emergency_contact_name] => Sasi
+    [emergency_contact_relationship] => Sister
+    [emergency_contact_number] => 9381855178
+    [door_number] => 4-135/A
+    [street] => Near Mosque
+    [area_locality] => Chinamatlapudi
+    [district] => Bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 11:10:49
+    [updated_at] => 2026-08-17 11:10:49
+)
+
+[17-Aug-2026 17:54:28 UTC] Checking for duplicates
+[17-Aug-2026 17:54:28 UTC] Starting transaction
+[17-Aug-2026 17:54:28 UTC] Debug: user_id from request = 187
+[17-Aug-2026 17:54:28 UTC] Debug: request data = Array
+(
+    [id] => 4
+    [employee_id] => 187
+    [full_name] => Siva Saranya Puvvada
+    [email] => psaranya083@gmail.com
+    [phone] => 9492953561
+    [photo] => uploads/6a82ec31eadbd_1786965041.jpg
+    [date_of_birth] => 2002-04-11
+    [gender] => female
+    [address] => 4-135/A, Near Mosque, Chinamatlapudi, Bapatla, Chinamatlapudi, Andhra Pradesh - 522314
+    [city] => Chinamatlapudi
+    [state] => Andhra Pradesh
+    [pincode] => 522314
+    [department] => IT
+    [designation] => Intern
+    [higher_education] => btech
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a82eb71a99c4_1786964849.jpg
+    [aadhaar_back] => uploads/6a82eb768c67c_1786964854.jpg
+    [pan_front] => uploads/6a82eb7d9e6b9_1786964861.jpg
+    [education_docs] => {"tenth_certificate":"uploads\/6a82ebaa8f3fa_1786964906.jpg","intermediate_certificate":"uploads\/6a82ebb186082_1786964913.jpg","btech_certificate":"uploads\/6a82ebb6c3d2c_1786964918.jpg"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a82ec2b4c18d_1786965035.jpg
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786965004302-7HMW0S","full_name":"Siva Saranya Puvvada","email":"psaranya083@gmail.com","mobile":"9492953561","department":"IT","designation":"Intern","start_date":"2026-08-17","reporting_manager":"Narendra Kumar Maradani","company_address":"","accepted_at_client":"2026-08-17T11:10:04.308Z","accepted_at_server":"2026-08-17T11:10:49+00:00"}
+    [nda_agreement_id] => MM-INT-1786965004302-7HMW0S
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => 49.204.210.204
+    [password] => 
+    [age] => 24
+    [blood_group] => AB+
+    [aadhaar_number] => 324938420148
+    [pan_number] => KNFPS6908P
+    [emergency_contact_name] => Sasi
+    [emergency_contact_relationship] => Sister
+    [emergency_contact_number] => 9381855178
+    [door_number] => 4-135/A
+    [street] => Near Mosque
+    [area_locality] => Chinamatlapudi
+    [district] => Bapatla
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 11:10:49
+    [updated_at] => 2026-08-17 11:10:49
+)
+
+[17-Aug-2026 17:54:28 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 17:54:28 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 17:54:32 UTC] Email sent successfully to psaranya083@gmail.com
+[17-Aug-2026 17:54:32 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 17:54:32 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 17:54:36 UTC] Email sent successfully to admin@metaminds.com
+[17-Aug-2026 17:54:55 UTC] Starting approve_request
+[17-Aug-2026 17:54:55 UTC] Request ID: 5, Employee Code: MM-INTN-009
+[17-Aug-2026 17:54:55 UTC] Checking for duplicate employee code
+[17-Aug-2026 17:54:55 UTC] Getting request details
+[17-Aug-2026 17:54:55 UTC] Request data: Array
+(
+    [id] => 5
+    [employee_id] => 188
+    [full_name] => RAKESH MUTTAMSETTI
+    [email] => muttamsettirakesh65@gmail.com
+    [phone] => 6281080204
+    [photo] => uploads/6a83069908e9c_1786971801.jpg
+    [date_of_birth] => 2001-10-21
+    [gender] => male
+    [address] => 2-125, Near Panchayat office, Kalavakuru, Prakasam, Addanki, Andhra Pradesh - 523201
+    [city] => Addanki
+    [state] => Andhra Pradesh
+    [pincode] => 523201
+    [department] => IT
+    [designation] => Intern
+    [higher_education] => btech
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a83007660f2a_1786970230.jpg
+    [aadhaar_back] => uploads/6a8300859374d_1786970245.jpg
+    [pan_front] => uploads/6a8300be81153_1786970302.jpg
+    [education_docs] => {"tenth_certificate":"uploads\/6a8301377a11c_1786970423.jpg","intermediate_certificate":"uploads\/6a83016110af7_1786970465.jpg","btech_certificate":"uploads\/6a8304842ffb5_1786971268.jpg"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a83065984037_1786971737.jpg
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786971523526-KG247D","full_name":"RAKESH MUTTAMSETTI","email":"muttamsettirakesh65@gmail.com","mobile":"6281080204","department":"IT","designation":"Intern","start_date":"2026-08-17","reporting_manager":"NARENDRA BABU MARADANI","company_address":"","accepted_at_client":"2026-08-17T12:58:43.526Z","accepted_at_server":"2026-08-17T13:03:53+00:00"}
+    [nda_agreement_id] => MM-INT-1786971523526-KG247D
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => 2409:408c:1e0a:85c1:1a5d:6007:efe1:c891
+    [password] => 
+    [age] => 24
+    [blood_group] => O+
+    [aadhaar_number] => 853118975912
+    [pan_number] => ESUPR4701K
+    [emergency_contact_name] => MUTTAMSETTI HANUMANTHA RAO
+    [emergency_contact_relationship] => Father
+    [emergency_contact_number] => 9908279472
+    [door_number] => 2-125
+    [street] => Near Panchayat office
+    [area_locality] => Kalavakuru
+    [district] => Prakasam
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 13:03:53
+    [updated_at] => 2026-08-17 13:03:53
+)
+
+[17-Aug-2026 17:54:55 UTC] Checking for duplicates
+[17-Aug-2026 17:54:55 UTC] Starting transaction
+[17-Aug-2026 17:54:55 UTC] Debug: user_id from request = 188
+[17-Aug-2026 17:54:55 UTC] Debug: request data = Array
+(
+    [id] => 5
+    [employee_id] => 188
+    [full_name] => RAKESH MUTTAMSETTI
+    [email] => muttamsettirakesh65@gmail.com
+    [phone] => 6281080204
+    [photo] => uploads/6a83069908e9c_1786971801.jpg
+    [date_of_birth] => 2001-10-21
+    [gender] => male
+    [address] => 2-125, Near Panchayat office, Kalavakuru, Prakasam, Addanki, Andhra Pradesh - 523201
+    [city] => Addanki
+    [state] => Andhra Pradesh
+    [pincode] => 523201
+    [department] => IT
+    [designation] => Intern
+    [higher_education] => btech
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a83007660f2a_1786970230.jpg
+    [aadhaar_back] => uploads/6a8300859374d_1786970245.jpg
+    [pan_front] => uploads/6a8300be81153_1786970302.jpg
+    [education_docs] => {"tenth_certificate":"uploads\/6a8301377a11c_1786970423.jpg","intermediate_certificate":"uploads\/6a83016110af7_1786970465.jpg","btech_certificate":"uploads\/6a8304842ffb5_1786971268.jpg"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a83065984037_1786971737.jpg
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786971523526-KG247D","full_name":"RAKESH MUTTAMSETTI","email":"muttamsettirakesh65@gmail.com","mobile":"6281080204","department":"IT","designation":"Intern","start_date":"2026-08-17","reporting_manager":"NARENDRA BABU MARADANI","company_address":"","accepted_at_client":"2026-08-17T12:58:43.526Z","accepted_at_server":"2026-08-17T13:03:53+00:00"}
+    [nda_agreement_id] => MM-INT-1786971523526-KG247D
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => 2409:408c:1e0a:85c1:1a5d:6007:efe1:c891
+    [password] => 
+    [age] => 24
+    [blood_group] => O+
+    [aadhaar_number] => 853118975912
+    [pan_number] => ESUPR4701K
+    [emergency_contact_name] => MUTTAMSETTI HANUMANTHA RAO
+    [emergency_contact_relationship] => Father
+    [emergency_contact_number] => 9908279472
+    [door_number] => 2-125
+    [street] => Near Panchayat office
+    [area_locality] => Kalavakuru
+    [district] => Prakasam
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 13:03:53
+    [updated_at] => 2026-08-17 13:03:53
+)
+
+[17-Aug-2026 17:54:55 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 17:54:55 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 17:54:59 UTC] Email sent successfully to muttamsettirakesh65@gmail.com
+[17-Aug-2026 17:54:59 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 17:54:59 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 17:55:03 UTC] Email sent successfully to admin@metaminds.com
+[17-Aug-2026 17:56:55 UTC] Starting approve_request
+[17-Aug-2026 17:56:55 UTC] Request ID: 10, Employee Code: MM-TECH-006
+[17-Aug-2026 17:56:55 UTC] Checking for duplicate employee code
+[17-Aug-2026 17:56:55 UTC] Getting request details
+[17-Aug-2026 17:56:55 UTC] Request data: Array
+(
+    [id] => 10
+    [employee_id] => 193
+    [full_name] => THUMMA PAVAN VENKATA DURGA SAI RAM
+    [email] => pavanthumma0607@gmail.com
+    [phone] => 9701849967
+    [photo] => uploads/6a8335e8b0623_1786983912.jpg
+    [date_of_birth] => 2002-07-06
+    [gender] => male
+    [address] => 11-714B, PEDHA RAMALAYAM VEEDHI, RATANALA CHERUVU, GUNTUR, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => BACKEND DEVELOPER
+    [higher_education] => btech
+    [experience_level] => experienced
+    [company_name] => VIRAJ TECHNOLOGIES
+    [company_contact] => 6302684089
+    [aadhaar_front] => uploads/6a8331805745b_1786982784.jpg
+    [aadhaar_back] => uploads/6a8331849da81_1786982788.jpg
+    [pan_front] => uploads/6a83318f09987_1786982799.jpg
+    [education_docs] => {"tenth_certificate":"uploads\/6a83325724201_1786982999.jpg","intermediate_certificate":"uploads\/6a8332634578f_1786983011.jpg","btech_certificate":"uploads\/6a83326ca35d9_1786983020.jpg"}
+    [experience_letter] => uploads/6a8332b278e8d_1786983090.jpg
+    [pay_slip] => uploads/6a8332d78466d_1786983127.jpg
+    [offer_letter] => uploads/6a8332c5357e8_1786983109.jpg
+    [signature] => uploads/6a83352a8d578_1786983722.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1786983297916-7OR4Q2","full_name":"THUMMA PAVAN VENKATA DURGA SAI RAM","email":"pavanthumma0607@gmail.com","mobile":"9701849967","department":"IT","designation":"BACKEND DEVELOPER","start_date":"2026-08-07","reporting_manager":"NARENDRA","company_address":"META MINDS","accepted_at_client":"2026-08-17T16:14:57.925Z","accepted_at_server":"2026-08-17T16:25:21+00:00"}
+    [nda_agreement_id] => MM-EMP-1786983297916-7OR4Q2
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => 103.122.61.12
+    [password] => 
+    [age] => 24
+    [blood_group] => A+
+    [aadhaar_number] => 458373528771
+    [pan_number] => HDCPR4897E
+    [emergency_contact_name] => THUMMA VENKATESWARA RAO
+    [emergency_contact_relationship] => FATHER
+    [emergency_contact_number] => 8919340460
+    [door_number] => 11-714B
+    [street] => PEDHA RAMALAYAM VEEDHI
+    [area_locality] => RATANALA CHERUVU
+    [district] => GUNTUR
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 16:25:21
+    [updated_at] => 2026-08-17 16:25:21
+)
+
+[17-Aug-2026 17:56:55 UTC] Checking for duplicates
+[17-Aug-2026 17:56:55 UTC] Starting transaction
+[17-Aug-2026 17:56:55 UTC] Debug: user_id from request = 193
+[17-Aug-2026 17:56:55 UTC] Debug: request data = Array
+(
+    [id] => 10
+    [employee_id] => 193
+    [full_name] => THUMMA PAVAN VENKATA DURGA SAI RAM
+    [email] => pavanthumma0607@gmail.com
+    [phone] => 9701849967
+    [photo] => uploads/6a8335e8b0623_1786983912.jpg
+    [date_of_birth] => 2002-07-06
+    [gender] => male
+    [address] => 11-714B, PEDHA RAMALAYAM VEEDHI, RATANALA CHERUVU, GUNTUR, MANGALAGIRI, ANDHRA PRADESH - 522503
+    [city] => MANGALAGIRI
+    [state] => ANDHRA PRADESH
+    [pincode] => 522503
+    [department] => IT
+    [designation] => BACKEND DEVELOPER
+    [higher_education] => btech
+    [experience_level] => experienced
+    [company_name] => VIRAJ TECHNOLOGIES
+    [company_contact] => 6302684089
+    [aadhaar_front] => uploads/6a8331805745b_1786982784.jpg
+    [aadhaar_back] => uploads/6a8331849da81_1786982788.jpg
+    [pan_front] => uploads/6a83318f09987_1786982799.jpg
+    [education_docs] => {"tenth_certificate":"uploads\/6a83325724201_1786982999.jpg","intermediate_certificate":"uploads\/6a8332634578f_1786983011.jpg","btech_certificate":"uploads\/6a83326ca35d9_1786983020.jpg"}
+    [experience_letter] => uploads/6a8332b278e8d_1786983090.jpg
+    [pay_slip] => uploads/6a8332d78466d_1786983127.jpg
+    [offer_letter] => uploads/6a8332c5357e8_1786983109.jpg
+    [signature] => uploads/6a83352a8d578_1786983722.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1786983297916-7OR4Q2","full_name":"THUMMA PAVAN VENKATA DURGA SAI RAM","email":"pavanthumma0607@gmail.com","mobile":"9701849967","department":"IT","designation":"BACKEND DEVELOPER","start_date":"2026-08-07","reporting_manager":"NARENDRA","company_address":"META MINDS","accepted_at_client":"2026-08-17T16:14:57.925Z","accepted_at_server":"2026-08-17T16:25:21+00:00"}
+    [nda_agreement_id] => MM-EMP-1786983297916-7OR4Q2
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => 103.122.61.12
+    [password] => 
+    [age] => 24
+    [blood_group] => A+
+    [aadhaar_number] => 458373528771
+    [pan_number] => HDCPR4897E
+    [emergency_contact_name] => THUMMA VENKATESWARA RAO
+    [emergency_contact_relationship] => FATHER
+    [emergency_contact_number] => 8919340460
+    [door_number] => 11-714B
+    [street] => PEDHA RAMALAYAM VEEDHI
+    [area_locality] => RATANALA CHERUVU
+    [district] => GUNTUR
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 16:25:21
+    [updated_at] => 2026-08-17 16:25:21
+)
+
+[17-Aug-2026 17:56:55 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 17:56:55 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 17:56:59 UTC] Email sent successfully to pavanthumma0607@gmail.com
+[17-Aug-2026 17:56:59 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 17:56:59 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 17:57:03 UTC] Email sent successfully to admin@metaminds.com
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 18:39:49 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 18:39:49 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 18:39:49 UTC] SMTP credentials missing
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[17-Aug-2026 18:39:49 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 18:39:49 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[17-Aug-2026 18:39:49 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[17-Aug-2026 18:39:49 UTC] SMTP credentials missing
+[17-Aug-2026 18:52:20 UTC] Starting approve_request
+[17-Aug-2026 18:52:20 UTC] Request ID: 11, Employee Code: MM-INTN-010
+[17-Aug-2026 18:52:20 UTC] Checking for duplicate employee code
+[17-Aug-2026 18:52:20 UTC] Getting request details
+[17-Aug-2026 18:52:20 UTC] Request data: Array
+(
+    [id] => 11
+    [employee_id] => 194
+    [full_name] => Tanuja Sana
+    [email] => sanatanuja2004@gmail.com
+    [phone] => 8309851258
+    [photo] => uploads/6a83557151bb7_1786991985.jpg
+    [date_of_birth] => 2004-03-11
+    [gender] => female
+    [address] => 11-16, TRK Street, Near Sita Rama Kovela, Guntur, Mangalagiri, Andhra Pradesh - 522503
+    [city] => Mangalagiri
+    [state] => Andhra Pradesh
+    [pincode] => 522503
+    [department] => IT
+    [designation] => Intern
+    [higher_education] => btech
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a8353c79854b_1786991559.jpg
+    [aadhaar_back] => uploads/6a83548d0c044_1786991757.jpg
+    [pan_front] => uploads/6a835472873cf_1786991730.jpg
+    [education_docs] => {"tenth_certificate":"uploads\/6a8354ac47681_1786991788.jpg","intermediate_certificate":"uploads\/6a8354b7051bc_1786991799.jpg","btech_certificate":"uploads\/6a8354b9e6150_1786991801.jpg"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a835511ac342_1786991889.jpg
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786991864111-6STUHB","full_name":"Tanuja Sana","email":"sanatanuja2004@gmail.com","mobile":"8309851258","department":"IT","designation":"Intern","start_date":"2026-08-17","reporting_manager":"Narendra Babu","company_address":"","accepted_at_client":"2026-08-17T18:37:44.111Z","accepted_at_server":"2026-08-17T18:39:49+00:00"}
+    [nda_agreement_id] => MM-INT-1786991864111-6STUHB
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => 2409:40f0:3032:777b:b431:7769:cc0b:4529
+    [password] => 
+    [age] => 22
+    [blood_group] => O+
+    [aadhaar_number] => 699484032325
+    [pan_number] => RGTPS4161Q
+    [emergency_contact_name] => Chowdaiah Sana
+    [emergency_contact_relationship] => Father
+    [emergency_contact_number] => 9347973776
+    [door_number] => 11-16
+    [street] => TRK Street
+    [area_locality] => Near Sita Rama Kovela
+    [district] => Guntur
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 18:39:49
+    [updated_at] => 2026-08-17 18:39:49
+)
+
+[17-Aug-2026 18:52:20 UTC] Checking for duplicates
+[17-Aug-2026 18:52:20 UTC] Starting transaction
+[17-Aug-2026 18:52:20 UTC] Debug: user_id from request = 194
+[17-Aug-2026 18:52:20 UTC] Debug: request data = Array
+(
+    [id] => 11
+    [employee_id] => 194
+    [full_name] => Tanuja Sana
+    [email] => sanatanuja2004@gmail.com
+    [phone] => 8309851258
+    [photo] => uploads/6a83557151bb7_1786991985.jpg
+    [date_of_birth] => 2004-03-11
+    [gender] => female
+    [address] => 11-16, TRK Street, Near Sita Rama Kovela, Guntur, Mangalagiri, Andhra Pradesh - 522503
+    [city] => Mangalagiri
+    [state] => Andhra Pradesh
+    [pincode] => 522503
+    [department] => IT
+    [designation] => Intern
+    [higher_education] => btech
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a8353c79854b_1786991559.jpg
+    [aadhaar_back] => uploads/6a83548d0c044_1786991757.jpg
+    [pan_front] => uploads/6a835472873cf_1786991730.jpg
+    [education_docs] => {"tenth_certificate":"uploads\/6a8354ac47681_1786991788.jpg","intermediate_certificate":"uploads\/6a8354b7051bc_1786991799.jpg","btech_certificate":"uploads\/6a8354b9e6150_1786991801.jpg"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a835511ac342_1786991889.jpg
+    [position] => intern
+    [nda_accepted] => 1
+    [nda_record] => {"type":"intern","version":"Unpaid Internship Agreement v1.0","agreement_id":"MM-INT-1786991864111-6STUHB","full_name":"Tanuja Sana","email":"sanatanuja2004@gmail.com","mobile":"8309851258","department":"IT","designation":"Intern","start_date":"2026-08-17","reporting_manager":"Narendra Babu","company_address":"","accepted_at_client":"2026-08-17T18:37:44.111Z","accepted_at_server":"2026-08-17T18:39:49+00:00"}
+    [nda_agreement_id] => MM-INT-1786991864111-6STUHB
+    [nda_version] => Unpaid Internship Agreement v1.0
+    [nda_ip] => 2409:40f0:3032:777b:b431:7769:cc0b:4529
+    [password] => 
+    [age] => 22
+    [blood_group] => O+
+    [aadhaar_number] => 699484032325
+    [pan_number] => RGTPS4161Q
+    [emergency_contact_name] => Chowdaiah Sana
+    [emergency_contact_relationship] => Father
+    [emergency_contact_number] => 9347973776
+    [door_number] => 11-16
+    [street] => TRK Street
+    [area_locality] => Near Sita Rama Kovela
+    [district] => Guntur
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-17 18:39:49
+    [updated_at] => 2026-08-17 18:39:49
+)
+
+[17-Aug-2026 18:52:20 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 18:52:20 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 18:52:24 UTC] Email sent successfully to sanatanuja2004@gmail.com
+[17-Aug-2026 18:52:24 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[17-Aug-2026 18:52:24 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[17-Aug-2026 18:52:28 UTC] Email sent successfully to admin@metaminds.com
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[19-Aug-2026 08:22:03 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[19-Aug-2026 08:22:03 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[19-Aug-2026 08:22:03 UTC] SMTP credentials missing
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 19
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 20
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 21
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 22
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 23
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 24
+[19-Aug-2026 08:22:03 UTC] PHP Warning:  Trying to access array offset on null in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[19-Aug-2026 08:22:03 UTC] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u725286249/domains/metamindspvtltd.com/public_html/hr_portal/metaminds/backend/config/mailer.php on line 25
+[19-Aug-2026 08:22:03 UTC] SMTP Config - Host: , Port: 0, User: , Encryption: 
+[19-Aug-2026 08:22:03 UTC] SMTP credentials missing
+[21-Aug-2026 05:09:21 UTC] Starting approve_request
+[21-Aug-2026 05:09:21 UTC] Request ID: 12, Employee Code: MM-TECH-004
+[21-Aug-2026 05:09:21 UTC] Checking for duplicate employee code
+[21-Aug-2026 05:09:21 UTC] Getting request details
+[21-Aug-2026 05:09:21 UTC] Request data: Array
+(
+    [id] => 12
+    [employee_id] => 195
+    [full_name] => Bitra Sasank
+    [email] => bitrasasank143@gmail.com
+    [phone] => 7093070705
+    [photo] => uploads/6a8567a877165_1787127720.jpg
+    [date_of_birth] => 2001-02-25
+    [gender] => male
+    [address] => 1111, Old Mangalagiri, Mangalagiri, Guntur, Mangalagiri, Andhra Pradesh - 522503
+    [city] => Mangalagiri
+    [state] => Andhra Pradesh
+    [pincode] => 522503
+    [department] => IT
+    [designation] => Frontend Software Engineer | Angular | React | AI-
+    [higher_education] => mca
+    [experience_level] => experienced
+    [company_name] => Shandy System
+    [company_contact] => 7093070705
+    [aadhaar_front] => uploads/6a856390cbcb2_1787126672.png
+    [aadhaar_back] => uploads/6a8563954fc05_1787126677.png
+    [pan_front] => uploads/6a8563b3187c2_1787126707.png
+    [education_docs] => {"tenth_certificate":"uploads\/6a856422ce105_1787126818.png","intermediate_certificate":"uploads\/6a85643a1978d_1787126842.png","btech_certificate":"uploads\/6a8564524ac0f_1787126866.png","mca_certificate":"uploads\/6a856459824c8_1787126873.png"}
+    [experience_letter] => uploads/6a8565a32e164_1787127203.pdf
+    [pay_slip] => uploads/6a8565a9a76d6_1787127209.pdf
+    [offer_letter] => uploads/6a8565aebff59_1787127214.pdf
+    [signature] => uploads/6a85677988b7a_1787127673.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1787127398800-PY243P","full_name":"Bitra Sasank","email":"bitrasasank143@gmail.com","mobile":"7093070705","department":"IT","designation":"Frontend Software Engineer | Angular | React | AI-Powered Applications","start_date":"2026-07-31","reporting_manager":"","company_address":"Vijayawada","accepted_at_client":"2026-08-19T08:16:38.800Z","accepted_at_server":"2026-08-19T08:22:03+00:00"}
+    [nda_agreement_id] => MM-EMP-1787127398800-PY243P
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => 2001:df5:b840:1857:80f1:acf:3f53:ea4e
+    [password] => 
+    [age] => 26
+    [blood_group] => B-
+    [aadhaar_number] => 
+    [pan_number] => 
+    [emergency_contact_name] => Bitra Sasank
+    [emergency_contact_relationship] => Myself
+    [emergency_contact_number] => 7093070705
+    [door_number] => 1111
+    [street] => Old Mangalagiri
+    [area_locality] => Mangalagiri
+    [district] => Guntur
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-19 08:22:03
+    [updated_at] => 2026-08-19 08:22:03
+)
+
+[21-Aug-2026 05:09:21 UTC] Checking for duplicates
+[21-Aug-2026 05:09:21 UTC] Starting transaction
+[21-Aug-2026 05:09:21 UTC] Debug: user_id from request = 195
+[21-Aug-2026 05:09:21 UTC] Debug: request data = Array
+(
+    [id] => 12
+    [employee_id] => 195
+    [full_name] => Bitra Sasank
+    [email] => bitrasasank143@gmail.com
+    [phone] => 7093070705
+    [photo] => uploads/6a8567a877165_1787127720.jpg
+    [date_of_birth] => 2001-02-25
+    [gender] => male
+    [address] => 1111, Old Mangalagiri, Mangalagiri, Guntur, Mangalagiri, Andhra Pradesh - 522503
+    [city] => Mangalagiri
+    [state] => Andhra Pradesh
+    [pincode] => 522503
+    [department] => IT
+    [designation] => Frontend Software Engineer | Angular | React | AI-
+    [higher_education] => mca
+    [experience_level] => experienced
+    [company_name] => Shandy System
+    [company_contact] => 7093070705
+    [aadhaar_front] => uploads/6a856390cbcb2_1787126672.png
+    [aadhaar_back] => uploads/6a8563954fc05_1787126677.png
+    [pan_front] => uploads/6a8563b3187c2_1787126707.png
+    [education_docs] => {"tenth_certificate":"uploads\/6a856422ce105_1787126818.png","intermediate_certificate":"uploads\/6a85643a1978d_1787126842.png","btech_certificate":"uploads\/6a8564524ac0f_1787126866.png","mca_certificate":"uploads\/6a856459824c8_1787126873.png"}
+    [experience_letter] => uploads/6a8565a32e164_1787127203.pdf
+    [pay_slip] => uploads/6a8565a9a76d6_1787127209.pdf
+    [offer_letter] => uploads/6a8565aebff59_1787127214.pdf
+    [signature] => uploads/6a85677988b7a_1787127673.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1787127398800-PY243P","full_name":"Bitra Sasank","email":"bitrasasank143@gmail.com","mobile":"7093070705","department":"IT","designation":"Frontend Software Engineer | Angular | React | AI-Powered Applications","start_date":"2026-07-31","reporting_manager":"","company_address":"Vijayawada","accepted_at_client":"2026-08-19T08:16:38.800Z","accepted_at_server":"2026-08-19T08:22:03+00:00"}
+    [nda_agreement_id] => MM-EMP-1787127398800-PY243P
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => 2001:df5:b840:1857:80f1:acf:3f53:ea4e
+    [password] => 
+    [age] => 26
+    [blood_group] => B-
+    [aadhaar_number] => 
+    [pan_number] => 
+    [emergency_contact_name] => Bitra Sasank
+    [emergency_contact_relationship] => Myself
+    [emergency_contact_number] => 7093070705
+    [door_number] => 1111
+    [street] => Old Mangalagiri
+    [area_locality] => Mangalagiri
+    [district] => Guntur
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-08-19 08:22:03
+    [updated_at] => 2026-08-19 08:22:03
+)
+
+[21-Aug-2026 05:09:21 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[21-Aug-2026 05:09:21 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[21-Aug-2026 05:09:25 UTC] Email sent successfully to bitrasasank143@gmail.com
+[21-Aug-2026 05:09:25 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[21-Aug-2026 05:09:25 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[21-Aug-2026 05:09:29 UTC] Email sent successfully to admin@metaminds.com
+[21-Aug-2026 07:05:00 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[21-Aug-2026 07:05:00 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[21-Aug-2026 07:05:04 UTC] Email sent successfully to admin@metaminds.com
+[21-Aug-2026 07:05:04 UTC] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[21-Aug-2026 07:05:04 UTC] Attempting SMTP connection to smtp.gmail.com:587
+[21-Aug-2026 07:05:09 UTC] Email sent successfully to pavanthumma0607@gmail.com
+[23-Aug-2026 11:46:19 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:46:49 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:47:04 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:47:12 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:47:12 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:47:22 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:47:53 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:48:23 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:48:53 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:49:23 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:49:53 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:50:23 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:50:53 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:51:23 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:52:24 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:52:53 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:52:56 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:52:58 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:09 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:09 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:11 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:11 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:12 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:12 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:12 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:12 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:13 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:13 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:13 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:13 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:13 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:13 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:14 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:14 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:14 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:14 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:14 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:14 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:15 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:15 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:17 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:29 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:29 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:53:37 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:54:07 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:54:38 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[23-Aug-2026 11:55:08 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)

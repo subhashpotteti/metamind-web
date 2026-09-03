@@ -1,0 +1,90 @@
+// Attendance Management JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Check authentication
+    const adminUser = localStorage.getItem('adminUser');
+    if (!adminUser) {
+        window.location.href = 'login.php';
+        return;
+    }
+    
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('attendanceFromDate').value = today;
+    document.getElementById('attendanceToDate').value = today;
+    
+    // Load data
+    loadAttendance();
+    loadNotificationCount();
+    
+    // Real-time updates
+    setInterval(() => {
+        loadAttendance();
+        loadNotificationCount();
+    }, 30000);
+});
+
+async function loadAttendance() {
+    const fromDate = document.getElementById('attendanceFromDate').value;
+    const toDate = document.getElementById('attendanceToDate').value;
+
+    if (!fromDate || !toDate || fromDate > toDate) {
+        document.getElementById('attendanceTableBody').innerHTML = '<tr><td colspan="7" style="text-align: center;">Please select a valid date range</td></tr>';
+        return;
+    }
+    
+    try {
+        const response = await fetch(`../../backend/api/admin.php?action=get_attendance&from_date=${encodeURIComponent(fromDate)}&to_date=${encodeURIComponent(toDate)}`);
+        const data = await response.json();
+        
+        if (data.success) {
+            const tbody = document.getElementById('attendanceTableBody');
+            
+            if (data.attendance.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">No attendance records found</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = data.attendance.map(record => `
+                <tr>
+                    <td>${record.full_name}</td>
+                    <td>${record.department}</td>
+                    <td>${record.designation}</td>
+                    <td>${record.check_in_time ? record.check_in_time.split(' ')[1] : '--:--'}</td>
+                    <td>${record.check_out_time ? record.check_out_time.split(' ')[1] : '--:--'}</td>
+                    <td>${record.total_hours ? record.total_hours + 'h' : '0h'}</td>
+                    <td><span class="badge badge-${record.status}">${record.status}</span></td>
+                </tr>
+            `).join('');
+        }
+    } catch (error) {
+        console.error('Error loading attendance:', error);
+    }
+}
+
+async function loadNotificationCount() {
+    const adminUser = JSON.parse(localStorage.getItem('adminUser'));
+    if (!adminUser) return;
+    
+    try {
+        const response = await fetch(`../../backend/api/notifications.php?action=get_unread_count&user_id=${adminUser.id}`);
+        const data = await response.json();
+        
+        if (data.success && data.count > 0) {
+            document.getElementById('notifBadge').textContent = data.count;
+            document.getElementById('notifBadge').style.display = 'block';
+            document.getElementById('notifDot').style.display = 'block';
+        } else {
+            document.getElementById('notifBadge').style.display = 'none';
+            document.getElementById('notifDot').style.display = 'none';
+        }
+    } catch (error) {
+        console.error('Error loading notification count:', error);
+    }
+}
+
+function logout() {
+    localStorage.removeItem('adminUser');
+    window.location.href = 'login.php';
+}

@@ -1,0 +1,196 @@
+<?php
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET');
+header('Access-Control-Allow-Headers: Content-Type');
+
+require_once '../config/database.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $action = $_GET['action'] ?? '';
+    
+    if ($action === 'get_today_attendance') {
+        $employee_id = $_GET['employee_id'] ?? '';
+        $date = $_GET['date'] ?? date('Y-m-d');
+        
+        $stmt = $conn->prepare("SELECT *, COALESCE((SELECT SUM(total_hours) FROM attendance WHERE employee_id = ? AND date = ?), 0) AS day_total_hours FROM attendance WHERE employee_id = ? AND date = ? ORDER BY check_in_time DESC, id DESC LIMIT 1");
+        $stmt->bind_param("isis", $employee_id, $date, $employee_id, $date);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            $attendance = $result->fetch_assoc();
+            echo json_encode(['success' => true, 'attendance' => $attendance]);
+        } else {
+            echo json_encode(['success' => true, 'attendance' => null]);
+        }
+        $stmt->close();
+        
+    } elseif ($action === 'get_attendance_history') {
+        $employee_id = $_GET['employee_id'] ?? '';
+        $month = $_GET['month'] ?? date('Y-m');
+        
+        $stmt = $conn->prepare("SELECT * FROM attendance WHERE employee_id = ? AND DATE_FORMAT(date, '%Y-%m') = ? ORDER BY date DESC");
+        $stmt->bind_param("is", $employee_id, $month);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $attendance = [];
+        while ($row = $result->fetch_assoc()) {
+            $attendance[] = $row;
+        }
+        
+        echo json_encode(['success' => true, 'attendance' => $attendance]);
+        $stmt->close();
+    } elseif ($action === 'get_dashboard_overview') {
+        $employee_id = $_GET['employee_id'] ?? '';
+        $overview = ['attendance' => [], 'leave' => ['total_requests' => 0, 'pending_requests' => 0, 'approved_days_this_month' => 0]];
+
+        for ($i = 6; $i >= 0; $i--) {
+            $date = date('Y-m-d', strtotime("-$i days"));
+            $stmt = $conn->prepare("SELECT status FROM attendance WHERE employee_id = ? AND date = ?");
+            $stmt->bind_param('is', $employee_id, $date);
+            $stmt->execute();
+            $row = $stmt->get_result()->fetch_assoc();
+            $stmt->close();
+            $overview['attendance'][] = ['label' => date('D', strtotime($date)), 'value' => $row && $row['status'] === 'present' ? 1 : 0];
+        }
+
+        $stmt = $conn->prepare("SELECT COUNT(*) AS total, SUM(status = 'pending') AS pending FROM leave_requests WHERE employee_id = ?");
+        $stmt->bind_param('i', $employee_id);
+        $stmt->execute();
+        $leave = $stmt->get_result()->fetch_assoc();
+        $stmt->close();
+        $overview['leave']['total_requests'] = (int)$leave['total'];
+        $overview['leave']['pending_requests'] = (int)$leave['pending'];
+
+        $month = date('Y-m');
+        $stmt = $conn->prepare("SELECT COALESCE(SUM(total_days), 0) AS days FROM leave_requests WHERE employee_id = ? AND status = 'approved' AND DATE_FORMAT(start_date, '%Y-%m') = ?");
+        $stmt->bind_param('is', $employee_id, $month);
+        $stmt->execute();
+        $overview['leave']['approved_days_this_month'] = (int)$stmt->get_result()->fetch_assoc()['days'];
+        $stmt->close();
+
+        echo json_encode(['success' => true, 'overview' => $overview]);
+    }
+    
+} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents('php://input'), true);
+    $action = $data['action'] ?? '';
+    
+    if ($action === 'check_in') {
+        $employee_id = $data['employee_id'] ?? '';
+        $date = date('Y-m-d');
+        $time = date('H:i:s');
+        $datetime = $date . ' ' . $time;
+
+        $open_stmt = $conn->prepare("SELECT id FROM attendance WHERE employee_id = ? AND date = ? AND check_out_time IS NULL LIMIT 1");
+        $open_stmt->bind_param("is", $employee_id, $date);
+        $open_stmt->execute();
+        if ($open_stmt->get_result()->num_rows > 0) {
+            echo json_encode(['success' => false, 'message' => 'Please check out of the current session first']);
+            $open_stmt->close();
+            exit;
+        }
+        $open_stmt->close();
+        
+        // Insert attendance record
+        $stmt = $conn->prepare("INSERT INTO attendance (employee_id, check_in_time, date, status) VALUES (?, ?, ?, 'present')");
+        $stmt->bind_param("iss", $employee_id, $datetime, $date);
+        
+        if ($stmt->execute()) {
+            echo json_encode(['success' => true, 'message' => 'Checked in successfully', 'check_in_time' => date('H:i:s')]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Failed to check in']);
+        }
+        $stmt->close();
+        
+    } elseif ($action === 'check_out') {
+        $employee_id = $data['employee_id'] ?? '';
+        $date = date('Y-m-d');
+        $time = date('H:i:s');
+        $datetime = $date . ' ' . $time;
+        
+        // Close the most recent session that is still open.
+        $get_stmt = $conn->prepare("SELECT id, check_in_time FROM attendance WHERE employee_id = ? AND date = ? AND check_out_time IS NULL ORDER BY check_in_time DESC, id DESC LIMIT 1");
+        $get_stmt->bind_param("is", $employee_id, $date);
+        $get_stmt->execute();
+        $get_result = $get_stmt->get_result();
+        
+        if ($get_result->num_rows === 0) {
+            echo json_encode(['success' => false, 'message' => 'No check-in record found']);
+            $get_stmt->close();
+            exit;
+        }
+        
+        $row = $get_result->fetch_assoc();
+        $check_in_time = $row['check_in_time'];
+        $get_stmt->close();
+        
+        // Calculate total hours
+        $check_in = new DateTime($check_in_time);
+        $check_out = new DateTime($datetime);
+        $interval = $check_in->diff($check_out);
+        $total_hours = $interval->h + ($interval->i / 60);
+        
+        // Update only the session selected above.
+        $stmt = $conn->prepare("UPDATE attendance SET check_out_time = ?, total_hours = ? WHERE id = ?");
+        $stmt->bind_param("sdi", $datetime, $total_hours, $row['id']);
+        
+        if ($stmt->execute()) {
+            echo json_encode(['success' => true, 'message' => 'Checked out successfully']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Failed to check out']);
+        }
+        $stmt->close();
+        
+    } elseif ($action === 'update_profile') {
+        $employee_id = $data['employee_id'] ?? '';
+        $phone = $data['phone'] ?? '';
+        $date_of_birth = $data['date_of_birth'] ?? '';
+        $gender = $data['gender'] ?? '';
+        $address = $data['address'] ?? '';
+        $city = $data['city'] ?? '';
+        $state = $data['state'] ?? '';
+        $pincode = $data['pincode'] ?? '';
+        
+        if (empty($employee_id)) {
+            echo json_encode(['success' => false, 'message' => 'Employee ID is required']);
+            exit;
+        }
+        
+        if (empty($phone)) {
+            echo json_encode(['success' => false, 'message' => 'Phone number is required']);
+            exit;
+        }
+        
+        // Validate phone
+        if (!preg_match('/^[0-9]{10}$/', $phone)) {
+            echo json_encode(['success' => false, 'message' => 'Phone number must be 10 digits']);
+            exit;
+        }
+        
+        // Validate pincode if provided
+        if (!empty($pincode) && !preg_match('/^[0-9]{6}$/', $pincode)) {
+            echo json_encode(['success' => false, 'message' => 'Pincode must be 6 digits']);
+            exit;
+        }
+        
+        // Update employee profile
+        $stmt = $conn->prepare("UPDATE employees SET phone = ?, date_of_birth = ?, gender = ?, address = ?, city = ?, state = ?, pincode = ? WHERE id = ?");
+        $stmt->bind_param("sssssssi", $phone, $date_of_birth, $gender, $address, $city, $state, $pincode, $employee_id);
+        
+        if ($stmt->execute()) {
+            echo json_encode(['success' => true, 'message' => 'Profile updated successfully']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Failed to update profile: ' . $conn->error]);
+        }
+        $stmt->close();
+    }
+    
+} else {
+    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+}
+
+$conn->close();
+?>

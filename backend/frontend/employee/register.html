@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration - META MINDS PVT LTD</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/png" href="../assets/images/meta_minds_logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="login-page">
+        <div class="login-container" style="max-width: 600px;">
+            <div class="logo-container">
+                <img class="company-logo company-logo-auth" src="../assets/images/meta_minds_logo.png" alt="META MINDS PVT LTD">
+            </div>
+            
+            <div class="login-header">
+                <h2>Employee Registration</h2>
+                <p>Join our team</p>
+            </div>
+            
+            <form id="registerForm">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">First Name *</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" autocomplete="given-name" required>
+                        <div class="error-message" id="firstNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name *</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" autocomplete="family-name" required>
+                        <div class="error-message" id="lastNameError"></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Mobile Number *</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" maxlength="10" autocomplete="tel" required>
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" autocomplete="email" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Date of Birth *</label>
+                        <input type="date" class="form-control" id="dateOfBirth" autocomplete="bday" required>
+                        <div class="error-message" id="dateOfBirthError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Age *</label>
+                        <input type="number" class="form-control" id="age" placeholder="Age" min="18" max="65" required>
+                        <div class="error-message" id="ageError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Gender *</label>
+                        <select class="form-control" id="gender" required>
+                            <option value="">Choose...</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message" id="genderError"></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Blood Group *</label>
+                        <select class="form-control" id="bloodGroup" required>
+                            <option value="">Choose...</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                        <div class="error-message" id="bloodGroupError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Aadhaar Card Number</label>
+                        <input type="text" class="form-control" id="aadhaarNumber" placeholder="Enter your Aadhaar number" maxlength="12" autocomplete="off">
+                        <div class="error-message" id="aadhaarNumberError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">PAN Card Number</label>
+                        <input type="text" class="form-control" id="panNumber" placeholder="Enter your PAN number" maxlength="10" autocomplete="off">
+                        <div class="error-message" id="panNumberError"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <h3>Document Uploads</h3>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Aadhaar Card (Front) *</label>
+                        <input type="file" class="form-control" id="aadhaarFront" accept="image/*" required>
+                        <div class="error-message" id="aadhaarFrontError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Aadhaar Card (Back) *</label>
+                        <input type="file" class="form-control" id="aadhaarBack" accept="image/*" required>
+                        <div class="error-message" id="aadhaarBackError"></div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">PAN Card (Front) *</label>
+                        <input type="file" class="form-control" id="panFront" accept="image/*" required>
+                        <div class="error-message" id="panFrontError"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <h3>Emergency Contact</h3>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Contact Person Name *</label>
+                        <input type="text" class="form-control" id="emergencyContactName" placeholder="Contact person name" required>
+                        <div class="error-message" id="emergencyContactNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Relationship *</label>
+                        <input type="text" class="form-control" id="emergencyContactRelationship" placeholder="Relationship" required>
+                        <div class="error-message" id="emergencyContactRelationshipError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Emergency Contact Number *</label>
+                        <input type="tel" class="form-control" id="emergencyContactNumber" placeholder="Emergency phone" maxlength="10" required>
+                        <div class="error-message" id="emergencyContactNumberError"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <h3>Address Details</h3>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Door / House Number *</label>
+                        <input type="text" class="form-control" id="doorNumber" placeholder="Door / house number" required>
+                        <div class="error-message" id="doorNumberError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Street *</label>
+                        <input type="text" class="form-control" id="street" placeholder="Street" required>
+                        <div class="error-message" id="streetError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Area / Locality *</label>
+                        <input type="text" class="form-control" id="areaLocality" placeholder="Area / locality" required>
+                        <div class="error-message" id="areaLocalityError"></div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">City *</label>
+                        <input type="text" class="form-control" id="city" placeholder="City" autocomplete="address-level2" required>
+                        <div class="error-message" id="cityError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">District *</label>
+                        <input type="text" class="form-control" id="district" placeholder="District" required>
+                        <div class="error-message" id="districtError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">State *</label>
+                        <input type="text" class="form-control" id="state" placeholder="State" autocomplete="address-level1" required>
+                        <div class="error-message" id="stateError"></div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Pincode *</label>
+                        <input type="text" class="form-control" id="pincode" placeholder="Pincode" autocomplete="postal-code" required>
+                        <div class="error-message" id="pincodeError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password *</label>
+                        <input type="password" class="form-control" id="password" placeholder="Create a password" autocomplete="new-password" required>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password *</label>
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" autocomplete="new-password" required>
+                        <div class="error-message" id="confirmPasswordError"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Department *</label>
+                    <select class="form-control" id="department" required>
+                        <option value="">Select Department</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Sales">Sales</option>
+                        <option value="HR">HR</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Operations">Operations</option>
+                        <option value="IT">IT</option>
+                    </select>
+                    <div class="error-message" id="departmentError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Designation *</label>
+                    <input type="text" class="form-control" id="designation" placeholder="Enter your designation" autocomplete="organization-title" required>
+                    <div class="error-message" id="designationError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Higher Education *</label>
+                    <select class="form-control" id="higherEducation" required>
+                        <option value="">Select Education Level</option>
+                        <option value="10th">10th Standard</option>
+                        <option value="intermediate">Intermediate (12th)</option>
+                        <option value="diploma">Diploma</option>
+                        <option value="btech">B.Tech/B.E</option>
+                        <option value="mtech">M.Tech/M.E</option>
+                        <option value="mca">MCA</option>
+                        <option value="mba">MBA</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="error-message" id="higherEducationError"></div>
+                </div>
+
+                <div id="educationDocuments" style="display: none;">
+                    <div style="margin-top: 1rem;">
+                        <h3>Education Documents</h3>
+                    </div>
+                    <div id="educationFileUploads"></div>
+                </div>
+
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label class="form-label">Experience Level *</label>
+                    <select class="form-control" id="experienceLevel" required>
+                        <option value="">Select Experience Level</option>
+                        <option value="fresher">Fresher</option>
+                        <option value="experienced">Experienced</option>
+                    </select>
+                    <div class="error-message" id="experienceLevelError"></div>
+                </div>
+
+                <div id="experienceDetails" style="display: none;">
+                    <div style="margin-top: 1rem;">
+                        <h3>Experience Details</h3>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Company Name *</label>
+                            <input type="text" class="form-control" id="companyName" placeholder="Enter company name">
+                            <div class="error-message" id="companyNameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Company Contact Number *</label>
+                            <input type="tel" class="form-control" id="companyContact" placeholder="Enter company contact number" maxlength="10">
+                            <div class="error-message" id="companyContactError"></div>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Experience Letter *</label>
+                            <input type="file" class="form-control" id="experienceLetter" accept="image/*,.pdf">
+                            <div class="error-message" id="experienceLetterError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Pay Slip *</label>
+                            <input type="file" class="form-control" id="paySlip" accept="image/*,.pdf">
+                            <div class="error-message" id="paySlipError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Offer Letter *</label>
+                            <input type="file" class="form-control" id="offerLetter" accept="image/*,.pdf">
+                            <div class="error-message" id="offerLetterError"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Live Photo *</label>
+                    <div class="camera-capture">
+                        <video id="cameraPreview" class="camera-preview" autoplay muted playsinline></video>
+                        <img id="photoPreview" class="photo-preview" alt="Captured live photo" style="display: none;">
+                        <p id="cameraMessage" style="color: var(--gray-500); font-size: 0.875rem;">Use your camera to take a live photo.</p>
+                        <div class="camera-actions">
+                            <button type="button" class="btn btn-secondary btn-sm" id="startCameraBtn">Start Camera</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="capturePhotoBtn" disabled>Take Photo</button>
+                            <button type="button" class="btn btn-secondary btn-sm" id="retakePhotoBtn" style="display: none;">Retake</button>
+                        </div>
+                    </div>
+                    <div class="error-message" id="photoError"></div>
+                </div>
+                
+                <div id="alertContainer"></div>
+                
+                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                    <span id="btnText">Submit Registration</span>
+                    <span id="btnSpinner" class="spinner" style="display: none;"></span>
+                </button>
+            </form>
+            
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <a href="login.html" style="color: var(--primary); text-decoration: none; font-weight: 500;">Already registered? Login here</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Loader -->
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-spinner"></div>
+        <p>Sending emails...</p>
+    </div>
+    
+    <script src="../assets/js/employee-register.js?v=20260806-registration-fix"></script>
+</body>
+</html>
