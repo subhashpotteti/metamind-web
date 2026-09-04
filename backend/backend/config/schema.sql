@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS employees (
     state VARCHAR(50),
     pincode VARCHAR(10),
     department VARCHAR(50),
-    designation VARCHAR(50),
+    designation ENUM('ceo','manager','hr','frontend_tl','frontend_employee','frontend_intern','backend_tl','backend_employee','backend_intern'),
     age INT,
     blood_group VARCHAR(5),
     aadhaar_number VARCHAR(12),
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS registration_requests (
     state VARCHAR(50),
     pincode VARCHAR(10),
     department VARCHAR(50),
-    designation VARCHAR(50),
+    designation ENUM('ceo','manager','hr','frontend_tl','frontend_employee','frontend_intern','backend_tl','backend_employee','backend_intern'),
     expected_salary DECIMAL(10,2),
     age INT,
     blood_group VARCHAR(5),
@@ -105,12 +105,47 @@ CREATE TABLE IF NOT EXISTS attendance (
     date DATE NOT NULL,
     total_hours DECIMAL(5,2),
     status ENUM('present', 'absent', 'half_day') DEFAULT 'present',
+    checkout_reason ENUM('break', 'complete', 'permission') NULL,
     notes TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE,
     INDEX idx_attendance_employee_date (employee_id, date)
 );
+
+-- Immutable audit trail for every attendance action.
+CREATE TABLE IF NOT EXISTS attendance_logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    attendance_id INT NOT NULL,
+    employee_id INT NOT NULL,
+    action ENUM('check_in', 'check_out') NOT NULL,
+    action_time DATETIME NOT NULL,
+    reason ENUM('break', 'complete', 'permission') NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (attendance_id) REFERENCES attendance(id) ON DELETE CASCADE,
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE,
+    INDEX idx_attendance_logs_employee_time (employee_id, action_time)
+);
+
+-- A designation maps to a permission set. CEO has all permissions; other roles
+-- receive the least privileges needed for their workspace.
+CREATE TABLE IF NOT EXISTS role_permissions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    role_key VARCHAR(50) NOT NULL,
+    permission_key VARCHAR(80) NOT NULL,
+    UNIQUE KEY unique_role_permission (role_key, permission_key)
+);
+
+INSERT IGNORE INTO role_permissions (role_key, permission_key) VALUES
+('ceo', '*'), ('ceo', 'roles.manage'),
+('manager', 'dashboard.view'), ('manager', 'attendance.self'), ('manager', 'attendance.read'), ('manager', 'attendance.create'), ('manager', 'attendance.update'), ('manager', 'attendance.delete'), ('manager', 'leaves.self'), ('manager', 'leaves.read'), ('manager', 'leaves.create'), ('manager', 'leaves.update'), ('manager', 'leaves.delete'), ('manager', 'notes.self'), ('manager', 'notes.read'), ('manager', 'notes.create'), ('manager', 'notes.update'), ('manager', 'notes.delete'), ('manager', 'profile.self'), ('manager', 'projects.read'), ('manager', 'projects.create'), ('manager', 'projects.update'), ('manager', 'projects.delete'), ('manager', 'employees.read'), ('manager', 'notifications.self'), ('manager', 'notifications.read'), ('manager', 'tasks.read'), ('manager', 'tasks.create'), ('manager', 'tasks.update'), ('manager', 'tasks.delete'),
+('hr', 'dashboard.view'), ('hr', 'attendance.self'), ('hr', 'attendance.read'), ('hr', 'attendance.create'), ('hr', 'attendance.update'), ('hr', 'leaves.self'), ('hr', 'leaves.read'), ('hr', 'leaves.create'), ('hr', 'leaves.update'), ('hr', 'leaves.delete'), ('hr', 'notes.self'), ('hr', 'notes.read'), ('hr', 'notes.create'), ('hr', 'notes.update'), ('hr', 'profile.self'), ('hr', 'employees.read'), ('hr', 'employees.create'), ('hr', 'employees.update'), ('hr', 'employees.delete'), ('hr', 'requests.read'), ('hr', 'requests.update'), ('hr', 'notifications.self'), ('hr', 'notifications.read'),
+('frontend_tl', 'dashboard.view'), ('frontend_tl', 'attendance.self'), ('frontend_tl', 'attendance.read'), ('frontend_tl', 'attendance.create'), ('frontend_tl', 'attendance.update'), ('frontend_tl', 'profile.self'), ('frontend_tl', 'projects.read'), ('frontend_tl', 'projects.create'), ('frontend_tl', 'projects.update'), ('frontend_tl', 'notes.self'), ('frontend_tl', 'notes.read'), ('frontend_tl', 'notes.create'), ('frontend_tl', 'notes.update'), ('frontend_tl', 'notifications.self'), ('frontend_tl', 'notifications.read'), ('frontend_tl', 'tasks.read'), ('frontend_tl', 'tasks.create'), ('frontend_tl', 'tasks.update'),
+('backend_tl', 'dashboard.view'), ('backend_tl', 'attendance.self'), ('backend_tl', 'attendance.read'), ('backend_tl', 'attendance.create'), ('backend_tl', 'attendance.update'), ('backend_tl', 'profile.self'), ('backend_tl', 'projects.read'), ('backend_tl', 'projects.create'), ('backend_tl', 'projects.update'), ('backend_tl', 'notes.self'), ('backend_tl', 'notes.read'), ('backend_tl', 'notes.create'), ('backend_tl', 'notes.update'), ('backend_tl', 'notifications.self'), ('backend_tl', 'notifications.read'), ('backend_tl', 'tasks.read'), ('backend_tl', 'tasks.create'), ('backend_tl', 'tasks.update'),
+('frontend_employee', 'dashboard.view'), ('frontend_employee', 'attendance.self'), ('frontend_employee', 'attendance.create'), ('frontend_employee', 'attendance.update'), ('frontend_employee', 'leaves.self'), ('frontend_employee', 'leaves.create'), ('frontend_employee', 'leaves.update'), ('frontend_employee', 'notes.self'), ('frontend_employee', 'notes.read'), ('frontend_employee', 'notes.create'), ('frontend_employee', 'notes.update'), ('frontend_employee', 'notes.delete'), ('frontend_employee', 'profile.self'), ('frontend_employee', 'notifications.self'), ('frontend_employee', 'notifications.read'), ('frontend_employee', 'notifications.update'), ('frontend_employee', 'tasks.read'), ('frontend_employee', 'tasks.create'), ('frontend_employee', 'tasks.update'),
+('backend_employee', 'dashboard.view'), ('backend_employee', 'attendance.self'), ('backend_employee', 'attendance.create'), ('backend_employee', 'attendance.update'), ('backend_employee', 'leaves.self'), ('backend_employee', 'leaves.create'), ('backend_employee', 'leaves.update'), ('backend_employee', 'notes.self'), ('backend_employee', 'notes.read'), ('backend_employee', 'notes.create'), ('backend_employee', 'notes.update'), ('backend_employee', 'notes.delete'), ('backend_employee', 'profile.self'), ('backend_employee', 'notifications.self'), ('backend_employee', 'notifications.read'), ('backend_employee', 'notifications.update'), ('backend_employee', 'tasks.read'), ('backend_employee', 'tasks.create'), ('backend_employee', 'tasks.update'),
+('frontend_intern', 'dashboard.view'), ('frontend_intern', 'attendance.self'), ('frontend_intern', 'attendance.create'), ('frontend_intern', 'attendance.update'), ('frontend_intern', 'profile.self'), ('frontend_intern', 'notifications.self'), ('frontend_intern', 'notifications.read'), ('frontend_intern', 'tasks.read'),
+('backend_intern', 'dashboard.view'), ('backend_intern', 'attendance.self'), ('backend_intern', 'attendance.create'), ('backend_intern', 'attendance.update'), ('backend_intern', 'profile.self'), ('backend_intern', 'notifications.self'), ('backend_intern', 'notifications.read'), ('backend_intern', 'tasks.read');
 
 -- Email Logs Table
 CREATE TABLE IF NOT EXISTS email_logs (

@@ -2499,3 +2499,219 @@
 [23-Aug-2026 11:54:07 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
 [23-Aug-2026 11:54:38 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
 [23-Aug-2026 11:55:08 Europe/Berlin] MySQL connection failed: 1045 - Access denied for user 'u725286249_hr_portal'@'localhost' (using password: YES)
+[04-Sep-2026 12:48:23 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\metamind-web\backend\backend\config\mailer.php on line 23
+[04-Sep-2026 12:48:23 Asia/Kolkata] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[04-Sep-2026 12:48:23 Asia/Kolkata] Attempting SMTP connection to smtp.gmail.com:587
+[04-Sep-2026 12:48:28 Asia/Kolkata] Email sent successfully to thummapavan999@gmail.com
+[04-Sep-2026 12:48:28 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\metamind-web\backend\backend\config\mailer.php on line 23
+[04-Sep-2026 12:48:28 Asia/Kolkata] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[04-Sep-2026 12:48:28 Asia/Kolkata] Attempting SMTP connection to smtp.gmail.com:587
+[04-Sep-2026 12:48:33 Asia/Kolkata] Email sent successfully to admin@metaminds.com
+[04-Sep-2026 12:49:33 Asia/Kolkata] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[04-Sep-2026 12:49:33 Asia/Kolkata] Attempting SMTP connection to smtp.gmail.com:587
+[04-Sep-2026 12:49:38 Asia/Kolkata] Email sent successfully to pavanthumma0607@gmail.com
+[04-Sep-2026 12:49:38 Asia/Kolkata] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[04-Sep-2026 12:49:38 Asia/Kolkata] Attempting SMTP connection to smtp.gmail.com:587
+[04-Sep-2026 12:49:43 Asia/Kolkata] Email sent successfully to admin@metaminds.com
+[04-Sep-2026 13:40:39 Asia/Kolkata] Starting approve_request
+[04-Sep-2026 13:40:39 Asia/Kolkata] Request ID: 13, Employee Code: MM-EMP-007
+[04-Sep-2026 13:40:39 Asia/Kolkata] Checking for duplicate employee code
+[04-Sep-2026 13:40:39 Asia/Kolkata] Getting request details
+[04-Sep-2026 13:40:39 Asia/Kolkata] Request data: Array
+(
+    [id] => 13
+    [employee_id] => 196
+    [full_name] => THUMMA SIVA
+    [email] => thummapavan999@gmail.com
+    [phone] => 9515592296
+    [photo] => uploads/6a9a70bce0388_1788506300.jpg
+    [date_of_birth] => 2001-07-06
+    [gender] => male
+    [address] => 11-714B, MANGALAGIRI, MANGALAGIRI, GUNTUR, Mangalagiri, Andhrapradesh - 522503
+    [city] => Mangalagiri
+    [state] => Andhrapradesh
+    [pincode] => 522503
+    [department] => IT
+    [designation] => backend_tl
+    [higher_education] => btech
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a9a6fcce5933_1788506060.JPG
+    [aadhaar_back] => uploads/6a9a6fd0d5e75_1788506064.JPG
+    [pan_front] => uploads/6a9a6fd6b268e_1788506070.JPG
+    [education_docs] => {"tenth_certificate":"uploads\/6a9a701e87b56_1788506142.JPG","intermediate_certificate":"uploads\/6a9a7022282dc_1788506146.JPG","btech_certificate":"uploads\/6a9a7026961d2_1788506150.JPG"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a9a70a0eb193_1788506272.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1788506255154-AYUB2X","full_name":"THUMMA SIVA","email":"thummapavan999@gmail.com","mobile":"9515592296","department":"IT","designation":"backend_tl","start_date":"2026-09-01","reporting_manager":"MANAGER","company_address":"Mangalagiri","accepted_at_client":"2026-09-04T07:17:35.155Z","accepted_at_server":"2026-09-04T07:18:23+00:00"}
+    [nda_agreement_id] => MM-EMP-1788506255154-AYUB2X
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 458373528771
+    [pan_number] => HDCPR4897E
+    [emergency_contact_name] => THUMMA PAVAN VENKATA DURGA SAI RAM
+    [emergency_contact_relationship] => SELF
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-714B
+    [street] => MANGALAGIRI
+    [area_locality] => MANGALAGIRI
+    [district] => GUNTUR
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-09-04 12:48:23
+    [updated_at] => 2026-09-04 12:48:23
+)
+
+[04-Sep-2026 13:40:39 Asia/Kolkata] Checking for duplicates
+[04-Sep-2026 13:40:39 Asia/Kolkata] Starting transaction
+[04-Sep-2026 13:40:39 Asia/Kolkata] Debug: user_id from request = 196
+[04-Sep-2026 13:40:39 Asia/Kolkata] Debug: request data = Array
+(
+    [id] => 13
+    [employee_id] => 196
+    [full_name] => THUMMA SIVA
+    [email] => thummapavan999@gmail.com
+    [phone] => 9515592296
+    [photo] => uploads/6a9a70bce0388_1788506300.jpg
+    [date_of_birth] => 2001-07-06
+    [gender] => male
+    [address] => 11-714B, MANGALAGIRI, MANGALAGIRI, GUNTUR, Mangalagiri, Andhrapradesh - 522503
+    [city] => Mangalagiri
+    [state] => Andhrapradesh
+    [pincode] => 522503
+    [department] => IT
+    [designation] => backend_tl
+    [higher_education] => btech
+    [experience_level] => fresher
+    [company_name] => 
+    [company_contact] => 
+    [aadhaar_front] => uploads/6a9a6fcce5933_1788506060.JPG
+    [aadhaar_back] => uploads/6a9a6fd0d5e75_1788506064.JPG
+    [pan_front] => uploads/6a9a6fd6b268e_1788506070.JPG
+    [education_docs] => {"tenth_certificate":"uploads\/6a9a701e87b56_1788506142.JPG","intermediate_certificate":"uploads\/6a9a7022282dc_1788506146.JPG","btech_certificate":"uploads\/6a9a7026961d2_1788506150.JPG"}
+    [experience_letter] => 
+    [pay_slip] => 
+    [offer_letter] => 
+    [signature] => uploads/6a9a70a0eb193_1788506272.png
+    [position] => employee
+    [nda_accepted] => 1
+    [nda_record] => {"type":"employee","version":"Employee Employment Agreement v1.0","agreement_id":"MM-EMP-1788506255154-AYUB2X","full_name":"THUMMA SIVA","email":"thummapavan999@gmail.com","mobile":"9515592296","department":"IT","designation":"backend_tl","start_date":"2026-09-01","reporting_manager":"MANAGER","company_address":"Mangalagiri","accepted_at_client":"2026-09-04T07:17:35.155Z","accepted_at_server":"2026-09-04T07:18:23+00:00"}
+    [nda_agreement_id] => MM-EMP-1788506255154-AYUB2X
+    [nda_version] => Employee Employment Agreement v1.0
+    [nda_ip] => ::1
+    [password] => 
+    [age] => 25
+    [blood_group] => A+
+    [aadhaar_number] => 458373528771
+    [pan_number] => HDCPR4897E
+    [emergency_contact_name] => THUMMA PAVAN VENKATA DURGA SAI RAM
+    [emergency_contact_relationship] => SELF
+    [emergency_contact_number] => 9701849967
+    [door_number] => 11-714B
+    [street] => MANGALAGIRI
+    [area_locality] => MANGALAGIRI
+    [district] => GUNTUR
+    [status] => pending
+    [admin_notes] => 
+    [created_at] => 2026-09-04 12:48:23
+    [updated_at] => 2026-09-04 12:48:23
+)
+
+[04-Sep-2026 13:40:39 Asia/Kolkata] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[04-Sep-2026 13:40:39 Asia/Kolkata] Attempting SMTP connection to smtp.gmail.com:587
+[04-Sep-2026 13:40:46 Asia/Kolkata] Email sent successfully to thummapavan999@gmail.com
+[04-Sep-2026 13:40:46 Asia/Kolkata] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[04-Sep-2026 13:40:46 Asia/Kolkata] Attempting SMTP connection to smtp.gmail.com:587
+[04-Sep-2026 13:40:51 Asia/Kolkata] Email sent successfully to admin@metaminds.com
+[04-Sep-2026 14:20:50 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 14:20:50 Asia/Kolkata] Role: backend_tl, Permissions: ["dashboard.view"]
+[04-Sep-2026 14:20:50 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 14:20:50 Asia/Kolkata] Transaction started
+[04-Sep-2026 14:20:50 Asia/Kolkata] Exception in save_role_permissions: Prepare delete failed: Table 'mm1.role_permissions' doesn't exist
+[04-Sep-2026 14:21:02 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 14:21:02 Asia/Kolkata] Role: backend_tl, Permissions: ["dashboard.view"]
+[04-Sep-2026 14:21:02 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 14:21:02 Asia/Kolkata] Transaction started
+[04-Sep-2026 14:21:02 Asia/Kolkata] Exception in save_role_permissions: Prepare delete failed: Table 'mm1.role_permissions' doesn't exist
+[04-Sep-2026 14:21:14 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 14:21:14 Asia/Kolkata] Role: backend_tl, Permissions: ["dashboard.view"]
+[04-Sep-2026 14:21:14 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 14:21:14 Asia/Kolkata] Transaction started
+[04-Sep-2026 14:21:14 Asia/Kolkata] Exception in save_role_permissions: Prepare delete failed: Table 'mm1.role_permissions' doesn't exist
+[04-Sep-2026 14:22:49 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 14:22:49 Asia/Kolkata] Role: backend_tl, Permissions: ["dashboard.view","attendance.self","attendance.read","projects.read","projects.update","profile.self","*"]
+[04-Sep-2026 14:22:49 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 14:22:49 Asia/Kolkata] Transaction started
+[04-Sep-2026 14:22:49 Asia/Kolkata] Delete completed
+[04-Sep-2026 14:22:49 Asia/Kolkata] Insert completed
+[04-Sep-2026 14:22:49 Asia/Kolkata] Transaction committed
+[04-Sep-2026 14:23:57 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 14:23:57 Asia/Kolkata] Role: backend_tl, Permissions: ["dashboard.view","attendance.self","attendance.read","projects.read","projects.update","profile.self","*"]
+[04-Sep-2026 14:23:57 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 14:23:57 Asia/Kolkata] Transaction started
+[04-Sep-2026 14:23:57 Asia/Kolkata] Delete completed
+[04-Sep-2026 14:23:57 Asia/Kolkata] Insert completed
+[04-Sep-2026 14:23:57 Asia/Kolkata] Transaction committed
+[04-Sep-2026 14:25:15 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 14:25:15 Asia/Kolkata] Role: backend_tl, Permissions: ["dashboard.view","projects.read","projects.update","profile.self"]
+[04-Sep-2026 14:25:15 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 14:25:15 Asia/Kolkata] Transaction started
+[04-Sep-2026 14:25:15 Asia/Kolkata] Delete completed
+[04-Sep-2026 14:25:15 Asia/Kolkata] Insert completed
+[04-Sep-2026 14:25:15 Asia/Kolkata] Transaction committed
+[04-Sep-2026 14:25:16 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 14:25:16 Asia/Kolkata] Role: backend_tl, Permissions: ["dashboard.view","projects.read","projects.update","profile.self"]
+[04-Sep-2026 14:25:16 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 14:25:16 Asia/Kolkata] Transaction started
+[04-Sep-2026 14:25:16 Asia/Kolkata] Delete completed
+[04-Sep-2026 14:25:16 Asia/Kolkata] Insert completed
+[04-Sep-2026 14:25:16 Asia/Kolkata] Transaction committed
+[04-Sep-2026 14:25:43 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 14:25:43 Asia/Kolkata] Role: backend_tl, Permissions: ["dashboard.view"]
+[04-Sep-2026 14:25:43 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 14:25:43 Asia/Kolkata] Transaction started
+[04-Sep-2026 14:25:43 Asia/Kolkata] Delete completed
+[04-Sep-2026 14:25:43 Asia/Kolkata] Insert completed
+[04-Sep-2026 14:25:43 Asia/Kolkata] Transaction committed
+[04-Sep-2026 14:29:09 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 14:29:09 Asia/Kolkata] Role: backend_tl, Permissions: ["dashboard.view"]
+[04-Sep-2026 14:29:09 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 14:29:09 Asia/Kolkata] Transaction started
+[04-Sep-2026 14:29:09 Asia/Kolkata] Delete completed
+[04-Sep-2026 14:29:09 Asia/Kolkata] Insert completed
+[04-Sep-2026 14:29:09 Asia/Kolkata] Transaction committed
+[04-Sep-2026 14:33:45 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 14:33:45 Asia/Kolkata] Role: frontend_tl, Permissions: ["dashboard.view","attendance.self","attendance.read","projects.read","projects.update","profile.self"]
+[04-Sep-2026 14:33:45 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 14:33:45 Asia/Kolkata] Transaction started
+[04-Sep-2026 14:33:45 Asia/Kolkata] Delete completed
+[04-Sep-2026 14:33:45 Asia/Kolkata] Insert completed
+[04-Sep-2026 14:33:45 Asia/Kolkata] Transaction committed
+[04-Sep-2026 14:44:29 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 14:44:29 Asia/Kolkata] Role: hr, Permissions: ["dashboard.view","profile.self"]
+[04-Sep-2026 14:44:29 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 14:44:29 Asia/Kolkata] Transaction started
+[04-Sep-2026 14:44:29 Asia/Kolkata] Delete completed
+[04-Sep-2026 14:44:29 Asia/Kolkata] Insert completed
+[04-Sep-2026 14:44:29 Asia/Kolkata] Transaction committed
+[04-Sep-2026 14:47:45 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 14:47:45 Asia/Kolkata] Role: hr, Permissions: ["dashboard.view","profile.self","*"]
+[04-Sep-2026 14:47:45 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 14:47:45 Asia/Kolkata] Transaction started
+[04-Sep-2026 14:47:45 Asia/Kolkata] Delete completed
+[04-Sep-2026 14:47:45 Asia/Kolkata] Insert completed
+[04-Sep-2026 14:47:45 Asia/Kolkata] Transaction committed
+[04-Sep-2026 15:15:36 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 15:15:36 Asia/Kolkata] Role: frontend_intern, Permissions: ["dashboard.view","attendance.self","profile.self","*"]
+[04-Sep-2026 15:15:36 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 15:15:36 Asia/Kolkata] Transaction started
+[04-Sep-2026 15:15:36 Asia/Kolkata] Delete completed
+[04-Sep-2026 15:15:36 Asia/Kolkata] Insert completed
+[04-Sep-2026 15:15:36 Asia/Kolkata] Transaction committed

@@ -1,4 +1,5 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
@@ -8,11 +9,20 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET');
 header('Access-Control-Allow-Headers: Content-Type');
 
-require_once '../config/database.php';
-ensure_employee_code_column($conn);
+try {
+    require_once '../config/database.php';
+    require_once '../config/permissions.php';
+    ensure_employee_code_column($conn);
+} catch (Exception $e) {
+    error_log('Database connection error: ' . $e->getMessage());
+    echo json_encode(['success' => false, 'message' => 'Database connection failed: ' . $e->getMessage()]);
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $action = $_GET['action'] ?? '';
+    $permissionMap = ['get_requests' => 'requests.read', 'get_all_requests' => 'requests.read', 'get_employees' => 'employees.read', 'get_employee_details' => 'employees.read', 'get_attendance' => 'attendance.read', 'get_dashboard_stats' => 'dashboard.view', 'get_dashboard_analytics' => 'dashboard.view', 'get_role_permissions' => 'roles.manage', 'get_leaves' => 'leaves.read', 'get_notes' => 'notes.read', 'get_notifications' => 'notifications.read', 'get_tasks' => 'tasks.read'];
+    if (isset($permissionMap[$action])) require_permission($conn, $permissionMap[$action]);
 
     if ($action === 'get_admin_id') {
         // Get admin user ID
@@ -27,6 +37,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             echo json_encode(['success' => false, 'message' => 'No admin user found']);
         }
         $stmt->close();
+    } elseif ($action === 'get_admin_profile') {
+        if (($_SESSION['role'] ?? '') !== 'admin') { http_response_code(403); echo json_encode(['success' => false, 'message' => 'Admin access required']); exit; }
+        $admin_id = (int)($_GET['admin_id'] ?? 0);
+        $stmt = $conn->prepare("SELECT id, phone, role, created_at, updated_at FROM users WHERE id = ? AND role = 'admin'");
+        $stmt->bind_param('i', $admin_id);
+        $stmt->execute();
+        $admin = $stmt->get_result()->fetch_assoc();
+        echo json_encode($admin ? ['success' => true, 'admin' => $admin] : ['success' => false, 'message' => 'Admin not found']);
+        $stmt->close();
+    } elseif ($action === 'get_role_permissions') {
+        $roles = ['ceo','manager','hr','frontend_tl','frontend_employee','frontend_intern','backend_tl','backend_employee','backend_intern'];
+        $result = $conn->query('SELECT role_key, permission_key FROM role_permissions ORDER BY role_key, permission_key');
+        $permissions = array_fill_keys($roles, []);
+        while ($row = $result->fetch_assoc()) $permissions[$row['role_key']][] = $row['permission_key'];
+        echo json_encode(['success' => true, 'roles' => $permissions]);
     } elseif ($action === 'get_requests') {
         // Get all pending registration requests
         $stmt = $conn->prepare("SELECT * FROM registration_requests WHERE status = 'pending' ORDER BY created_at DESC");
@@ -188,8 +213,148 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         }
 
         $action = $data['action'];
+    $permissionMap = ['approve_request' => 'requests.update', 'reject_request' => 'requests.update', 'add_employee' => 'employees.create', 'update_employee' => 'employees.update', 'delete_employee' => 'employees.delete', 'create_attendance' => 'attendance.create', 'update_attendance' => 'attendance.update', 'delete_attendance' => 'attendance.delete', 'create_leave' => 'leaves.create', 'update_leave' => 'leaves.update', 'delete_leave' => 'leaves.delete', 'create_note' => 'notes.create', 'update_note' => 'notes.update', 'delete_note' => 'notes.delete', 'create_notification' => 'notifications.create', 'update_notification' => 'notifications.update', 'delete_notification' => 'notifications.delete', 'create_task' => 'tasks.create', 'update_task' => 'tasks.update', 'delete_task' => 'tasks.delete'];
     
-    if ($action === 'approve_request') {
+    // Special handling for save_role_permissions - only admin can access
+    if ($action === 'save_role_permissions') {
+        if (($_SESSION['role'] ?? '') !== 'admin') {
+            echo json_encode(['success' => false, 'message' => 'Admin access required']);
+            exit;
+        }
+        
+        error_log('save_role_permissions called');
+        $role = $data['role'] ?? '';
+        $permissions = $data['permissions'] ?? [];
+        error_log('Role: ' . $role . ', Permissions: ' . json_encode($permissions));
+        
+        $validRoles = ['ceo','manager','hr','frontend_tl','frontend_employee','frontend_intern','backend_tl','backend_employee','backend_intern'];
+        $validPermissions = ['*','dashboard.view','projects.read','projects.create','projects.update','projects.delete','revenue.read','revenue.create','revenue.update','revenue.delete','employees.read','employees.create','employees.update','employees.delete','requests.read','requests.update','attendance.read','attendance.self','attendance.create','attendance.update','attendance.delete','leaves.read','leaves.self','leaves.create','leaves.update','leaves.delete','notes.self','notes.read','notes.create','notes.update','notes.delete','profile.self','notifications.self','notifications.read','notifications.create','notifications.update','notifications.delete','tasks.read','tasks.create','tasks.update','tasks.delete','roles.manage'];
+        
+        if (!in_array($role, $validRoles, true)) {
+            error_log('Invalid role: ' . $role);
+            echo json_encode(['success' => false, 'message' => 'Invalid role']);
+            exit;
+        }
+        
+        if (!is_array($permissions)) {
+            error_log('Permissions not an array');
+            echo json_encode(['success' => false, 'message' => 'Permissions must be an array']);
+            exit;
+        }
+        
+        $invalidPermissions = array_diff($permissions, $validPermissions);
+        if (!empty($invalidPermissions)) {
+            error_log('Invalid permissions: ' . implode(', ', $invalidPermissions));
+            echo json_encode(['success' => false, 'message' => 'Invalid permissions: ' . implode(', ', $invalidPermissions)]);
+            exit;
+        }
+        
+        error_log('Validation passed, starting database operations');
+        
+        try {
+            $conn->begin_transaction();
+            error_log('Transaction started');
+            
+            $delete = $conn->prepare('DELETE FROM role_permissions WHERE role_key = ?');
+            if (!$delete) {
+                throw new Exception('Prepare delete failed: ' . $conn->error);
+            }
+            $delete->bind_param('s', $role);
+            if (!$delete->execute()) {
+                throw new Exception('Delete execute failed: ' . $delete->error);
+            }
+            $delete->close();
+            error_log('Delete completed');
+            
+            if (!empty($permissions)) {
+                $insert = $conn->prepare('INSERT INTO role_permissions (role_key, permission_key) VALUES (?, ?)');
+                if (!$insert) {
+                    throw new Exception('Prepare insert failed: ' . $conn->error);
+                }
+                
+                foreach (array_unique($permissions) as $permission) {
+                    $insert->bind_param('ss', $role, $permission);
+                    if (!$insert->execute()) {
+                        throw new Exception('Insert execute failed for ' . $permission . ': ' . $insert->error);
+                    }
+                }
+                $insert->close();
+                error_log('Insert completed');
+            }
+            
+            $conn->commit();
+            error_log('Transaction committed');
+            echo json_encode(['success' => true, 'message' => 'Permissions saved. The role takes effect on next login.']);
+            exit; // Important: exit after processing
+        } catch (Exception $e) {
+            error_log('Exception in save_role_permissions: ' . $e->getMessage());
+            $conn->rollback();
+            echo json_encode(['success' => false, 'message' => 'Error saving permissions: ' . $e->getMessage()]);
+            exit;
+        }
+    } else if (isset($permissionMap[$action])) {
+        require_permission($conn, $permissionMap[$action]);
+    }
+    
+    if ($action === 'update_admin_profile') {
+        if (($_SESSION['role'] ?? '') !== 'admin') { http_response_code(403); echo json_encode(['success' => false, 'message' => 'Admin access required']); exit; }
+        $admin_id = (int)($data['admin_id'] ?? 0);
+        $phone = trim($data['phone'] ?? '');
+        if (!preg_match('/^[0-9]{10}$/', $phone)) {
+            echo json_encode(['success' => false, 'message' => 'Phone number must be 10 digits']);
+            exit;
+        }
+        $stmt = $conn->prepare("UPDATE users SET phone = ? WHERE id = ? AND role = 'admin'");
+        $stmt->bind_param('si', $phone, $admin_id);
+        echo json_encode($stmt->execute() ? ['success' => true, 'message' => 'Profile updated successfully'] : ['success' => false, 'message' => 'Could not update profile']);
+        $stmt->close();
+    } elseif ($action === 'save_role_permissions') {
+        $role = $data['role'] ?? '';
+        $permissions = $data['permissions'] ?? [];
+        $validRoles = ['ceo','manager','hr','frontend_tl','frontend_employee','frontend_intern','backend_tl','backend_employee','backend_intern'];
+        $validPermissions = ['*','dashboard.view','projects.read','projects.create','projects.update','projects.delete','revenue.read','revenue.create','revenue.update','revenue.delete','employees.read','employees.create','employees.update','employees.delete','requests.read','requests.update','attendance.read','attendance.self','attendance.create','attendance.update','attendance.delete','leaves.read','leaves.self','leaves.create','leaves.update','leaves.delete','notes.self','notes.read','notes.create','notes.update','notes.delete','profile.self','notifications.self','notifications.read','notifications.create','notifications.update','notifications.delete','tasks.read','tasks.create','tasks.update','tasks.delete','roles.manage'];
+        
+        if (!in_array($role, $validRoles, true)) {
+            echo json_encode(['success' => false, 'message' => 'Invalid role']);
+            exit;
+        }
+        
+        if (!is_array($permissions)) {
+            echo json_encode(['success' => false, 'message' => 'Permissions must be an array']);
+            exit;
+        }
+        
+        $invalidPermissions = array_diff($permissions, $validPermissions);
+        if (!empty($invalidPermissions)) {
+            echo json_encode(['success' => false, 'message' => 'Invalid permissions: ' . implode(', ', $invalidPermissions)]);
+            exit;
+        }
+        
+        try {
+            $conn->begin_transaction();
+            $delete = $conn->prepare('DELETE FROM role_permissions WHERE role_key = ?');
+            $delete->bind_param('s', $role);
+            $delete->execute();
+            $delete->close();
+            
+            if (!empty($permissions)) {
+                $insert = $conn->prepare('INSERT INTO role_permissions (role_key, permission_key) VALUES (?, ?)');
+                foreach (array_unique($permissions) as $permission) {
+                    $insert->bind_param('ss', $role, $permission);
+                    if (!$insert->execute()) {
+                        throw new Exception('Could not save permission: ' . $permission);
+                    }
+                }
+                $insert->close();
+            }
+            
+            $conn->commit();
+            echo json_encode(['success' => true, 'message' => 'Permissions saved. The role takes effect on next login.']);
+        } catch (Exception $e) {
+            $conn->rollback();
+            echo json_encode(['success' => false, 'message' => 'Error saving permissions: ' . $e->getMessage()]);
+        }
+    } elseif ($action === 'approve_request') {
         error_log("Starting approve_request");
         $request_id = $data['request_id'] ?? '';
         $employee_code = trim($data['employee_code'] ?? '');

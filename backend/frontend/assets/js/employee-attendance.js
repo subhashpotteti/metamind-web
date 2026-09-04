@@ -51,8 +51,8 @@ async function loadAttendance() {
             tbody.innerHTML = data.attendance.map(record => `
                 <tr>
                     <td>${formatDate(record.date)}</td>
-                    <td>${record.check_in_time ? record.check_in_time.split(' ')[1] : '--:--'}</td>
-                    <td>${record.check_out_time ? record.check_out_time.split(' ')[1] : '--:--'}</td>
+                    <td>${formatAttendanceTime(record.check_in_time)}</td>
+                    <td>${formatAttendanceTime(record.check_out_time)}</td>
                     <td>${record.total_hours ? record.total_hours + 'h' : '0h'}</td>
                     <td><span class="badge badge-${record.status}">${record.status}</span></td>
                 </tr>
@@ -61,6 +61,13 @@ async function loadAttendance() {
     } catch (error) {
         console.error('Error loading attendance:', error);
     }
+}
+
+function formatAttendanceTime(value) {
+    if (!value) return '--:--';
+    const raw = value.includes(' ') ? value.split(' ')[1] : value;
+    const [hour = 0, minute = 0, second = 0] = raw.split(':').map(Number);
+    return new Date(2000, 0, 1, hour, minute, second).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
 }
 
 function formatDate(dateStr) {

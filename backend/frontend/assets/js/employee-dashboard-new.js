@@ -69,14 +69,14 @@ async function loadTodayAttendance() {
             const sessionOpen = Boolean(attendance.check_in_time && !attendance.check_out_time);
             
             if (attendance.check_in_time) {
-                document.getElementById('todayCheckIn').textContent = attendance.check_in_time.split(' ')[1];
+                document.getElementById('todayCheckIn').textContent = formatAttendanceTime(attendance.check_in_time);
                 document.getElementById('checkInBtn').disabled = sessionOpen;
                 document.getElementById('statusText').textContent = 'Checked In';
                 document.getElementById('summaryStatus').textContent = 'Checked in';
             }
             
             if (attendance.check_out_time) {
-                document.getElementById('todayCheckOut').textContent = attendance.check_out_time.split(' ')[1];
+                document.getElementById('todayCheckOut').textContent = formatAttendanceTime(attendance.check_out_time);
                 document.getElementById('checkOutBtn').disabled = true;
                 document.getElementById('statusText').textContent = 'Checked Out';
                 document.getElementById('summaryStatus').textContent = 'Day complete';
@@ -165,6 +165,8 @@ async function checkIn() {
 
 async function checkOut() {
     const employeeData = JSON.parse(localStorage.getItem('employeeData'));
+    const reason = await requestCheckoutReason();
+    if (!reason) return;
     
     try {
         const response = await fetch('../../backend/api/employee.php', {
@@ -172,7 +174,8 @@ async function checkOut() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 action: 'check_out',
-                employee_id: employeeData.id
+                employee_id: employeeData.id,
+                checkout_reason: reason
             })
         });
         
@@ -187,6 +190,33 @@ async function checkOut() {
     } catch (error) {
         showAlert('Network error. Please try again.', 'error');
     }
+}
+
+function formatAttendanceTime(value) {
+    if (!value) return '--:--';
+    const time = value.includes(' ') ? value.split(' ')[1] : value;
+    const [hour = 0, minute = 0, second = 0] = time.split(':').map(Number);
+    const date = new Date(2000, 0, 1, hour, minute, second);
+    return date.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+}
+
+function requestCheckoutReason() {
+    return new Promise(resolve => {
+        const modal = document.createElement('div');
+        modal.style.cssText = 'position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:rgba(15,23,42,.55);padding:1rem;';
+        modal.innerHTML = `<div style="width:min(420px,100%);background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 20px 50px rgba(0,0,0,.25)">
+            <h3 style="margin:0 0 .5rem">Check out</h3><p style="margin:0 0 1rem;color:#64748b">Why are you checking out?</p>
+            <select id="checkoutReason" class="form-control" style="width:100%;margin-bottom:1rem"><option value="">Choose a reason</option><option value="break">Break</option><option value="complete">Work complete</option><option value="permission">Permission</option></select>
+            <div style="display:flex;justify-content:flex-end;gap:.75rem"><button type="button" class="btn btn-secondary" id="checkoutCancel">Cancel</button><button type="button" class="btn btn-primary" id="checkoutConfirm">Check out</button></div></div>`;
+        document.body.appendChild(modal);
+        const close = value => { modal.remove(); resolve(value); };
+        modal.querySelector('#checkoutCancel').onclick = () => close(null);
+        modal.querySelector('#checkoutConfirm').onclick = () => {
+            const value = modal.querySelector('#checkoutReason').value;
+            if (!value) { showAlert('Select a check-out reason.', 'error'); return; }
+            close(value);
+        };
+    });
 }
 
 async function loadNotificationCount() {

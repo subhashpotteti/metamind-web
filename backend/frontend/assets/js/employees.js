@@ -190,17 +190,18 @@ async function viewEmployee(employeeId) {
             
             // Helper function to render document section
             const renderDocument = (label, filename, key) => {
-                const url = getFileUrl(filename);
-                if (!url) return '';
-                return `
-                    <div class="doc-item">
-                        <p style="color: var(--gray-500); font-size: 0.875rem;">${label}</p>
-                        <a href="${url}" target="_blank" class="doc-link">
-                            <i data-lucide="file-text" style="width: 16px; height: 16px;"></i>
-                            View Document
-                        </a>
-                    </div>
-                `;
+                let files = filename;
+                if (typeof files === 'string' && files.trim().startsWith('{')) {
+                    try { files = Object.values(JSON.parse(files)); } catch (_) { files = [filename]; }
+                }
+                if (!Array.isArray(files)) files = [files];
+                const previews = files.filter(Boolean).map(file => {
+                    const url = getFileUrl(file);
+                    if (!url) return '';
+                    const isPdf = /\.pdf($|\?)/i.test(url);
+                    return `<div style="margin-top:.5rem"><a href="${url}" target="_blank" class="doc-link">Open ${label}</a>${isPdf ? `<iframe title="${label}" src="${url}#toolbar=0" style="display:block;width:100%;height:220px;border:1px solid #e2e8f0;border-radius:6px;margin-top:.5rem"></iframe>` : `<img src="${url}" alt="${label}" style="display:block;width:100%;max-height:220px;object-fit:contain;border:1px solid #e2e8f0;border-radius:6px;margin-top:.5rem" loading="lazy">`}</div>`;
+                }).join('');
+                return previews ? `<div class="doc-item"><p style="color: var(--gray-500); font-size: 0.875rem;">${label}</p>${previews}</div>` : '';
             };
             
             viewBody.innerHTML = `

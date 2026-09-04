@@ -1,3 +1,6 @@
+<?php
+require_once '../../backend/config/auth.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +15,10 @@
 </head>
 <body>
     <div class="dashboard">
-        <?php include 'sidebar.php'; ?>`n`n        <main class="main-content">
+        <?php include 'sidebar.php'; ?>
+
+
+        <main class="main-content">
             <div class="top-bar">
                 <h1>Leave Requests</h1>
                 <div class="user-info">

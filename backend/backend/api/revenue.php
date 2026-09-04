@@ -5,9 +5,12 @@ header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE');
 header('Access-Control-Allow-Headers: Content-Type');
 
 require_once '../config/database.php';
+require_once '../config/permissions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $action = $_GET['action'] ?? '';
+    $map = ['get_revenue'=>'revenue.read','get_revenue_stats'=>'revenue.read','get_revenue_details'=>'revenue.read'];
+    if (isset($map[$action])) require_permission($conn, $map[$action]);
     
     if ($action === 'get_revenue') {
         $stmt = $conn->prepare("SELECT r.*, p.name as project_name FROM revenue r LEFT JOIN projects p ON r.project_id = p.id ORDER BY r.date DESC");
@@ -67,6 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
     $action = $data['action'] ?? '';
+    $map = ['add_revenue'=>'revenue.create','update_revenue'=>'revenue.update','delete_revenue'=>'revenue.delete'];
+    if (isset($map[$action])) require_permission($conn, $map[$action]);
     
     if ($action === 'add_revenue') {
         $stmt = $conn->prepare("INSERT INTO revenue (project_id, amount, type, description, date) VALUES (?, ?, ?, ?, ?)");

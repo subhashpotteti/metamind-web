@@ -1,12 +1,12 @@
 <?php
 
 error_reporting(0);
-ini_set('display_errors', 0);
+ini_set ('display_errors', 0);
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'meta_minds');
+define('DB_NAME', 'mm1');
 
 
 header('Content-Type: application/json; charset=UTF-8');

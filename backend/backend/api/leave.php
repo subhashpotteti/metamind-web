@@ -5,9 +5,12 @@ header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE');
 header('Access-Control-Allow-Headers: Content-Type');
 
 require_once '../config/database.php';
+require_once '../config/permissions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $action = $_GET['action'] ?? '';
+    $permissionMap = ['get_leave_requests' => 'leaves.read', 'get_employee_leaves' => 'leaves.read', 'get_leave_stats' => 'leaves.read'];
+    if (isset($permissionMap[$action])) require_permission($conn, $permissionMap[$action]);
     
     if ($action === 'get_leave_requests') {
         $stmt = $conn->prepare("SELECT lr.*, e.full_name, e.department, e.designation FROM leave_requests lr JOIN employees e ON lr.employee_id = e.id ORDER BY lr.created_at DESC");
@@ -67,6 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
     $action = $data['action'] ?? '';
+    $permissionMap = ['request_leave' => 'leaves.create', 'approve_leave' => 'leaves.update', 'reject_leave' => 'leaves.update', 'delete_leave' => 'leaves.delete'];
+    if (isset($permissionMap[$action])) require_permission($conn, $permissionMap[$action]);
     
     if ($action === 'request_leave') {
         $stmt = $conn->prepare("INSERT INTO leave_requests (employee_id, leave_type, start_date, end_date, total_days, reason) VALUES (?, ?, ?, ?, ?, ?)");

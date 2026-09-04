@@ -26,6 +26,11 @@ async function loadRequests(filter) {
     try {
         const action = filter === 'pending' ? 'get_requests' : 'get_all_requests';
         const response = await fetch(`../../backend/api/admin.php?action=${action}`);
+        if (response.status === 401) return redirectToLogin();
+        if (response.status === 403) {
+            document.getElementById('requestsTableBody').innerHTML = '<tr><td colspan="7" style="text-align:center;">You do not have permission to view registration requests.</td></tr>';
+            return;
+        }
         const data = await response.json();
         
         if (data.success) {
@@ -363,4 +368,9 @@ function showAlert(message, type) {
 function logout() {
     localStorage.removeItem('adminUser');
     window.location.href = 'login.php';
+}
+
+function redirectToLogin() {
+    localStorage.removeItem('adminUser');
+    window.location.href = 'login.php?session=expired';
 }

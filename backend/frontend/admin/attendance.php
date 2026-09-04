@@ -1,3 +1,6 @@
+<?php
+require_once '../../backend/config/auth.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,10 @@
 </head>
 <body>
     <div class="dashboard">
-        <?php include 'sidebar.php'; ?>`n`n        <main class="main-content">
+        <?php include 'sidebar.php'; ?>
+
+
+        <main class="main-content">
             <div class="top-bar">
                 <h1>Attendance Records</h1>
                 <div class="user-info">
@@ -42,13 +48,14 @@
                                 <th>Designation</th>
                                 <th>Check In</th>
                                 <th>Check Out</th>
+                                <th>Reason</th>
                                 <th>Total Hours</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody id="attendanceTableBody">
                             <tr>
-                                <td colspan="7" style="text-align: center;">Loading...</td>
+                                <td colspan="8" style="text-align: center;">Loading...</td>
                             </tr>
                         </tbody>
                     </table>

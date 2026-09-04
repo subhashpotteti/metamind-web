@@ -5,9 +5,12 @@ header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE');
 header('Access-Control-Allow-Headers: Content-Type');
 
 require_once '../config/database.php';
+require_once '../config/permissions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $action = $_GET['action'] ?? '';
+    $map = ['get_projects'=>'projects.read','get_project_details'=>'projects.read','get_project_stats'=>'projects.read','get_project_assignments'=>'projects.read'];
+    if (isset($map[$action])) require_permission($conn, $map[$action]);
     
     if ($action === 'get_projects') {
         $stmt = $conn->prepare("SELECT p.*, 
@@ -83,6 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
     $action = $data['action'] ?? '';
+    $map = ['create_project'=>'projects.create','update_project'=>'projects.update','assign_employee'=>'projects.update','remove_employee'=>'projects.update','delete_project'=>'projects.delete'];
+    if (isset($map[$action])) require_permission($conn, $map[$action]);
     
     if ($action === 'create_project') {
         $stmt = $conn->prepare("INSERT INTO projects (name, description, client_name, start_date, end_date, budget, status, priority, progress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");

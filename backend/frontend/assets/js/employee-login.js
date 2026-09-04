@@ -72,9 +72,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else if (data.employee.status === 'approved') {
                         localStorage.setItem('employeeUser', JSON.stringify(data.user));
                         localStorage.setItem('employeeData', JSON.stringify(data.employee));
+                        const managementRoles = ['ceo', 'manager'];
+                        if (managementRoles.includes(data.employee.designation)) localStorage.setItem('adminUser', JSON.stringify(data.user));
                         showAlert('Login successful! Redirecting...', 'success');
                         setTimeout(() => {
-                            window.location.href = 'dashboard.php';
+                            window.location.href = managementRoles.includes(data.employee.designation) ? '../admin/dashboard.php' : 'dashboard.php';
                         }, 1000);
                     } else if (data.employee.status === 'rejected') {
                         showAlert('Your registration has been rejected. Please contact admin.', 'error');

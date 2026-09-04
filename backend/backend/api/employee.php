@@ -5,9 +5,14 @@ header('Access-Control-Allow-Methods: POST, GET');
 header('Access-Control-Allow-Headers: Content-Type');
 
 require_once '../config/database.php';
+require_once '../config/permissions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $action = $_GET['action'] ?? '';
+    if (in_array($action, ['get_today_attendance', 'get_attendance_history', 'get_dashboard_overview'], true)) require_self_or_permission($conn, (int)($_GET['employee_id'] ?? 0), 'attendance.self');
+    if (in_array($action, ['get_employee_leaves', 'get_leave_balance'], true)) require_self_or_permission($conn, (int)($_GET['employee_id'] ?? 0), 'leaves.self');
+    if (in_array($action, ['get_employee_notes'], true)) require_self_or_permission($conn, (int)($_GET['employee_id'] ?? 0), 'notes.self');
+    if (in_array($action, ['get_employee_notifications'], true)) require_self_or_permission($conn, (int)($_GET['employee_id'] ?? 0), 'notifications.self');
     
     if ($action === 'get_today_attendance') {
         $employee_id = $_GET['employee_id'] ?? '';
@@ -77,6 +82,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
     $action = $data['action'] ?? '';
+    if (in_array($action, ['check_in', 'check_out'], true)) require_self_or_permission($conn, (int)($data['employee_id'] ?? 0), 'attendance.self');
+    if ($action === 'update_profile') require_self_or_permission($conn, (int)($data['employee_id'] ?? 0), 'profile.self');
+    if (in_array($action, ['request_leave'], true)) require_self_or_permission($conn, (int)($data['employee_id'] ?? 0), 'leaves.self');
+    if (in_array($action, ['create_note', 'update_note', 'delete_note'], true)) require_self_or_permission($conn, (int)($data['employee_id'] ?? 0), 'notes.self');
+    if (in_array($action, ['mark_notification_read'], true)) require_self_or_permission($conn, (int)($data['employee_id'] ?? 0), 'notifications.self');
     
     if ($action === 'check_in') {
         $employee_id = $data['employee_id'] ?? '';
@@ -99,7 +109,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $stmt->bind_param("iss", $employee_id, $datetime, $date);
         
         if ($stmt->execute()) {
-            echo json_encode(['success' => true, 'message' => 'Checked in successfully', 'check_in_time' => date('H:i:s')]);
+            $attendanceId = $conn->insert_id;
+            $log = $conn->prepare("INSERT INTO attendance_logs (attendance_id, employee_id, action, action_time) VALUES (?, ?, 'check_in', ?)");
+            $log->bind_param('iis', $attendanceId, $employee_id, $datetime);
+            $log->execute();
+            $log->close();
+            echo json_encode(['success' => true, 'message' => 'Checked in successfully', 'check_in_time' => date('h:i:s A')]);
         } else {
             echo json_encode(['success' => false, 'message' => 'Failed to check in']);
         }
@@ -107,6 +122,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         
     } elseif ($action === 'check_out') {
         $employee_id = $data['employee_id'] ?? '';
+        $checkout_reason = $data['checkout_reason'] ?? '';
+        if (!in_array($checkout_reason, ['break', 'complete', 'permission'], true)) {
+            echo json_encode(['success' => false, 'message' => 'Choose a valid check-out reason']);
+            exit;
+        }
         $date = date('Y-m-d');
         $time = date('H:i:s');
         $datetime = $date . ' ' . $time;
@@ -134,11 +154,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $total_hours = $interval->h + ($interval->i / 60);
         
         // Update only the session selected above.
-        $stmt = $conn->prepare("UPDATE attendance SET check_out_time = ?, total_hours = ? WHERE id = ?");
-        $stmt->bind_param("sdi", $datetime, $total_hours, $row['id']);
+        $stmt = $conn->prepare("UPDATE attendance SET check_out_time = ?, total_hours = ?, checkout_reason = ? WHERE id = ?");
+        $stmt->bind_param("sdsi", $datetime, $total_hours, $checkout_reason, $row['id']);
         
         if ($stmt->execute()) {
-            echo json_encode(['success' => true, 'message' => 'Checked out successfully']);
+            $log = $conn->prepare("INSERT INTO attendance_logs (attendance_id, employee_id, action, action_time, reason) VALUES (?, ?, 'check_out', ?, ?)");
+            $log->bind_param('iiss', $row['id'], $employee_id, $datetime, $checkout_reason);
+            $log->execute();
+            $log->close();
+            echo json_encode(['success' => true, 'message' => 'Checked out successfully', 'check_out_time' => date('h:i:s A'), 'total_hours' => round($total_hours, 2), 'checkout_reason' => $checkout_reason]);
         } else {
             echo json_encode(['success' => false, 'message' => 'Failed to check out']);
         }

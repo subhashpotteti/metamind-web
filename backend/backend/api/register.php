@@ -81,8 +81,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (strlen($password) < 6) $errors[] = 'Password must be at least 6 characters';
         if ($password !== $confirm_password) $errors[] = 'Password and confirm password do not match';
         if (empty($date_of_birth)) $errors[] = 'Date of birth is required';
-        if (empty($age)) $errors[] = 'Age is required';
-        if (!is_numeric($age) || $age < 18 || $age > 65) $errors[] = 'Age must be between 18 and 65';
+        if (empty($date_of_birth) || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $date_of_birth)) {
+            $errors[] = 'A valid date of birth is required';
+        } else {
+            $dob = new DateTime($date_of_birth);
+            $today = new DateTime('today');
+            $age = $dob->diff($today)->y;
+            if ($dob > $today || $age < 18 || $age > 65) $errors[] = 'Age must be between 18 and 65';
+        }
         if (empty($gender)) $errors[] = 'Gender is required';
         if (empty($blood_group)) $errors[] = 'Blood group is required';
         if (empty($emergency_contact_name)) $errors[] = 'Emergency contact name is required';
@@ -98,7 +104,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($pincode)) $errors[] = 'Pincode is required';
         if (!preg_match('/^[0-9]{6}$/', $pincode)) $errors[] = 'Pincode must be 6 digits';
         if (empty($department)) $errors[] = 'Department is required';
-        if (empty($designation)) $errors[] = 'Designation is required';
+        $allowed_designations = ['ceo', 'manager', 'hr', 'frontend_tl', 'frontend_employee', 'frontend_intern', 'backend_tl', 'backend_employee', 'backend_intern'];
+        if (!in_array($designation, $allowed_designations, true)) $errors[] = 'Please choose a valid designation';
         if (empty($higher_education)) $errors[] = 'Higher education is required';
         if (empty($experience_level)) $errors[] = 'Experience level is required';
         if (empty($aadhaar_front)) $errors[] = 'Aadhaar front is required';
@@ -127,6 +134,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo json_encode(['success' => false, 'message' => 'Validation failed', 'errors' => $errors]);
             exit;
         }
+
+        // Do not place large browser data URLs in TEXT columns. Keep them in
+        // request memory until the registration transaction has committed.
+        $upload_payload = [
+            'aadhaar_front' => $aadhaar_front, 'aadhaar_back' => $aadhaar_back,
+            'pan_front' => $pan_front, 'education_docs' => $education_docs,
+            'experience_letter' => $experience_letter, 'pay_slip' => $pay_slip,
+            'offer_letter' => $offer_letter, 'photo' => $photo, 'signature' => $signature
+        ];
+        $aadhaar_front = $aadhaar_back = $pan_front = $experience_letter = $pay_slip = $offer_letter = $photo = $signature = 'pending_upload';
+        $education_docs = [];
         
         // Check if phone already exists
         $check_phone = $conn->prepare("SELECT id FROM users WHERE phone = ?");
@@ -185,7 +203,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $reg_stmt->bind_param($types, $user_id, $full_name, $email, $phone, $photo, $signature, $position, $nda_accepted_int, $nda_record_json, $nda_agreement_id, $nda_version, $nda_ip, $date_of_birth, $gender, $address, $city, $state, $pincode, $department, $designation, $higher_education, $experience_level, $company_name, $company_contact, $aadhaar_front, $aadhaar_back, $pan_front, $education_docs_json, $experience_letter, $pay_slip, $offer_letter, $age_int, $blood_group, $aadhaar_number, $pan_number, $emergency_contact_name, $emergency_contact_relationship, $emergency_contact_number, $door_number, $street, $area_locality, $district, $status);
             
             if ($reg_stmt->execute()) {
+                $registration_id = $conn->insert_id;
                 if ($conn->commit()) {
+                    // Files were kept only in the browser until the database
+                    // registration succeeded. Persist them now, after commit.
+                    $stored = persist_registration_uploads($conn, $registration_id, $upload_payload);
+                    if (!$stored['success']) {
+                        error_log('Registration ' . $registration_id . ' saved but document persistence failed: ' . $stored['message']);
+                        echo json_encode(['success' => false, 'message' => 'Registration was saved, but document storage failed. Please contact admin.']);
+                        exit;
+                    }
                     $email_result = send_registration_emails($email, $full_name, $phone, $position, $department, $designation, $nda_agreement_id);
                     
                     $message = $email_result['email_sent'] 
@@ -223,6 +250,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $conn->close();
+
+function persist_registration_uploads($conn, $registration_id, $uploads) {
+    $stored = [];
+    foreach (['aadhaar_front', 'aadhaar_back', 'pan_front', 'experience_letter', 'pay_slip', 'offer_letter', 'photo', 'signature'] as $key) {
+        $stored[$key] = persist_data_url($uploads[$key] ?? '');
+        if (($uploads[$key] ?? '') !== '' && $stored[$key] === false) return ['success' => false, 'message' => 'Could not save ' . $key];
+    }
+    $education = [];
+    foreach (($uploads['education_docs'] ?? []) as $key => $value) {
+        $education[$key] = persist_data_url($value);
+        if ($education[$key] === false) return ['success' => false, 'message' => 'Could not save education document'];
+    }
+    $educationJson = json_encode($education);
+    $stmt = $conn->prepare('UPDATE registration_requests SET aadhaar_front=?, aadhaar_back=?, pan_front=?, education_docs=?, experience_letter=?, pay_slip=?, offer_letter=?, photo=?, signature=? WHERE id=?');
+    $stmt->bind_param('sssssssssi', $stored['aadhaar_front'], $stored['aadhaar_back'], $stored['pan_front'], $educationJson, $stored['experience_letter'], $stored['pay_slip'], $stored['offer_letter'], $stored['photo'], $stored['signature'], $registration_id);
+    $ok = $stmt->execute();
+    $message = $stmt->error;
+    $stmt->close();
+    return ['success' => $ok, 'message' => $message];
+}
+
+function persist_data_url($value) {
+    // Existing path values are retained for backwards compatibility. New form
+    // values are data URLs and are not written until this point.
+    if ($value === '' || $value === null) return '';
+    if (!is_string($value) || !preg_match('#^data:(image/(?:jpeg|png|jpg)|application/pdf);base64,([A-Za-z0-9+/=\r\n]+)$#', $value, $matches)) return $value;
+    $mime = strtolower($matches[1]);
+    $extensions = ['image/jpeg' => 'jpg', 'image/jpg' => 'jpg', 'image/png' => 'png', 'application/pdf' => 'pdf'];
+    $bytes = base64_decode($matches[2], true);
+    if ($bytes === false || strlen($bytes) === 0 || strlen($bytes) > 5 * 1024 * 1024) return false;
+    $name = uniqid('', true) . '_' . time() . '.' . $extensions[$mime];
+    $directory = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'uploads';
+    if (!is_dir($directory) && !mkdir($directory, 0755, true)) return false;
+    if (file_put_contents($directory . DIRECTORY_SEPARATOR . $name, $bytes) === false) return false;
+    return 'uploads/' . $name;
+}
 
 function send_registration_emails($employee_email, $full_name, $phone, $position, $department, $designation, $agreement_id) {
     require_once 'email-functions.php';

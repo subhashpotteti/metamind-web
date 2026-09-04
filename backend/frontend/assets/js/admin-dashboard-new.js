@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadDashboardStats() {
     try {
         const response = await fetch('../../backend/api/admin.php?action=get_dashboard_stats');
+        if (response.status === 401) return redirectToLogin();
         const data = await response.json();
         
         if (data.success) {
@@ -82,6 +83,7 @@ async function loadRevenueChart() {
 async function loadDashboardAnalytics() {
     try {
         const response = await fetch('../../backend/api/admin.php?action=get_dashboard_analytics');
+        if (response.status === 401) return redirectToLogin();
         const data = await response.json();
         if (!data.success) return;
         const analytics = data.analytics;
@@ -203,4 +205,9 @@ async function loadNotificationCount() {
 function logout() {
     localStorage.removeItem('adminUser');
     window.location.href = 'login.php';
+}
+
+function redirectToLogin() {
+    localStorage.removeItem('adminUser');
+    window.location.replace('login.php?session=expired');
 }

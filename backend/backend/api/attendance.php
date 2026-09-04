@@ -7,12 +7,16 @@ date_default_timezone_set('Asia/Kolkata');
 
 
 require_once '../config/database.php';
+require_once '../config/permissions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
     $action = $data['action'] ?? '';
     $employee_id = $data['employee_id'] ?? '';
+
+    $permissionMap = ['check_in' => 'attendance.create', 'check_out' => 'attendance.update', 'update_attendance' => 'attendance.update', 'delete_attendance' => 'attendance.delete'];
+    if (isset($permissionMap[$action])) require_permission($conn, $permissionMap[$action]);
 
     if (empty($employee_id)) {
         echo json_encode(['success' => false, 'message' => 'Employee ID is required']);
@@ -40,13 +44,23 @@ VALUES (?, ?, ?, 'present')");
         $stmt->bind_param("iss", $employee_id, $check_in_time, $today);
 
         if ($stmt->execute()) {
-            echo json_encode(['success' => true, 'message' => 'Checked in successfully', 'check_in_time' => date('H:i:s')]);
+            $attendanceId = $conn->insert_id;
+            $log = $conn->prepare("INSERT INTO attendance_logs (attendance_id, employee_id, action, action_time) VALUES (?, ?, 'check_in', ?)");
+            $log->bind_param('iis', $attendanceId, $employee_id, $check_in_time);
+            $log->execute();
+            $log->close();
+            echo json_encode(['success' => true, 'message' => 'Checked in successfully', 'check_in_time' => date('h:i:s A')]);
         } else {
             echo json_encode(['success' => false, 'message' => 'Failed to check in']);
         }
 
         $stmt->close();
     } elseif ($action === 'check_out') {
+        $checkout_reason = $data['checkout_reason'] ?? '';
+        if (!in_array($checkout_reason, ['break', 'complete', 'permission'], true)) {
+            echo json_encode(['success' => false, 'message' => 'Choose a valid check-out reason']);
+            exit;
+        }
         // Close the most recent session that is still open.
         $stmt = $conn->prepare("
 SELECT id, check_in_time, check_out_time
@@ -69,8 +83,8 @@ FROM attendance
         // Update check-out time
         $check_out_time = date('Y-m-d H:i:s');
 
-        $update_stmt = $conn->prepare("UPDATE attendance SET check_out_time = ? WHERE id = ?");
-        $update_stmt->bind_param("si", $check_out_time, $row['id']);
+        $update_stmt = $conn->prepare("UPDATE attendance SET check_out_time = ?, checkout_reason = ? WHERE id = ?");
+        $update_stmt->bind_param("ssi", $check_out_time, $checkout_reason, $row['id']);
 
         if ($update_stmt->execute()) {
             // Calculate total hours
@@ -83,11 +97,15 @@ FROM attendance
             $hours_stmt->bind_param("di", $total_hours, $row['id']);
             $hours_stmt->execute();
             $hours_stmt->close();
+            $log = $conn->prepare("INSERT INTO attendance_logs (attendance_id, employee_id, action, action_time, reason) VALUES (?, ?, 'check_out', ?, ?)");
+            $log->bind_param('iiss', $row['id'], $employee_id, $check_out_time, $checkout_reason);
+            $log->execute();
+            $log->close();
 
             echo json_encode([
                 'success' => true,
                 'message' => 'Checked out successfully',
-                'check_out_time' => date('H:i:s'),
+                'check_out_time' => date('h:i:s A'),
                 'total_hours' => $total_hours
             ]);
         } else {
@@ -100,6 +118,10 @@ FROM attendance
         echo json_encode(['success' => false, 'message' => 'Invalid action']);
     }
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $action = $_GET['action'] ?? '';
+    $permissionMap = ['get_attendance' => 'attendance.read', 'get_attendance_records' => 'attendance.read'];
+    if (isset($permissionMap[$action])) require_permission($conn, $permissionMap[$action]);
+    
     $employee_id = $_GET['employee_id'] ?? '';
 
     if (empty($employee_id)) {

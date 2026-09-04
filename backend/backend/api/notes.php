@@ -9,9 +9,12 @@ header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE');
 header('Access-Control-Allow-Headers: Content-Type');
 
 require_once '../config/database.php';
+require_once '../config/permissions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $action = $_GET['action'] ?? '';
+    $permissionMap = ['get_notes' => 'notes.read', 'get_employees' => 'notes.read'];
+    if (isset($permissionMap[$action])) require_permission($conn, $permissionMap[$action]);
     $user_id = $_GET['user_id'] ?? 0;
 
     if ($action === 'get_notes') {
@@ -94,6 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
     $action = $data['action'] ?? '';
+    $permissionMap = ['create_note' => 'notes.create', 'update_note' => 'notes.update'];
+    if (isset($permissionMap[$action])) require_permission($conn, $permissionMap[$action]);
 
     if ($action === 'create_note') {
         $sender_id = $data['sender_id'] ?? 0;
@@ -130,6 +135,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     $data = json_decode(file_get_contents('php://input'), true);
 
     $action = $data['action'] ?? '';
+    $permissionMap = ['mark_read' => 'notes.update', 'update_note' => 'notes.update'];
+    if (isset($permissionMap[$action])) require_permission($conn, $permissionMap[$action]);
 
     if ($action === 'mark_read') {
         $note_id = $data['note_id'] ?? 0;
@@ -155,6 +162,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+    $action = $_GET['action'] ?? '';
+    $permissionMap = ['delete_note' => 'notes.delete'];
+    if (isset($permissionMap[$action])) require_permission($conn, $permissionMap[$action]);
+    
     $note_id = $_GET['note_id'] ?? 0;
 
     if (empty($note_id)) {

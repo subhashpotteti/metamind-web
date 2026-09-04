@@ -187,32 +187,25 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById(errorId).textContent = '';
             document.getElementById(errorId).classList.remove('show');
 
-            // Upload file
-            const formData = new FormData();
-            formData.append('file', file);
+            // Keep the document in browser memory. It is sent and saved only
+            // after the complete registration has passed server validation.
+            readFileAsDataUrl(file).then(dataUrl => {
+                if (isEducationDoc) uploadedFiles.educationDocs[inputId] = dataUrl;
+                else uploadedFiles[inputId] = dataUrl;
+                showAlert('File ready. It will be uploaded when you submit the form.', 'success');
+            }).catch(() => {
+                showAlert('Could not read this file. Please choose it again.', 'error');
+                this.value = '';
+            });
+        });
+    }
 
-            fetch('../../backend/api/upload.php', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        if (isEducationDoc) {
-                            uploadedFiles.educationDocs[inputId] = data.file_path;
-                        } else {
-                            uploadedFiles[inputId] = data.file_path;
-                        }
-                        showAlert('File uploaded successfully', 'success');
-                    } else {
-                        showAlert(data.message || 'File upload failed', 'error');
-                        this.value = '';
-                    }
-                })
-                .catch(error => {
-                    showAlert('Network error during file upload', 'error');
-                    this.value = '';
-                });
+    function readFileAsDataUrl(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
         });
     }
 
@@ -554,9 +547,16 @@ document.addEventListener('DOMContentLoaded', function () {
             return false;
         }
 
-        const dob = new Date(value);
+        const dob = new Date(`${value}T00:00:00`);
         const today = new Date();
-        const age = today.getFullYear() - dob.getFullYear();
+        let age = today.getFullYear() - dob.getFullYear();
+        const beforeBirthday = today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate());
+        if (beforeBirthday) age--;
+        const ageInput = document.getElementById('age');
+        if (ageInput) {
+            ageInput.value = age >= 0 ? age : '';
+            validateAge(ageInput.value);
+        }
 
         if (age < 18 || age > 65) {
             error.textContent = 'Age must be between 18 and 65';
@@ -685,35 +685,14 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Upload to server
-        const formData = new FormData();
-        formData.append('photo', file);
-
         try {
-            const response = await fetch('../../backend/api/upload.php', {
-                method: 'POST',
-                body: formData
-            });
-
-            const responseText = await response.text();
-            let data;
-            try {
-                data = JSON.parse(responseText);
-            } catch (error) {
-                throw new Error(`Photo upload returned an invalid response (HTTP ${response.status}).`);
-            }
-
-            if (data.success) {
-                uploadedPhoto = data.path;
-                document.getElementById('photoError').textContent = '';
-                document.getElementById('photoError').classList.remove('show');
-                showAlert('Live photo captured successfully', 'success');
-            } else {
-                showAlert(data.message || 'Failed to upload photo', 'error');
-            }
+            uploadedPhoto = await readFileAsDataUrl(file);
+            document.getElementById('photoError').textContent = '';
+            document.getElementById('photoError').classList.remove('show');
+            showAlert('Live photo ready. It will be uploaded when you submit the form.', 'success');
         } catch (error) {
-            console.error('Live photo upload failed:', error);
-            showAlert(error.message || 'Unable to upload the live photo. Please try again.', 'error');
+            console.error('Live photo read failed:', error);
+            showAlert('Unable to process the live photo. Please retake it.', 'error');
         }
     }
 
@@ -923,7 +902,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('password').focus();
     });
 
-    // A signature can be uploaded or drawn. Both paths upload the final image to the server.
+    // A signature can be uploaded or drawn. It stays in browser memory until submission.
     const signatureCanvas = document.getElementById('signatureCanvas');
     const signatureContext = signatureCanvas.getContext('2d');
     signatureContext.lineWidth = 2;
@@ -934,14 +913,11 @@ document.addEventListener('DOMContentLoaded', function () {
         return { x: (point.clientX - rect.left) * (signatureCanvas.width / rect.width), y: (point.clientY - rect.top) * (signatureCanvas.height / rect.height) };
     }
     function uploadSignature(file) {
-        const data = new FormData(); data.append('file', file);
-        return fetch('../../backend/api/upload.php', { method: 'POST', body: data })
-            .then(response => response.json()).then(result => {
-                if (!result.success) throw new Error(result.message || 'Signature upload failed');
-                uploadedSignature = result.file_path;
-                setError('signatureError', '');
-                showAlert('Signature saved successfully.', 'success');
-            });
+        return readFileAsDataUrl(file).then(dataUrl => {
+            uploadedSignature = dataUrl;
+            setError('signatureError', '');
+            showAlert('Signature ready. It will be uploaded when you submit the form.', 'success');
+        });
     }
     document.getElementById('uploadSignatureBtn').addEventListener('click', () => document.getElementById('signatureUpload').click());
     document.getElementById('signatureUpload').addEventListener('change', event => {

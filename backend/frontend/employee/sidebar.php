@@ -10,38 +10,68 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     
     <ul class="sidebar-nav">
         <li>
-            <a href="dashboard.php" <?php echo $currentPage == 'dashboard.php' ? 'class="active"' : ''; ?>>
+            <a data-permission="dashboard.view" href="dashboard.php" <?php echo $currentPage == 'dashboard.php' ? 'class="active"' : ''; ?>>
                 <i data-lucide="layout-dashboard"></i>
                 Dashboard
             </a>
         </li>
         <li>
-            <a href="attendance.php" <?php echo $currentPage == 'attendance.php' ? 'class="active"' : ''; ?>>
-                <i data-lucide="clock"></i>
-                Attendance
+            <a data-permission="projects.read" href="../admin/projects.php" <?php echo $currentPage == 'projects.php' ? 'class="active"' : ''; ?>>
+                <i data-lucide="briefcase"></i>
+                Projects
             </a>
         </li>
         <li>
-            <a href="leaves.php" <?php echo $currentPage == 'leaves.php' ? 'class="active"' : ''; ?>>
+            <a data-permission="revenue.read" href="../admin/revenue.php" <?php echo $currentPage == 'revenue.php' ? 'class="active"' : ''; ?>>
+                <i data-lucide="dollar-sign"></i>
+                Revenue
+            </a>
+        </li>
+        <li>
+            <a data-permission="leaves.read" href="../admin/leaves.php" <?php echo $currentPage == 'leaves.php' ? 'class="active"' : ''; ?>>
                 <i data-lucide="calendar"></i>
                 Leave Requests
             </a>
         </li>
         <li>
-            <a href="notifications.php" <?php echo $currentPage == 'notifications.php' ? 'class="active"' : ''; ?>>
+            <a data-permission="requests.read" href="../admin/requests.php" <?php echo $currentPage == 'requests.php' ? 'class="active"' : ''; ?>>
+                <i data-lucide="user-plus"></i>
+                Registration Requests
+            </a>
+        </li>
+        <li>
+            <a data-permission="employees.read" href="../admin/employees.php" <?php echo $currentPage == 'employees.php' ? 'class="active"' : ''; ?>>
+                <i data-lucide="users"></i>
+                Employees
+            </a>
+        </li>
+        <li>
+            <a data-permission="attendance.read" href="../admin/attendance.php" <?php echo $currentPage == 'attendance.php' ? 'class="active"' : ''; ?>>
+                <i data-lucide="clock"></i>
+                Attendance
+            </a>
+        </li>
+        <li>
+            <a data-permission="notifications.read" href="notifications.php" <?php echo $currentPage == 'notifications.php' ? 'class="active"' : ''; ?>>
                 <i data-lucide="bell"></i>
                 Notifications
                 <span class="notification-badge" id="notifBadge">0</span>
             </a>
         </li>
         <li>
-            <a href="notes.php" <?php echo $currentPage == 'notes.php' ? 'class="active"' : ''; ?>>
+            <a data-permission="roles.manage" href="../admin/roles.php" <?php echo $currentPage == 'roles.php' ? 'class="active"' : ''; ?>>
+                <i data-lucide="shield-check"></i>
+                Roles & Permissions
+            </a>
+        </li>
+        <li>
+            <a data-permission="notes.read" href="../admin/notes.php" <?php echo $currentPage == 'notes.php' ? 'class="active"' : ''; ?>>
                 <i data-lucide="message-square"></i>
                 Notes
             </a>
         </li>
         <li>
-            <a href="profile.php" <?php echo $currentPage == 'profile.php' ? 'class="active"' : ''; ?>>
+            <a data-permission="profile.self" href="profile.php" <?php echo $currentPage == 'profile.php' ? 'class="active"' : ''; ?>>
                 <i data-lucide="user"></i>
                 Profile
             </a>
@@ -54,3 +84,5 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </li>
     </ul>
 </aside>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/role-sidebar.js"></script>

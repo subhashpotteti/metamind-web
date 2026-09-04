@@ -371,7 +371,7 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Age *</label>
-                            <input type="number" class="form-control" id="age" placeholder="Age" min="18" max="65">
+                            <input type="number" class="form-control" id="age" placeholder="Calculated from date of birth" min="18" max="65" readonly>
                             <div class="error-message" id="ageError"></div>
                         </div>
                         <div class="form-group">
@@ -552,7 +552,18 @@
 
                     <div class="form-group">
                         <label class="form-label">Designation *</label>
-                        <input type="text" class="form-control" id="designation" placeholder="Enter your designation" autocomplete="organization-title">
+                        <select class="form-control" id="designation" autocomplete="organization-title">
+                            <option value="">Choose designation...</option>
+                            <option value="ceo">CEO</option>
+                            <option value="manager">Manager</option>
+                            <option value="hr">HR</option>
+                            <option value="frontend_tl">Frontend TL</option>
+                            <option value="frontend_employee">Frontend Employee</option>
+                            <option value="frontend_intern">Frontend Intern</option>
+                            <option value="backend_tl">Backend TL</option>
+                            <option value="backend_employee">Backend Employee</option>
+                            <option value="backend_intern">Backend Intern</option>
+                        </select>
                         <div class="error-message" id="designationError"></div>
                     </div>
 

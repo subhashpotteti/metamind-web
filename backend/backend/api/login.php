@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 require_once '../config/database.php';
+session_start();
 // ensure_employee_code_column($conn);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -92,6 +93,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
+        // Permissions are assigned by designation. Designation is now ENUM and serves as the role key.
+        $roleKey = $employee_data['designation'] ?? '';
+        
+        $permissions = [];
+        
+        // Admin users get full access
+        if ($user['role'] === 'admin') {
+            $permissions = ['*'];
+        } elseif (!empty($roleKey)) {
+            // Regular employees get permissions based on their designation (which is the role key)
+            $permission_stmt = $conn->prepare("SELECT permission_key FROM role_permissions WHERE role_key = ?");
+            if ($permission_stmt) {
+                $permission_stmt->bind_param('s', $roleKey);
+                $permission_stmt->execute();
+                $permission_result = $permission_stmt->get_result();
+                while ($permission = $permission_result->fetch_assoc()) $permissions[] = $permission['permission_key'];
+                $permission_stmt->close();
+            }
+        }
+        
+        $_SESSION['user_id'] = (int)$user['id'];
+        $_SESSION['role'] = $user['role']; // Keep for backward compatibility
+        $_SESSION['designation'] = $roleKey; // Designation is now the role key
+        $_SESSION['role_key'] = $roleKey; // Same as designation for consistency
+        $_SESSION['permissions'] = $permissions;
+
         echo json_encode([
             'success' => true,
             'message' => 'Login successful',
@@ -99,7 +126,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'id' => $user['id'],
                 'phone' => $user['phone'],
                 'role' => $user['role'],
-                'employee_id' => $employee_data['employee_code'] ?? null
+                'employee_id' => $employee_data['employee_code'] ?? null,
+                'permissions' => $permissions
             ],
             'employee' => $employee_data
         ]);
