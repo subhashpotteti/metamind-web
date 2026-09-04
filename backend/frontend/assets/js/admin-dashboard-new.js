@@ -28,6 +28,52 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 30000);
 });
 
+async function loadWorkUpdates() {
+    const container = document.getElementById('workUpdatesList');
+    if (!container) return;
+    try {
+        const response = await fetch('../../backend/api/work_updates.php?limit=30');
+        const data = await response.json();
+        if (!data.success) throw new Error(data.message || 'Failed to load work updates');
+        if (!data.updates.length) {
+            container.innerHTML = '<p style="color:var(--gray-500);margin:0">No work updates have been submitted yet.</p>';
+            return;
+        }
+        container.innerHTML = data.updates.map(update => `<article style="padding:1rem 0;border-bottom:1px solid var(--gray-200)"><div style="display:flex;justify-content:space-between;gap:1rem;align-items:baseline"><strong>${escapeHtml(update.full_name)}</strong><small style="color:var(--gray-500)">${formatWorkUpdateDate(update.created_at)}</small></div><small style="color:var(--gray-500)">${escapeHtml(update.designation || '')}${update.department ? ' · ' + escapeHtml(update.department) : ''}</small><p style="margin:.5rem 0 0;white-space:pre-wrap">${escapeHtml(update.work_update)}</p></article>`).join('');
+    } catch (error) {
+        container.innerHTML = '<p style="color:var(--danger);margin:0">Unable to load work updates.</p>';
+        console.error('Error loading work updates:', error);
+    }
+}
+
+async function loadAttendanceLogs() {
+    const container = document.getElementById('attendanceLogsList');
+    if (!container) return;
+    try {
+        const response = await fetch('../../backend/api/attendance_logs.php?limit=50');
+        const data = await response.json();
+        if (!data.success) throw new Error(data.message || 'Failed to load attendance logs');
+        if (!data.logs.length) {
+            container.innerHTML = '<p style="color:var(--gray-500);margin:0">No attendance activity has been recorded yet.</p>';
+            return;
+        }
+        container.innerHTML = data.logs.map(log => `<article style="display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--gray-200)"><div><strong>${escapeHtml(log.full_name)}</strong><div style="margin-top:.25rem;color:var(--gray-500);font-size:.875rem">${escapeHtml(log.designation || '')}${log.department ? ' · ' + escapeHtml(log.department) : ''}</div></div><div style="text-align:right"><strong style="color:${log.action === 'check_in' ? '#059669' : '#dc2626'}">${log.action === 'check_in' ? 'Check in' : 'Check out'}</strong><div style="margin-top:.25rem;color:var(--gray-500);font-size:.875rem">${formatWorkUpdateDate(log.action_time)}${log.reason ? ' · ' + escapeHtml(log.reason) : ''}</div></div></article>`).join('');
+    } catch (error) {
+        container.innerHTML = '<p style="color:var(--danger);margin:0">Unable to load attendance logs.</p>';
+        console.error('Error loading attendance logs:', error);
+    }
+}
+
+function escapeHtml(value) {
+    const element = document.createElement('div');
+    element.textContent = value || '';
+    return element.innerHTML;
+}
+
+function formatWorkUpdateDate(value) {
+    return new Date(value.replace(' ', 'T')).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+
 async function loadDashboardStats() {
     try {
         const response = await fetch('../../backend/api/admin.php?action=get_dashboard_stats');

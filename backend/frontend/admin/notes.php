@@ -98,6 +98,6 @@ require_once '../../backend/config/auth.php';
         <p>Processing...</p>
     </div>
     
-    <script src="../assets/js/notes.js"></script>
+    <script src="../assets/js/notes.js?v=20260904-modal-fix"></script>
 </body>
 </html>

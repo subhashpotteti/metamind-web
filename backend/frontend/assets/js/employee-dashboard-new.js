@@ -167,6 +167,8 @@ async function checkOut() {
     const employeeData = JSON.parse(localStorage.getItem('employeeData'));
     const reason = await requestCheckoutReason();
     if (!reason) return;
+    const workUpdate = reason === 'complete' ? await requestWorkUpdate() : '';
+    if (reason === 'complete' && !workUpdate) return;
     
     try {
         const response = await fetch('../../backend/api/employee.php', {
@@ -175,7 +177,8 @@ async function checkOut() {
             body: JSON.stringify({
                 action: 'check_out',
                 employee_id: employeeData.id,
-                checkout_reason: reason
+                checkout_reason: reason,
+                work_update: workUpdate
             })
         });
         
@@ -190,6 +193,66 @@ async function checkOut() {
     } catch (error) {
         showAlert('Network error. Please try again.', 'error');
     }
+}
+
+function canViewWorkUpdates(designation) {
+    return ['ceo', 'manager', 'hr', 'frontend_tl', 'backend_tl'].includes(designation);
+}
+
+async function loadWorkUpdates() {
+    const section = document.getElementById('workUpdatesSection');
+    const container = document.getElementById('workUpdatesList');
+    if (!section || !container) return;
+    try {
+        const response = await fetch('../../backend/api/work_updates.php?limit=30');
+        const data = await response.json();
+        if (!data.success) return;
+        section.style.display = 'block';
+        renderWorkUpdates(container, data.updates);
+    } catch (error) {
+        console.error('Error loading work updates:', error);
+    }
+}
+
+async function loadAttendanceLogs() {
+    const section = document.getElementById('attendanceLogsSection');
+    const container = document.getElementById('attendanceLogsList');
+    if (!section || !container) return;
+    try {
+        const response = await fetch('../../backend/api/attendance_logs.php?limit=50');
+        const data = await response.json();
+        if (!data.success) return;
+        section.style.display = 'block';
+        renderAttendanceLogs(container, data.logs);
+    } catch (error) {
+        console.error('Error loading attendance logs:', error);
+    }
+}
+
+function renderAttendanceLogs(container, logs) {
+    if (!logs.length) {
+        container.innerHTML = '<p style="color:var(--gray-500);margin:0">No attendance activity has been recorded yet.</p>';
+        return;
+    }
+    container.innerHTML = logs.map(log => `<article style="display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--gray-200)"><div><strong>${escapeHtml(log.full_name)}</strong><div style="margin-top:.25rem;color:var(--gray-500);font-size:.875rem">${escapeHtml(log.designation || '')}${log.department ? ' · ' + escapeHtml(log.department) : ''}</div></div><div style="text-align:right"><strong style="color:${log.action === 'check_in' ? '#059669' : '#dc2626'}">${log.action === 'check_in' ? 'Check in' : 'Check out'}</strong><div style="margin-top:.25rem;color:var(--gray-500);font-size:.875rem">${formatWorkUpdateDate(log.action_time)}${log.reason ? ' · ' + escapeHtml(log.reason) : ''}</div></div></article>`).join('');
+}
+
+function renderWorkUpdates(container, updates) {
+    if (!updates.length) {
+        container.innerHTML = '<p style="color:var(--gray-500);margin:0">No work updates have been submitted yet.</p>';
+        return;
+    }
+    container.innerHTML = updates.map(update => `<article style="padding:1rem 0;border-bottom:1px solid var(--gray-200)"><div style="display:flex;justify-content:space-between;gap:1rem;align-items:baseline"><strong>${escapeHtml(update.full_name)}</strong><small style="color:var(--gray-500)">${formatWorkUpdateDate(update.created_at)}</small></div><small style="color:var(--gray-500)">${escapeHtml(update.designation || '')}${update.department ? ' · ' + escapeHtml(update.department) : ''}</small><p style="margin:.5rem 0 0;white-space:pre-wrap">${escapeHtml(update.work_update)}</p></article>`).join('');
+}
+
+function escapeHtml(value) {
+    const element = document.createElement('div');
+    element.textContent = value || '';
+    return element.innerHTML;
+}
+
+function formatWorkUpdateDate(value) {
+    return new Date(value.replace(' ', 'T')).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 }
 
 function formatAttendanceTime(value) {
@@ -210,10 +273,29 @@ function requestCheckoutReason() {
             <div style="display:flex;justify-content:flex-end;gap:.75rem"><button type="button" class="btn btn-secondary" id="checkoutCancel">Cancel</button><button type="button" class="btn btn-primary" id="checkoutConfirm">Check out</button></div></div>`;
         document.body.appendChild(modal);
         const close = value => { modal.remove(); resolve(value); };
+        const reasonField = modal.querySelector('#checkoutReason');
         modal.querySelector('#checkoutCancel').onclick = () => close(null);
         modal.querySelector('#checkoutConfirm').onclick = () => {
-            const value = modal.querySelector('#checkoutReason').value;
-            if (!value) { showAlert('Select a check-out reason.', 'error'); return; }
+            const reason = reasonField.value;
+            if (!reason) { showAlert('Select a check-out reason.', 'error'); return; }
+            close(reason);
+        };
+    });
+}
+
+function requestWorkUpdate() {
+    return new Promise(resolve => {
+        const modal = document.createElement('div');
+        modal.style.cssText = 'position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:rgba(15,23,42,.55);padding:1rem;';
+        modal.innerHTML = `<div style="width:min(520px,100%);background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 20px 50px rgba(0,0,0,.25)"><h3 style="margin:0 0 .5rem">Work update</h3><p style="margin:0 0 1rem;color:#64748b">Please describe the work you completed before checking out.</p><textarea id="workUpdate" class="form-control" rows="6" maxlength="5000" placeholder="Describe the work completed today..."></textarea><div style="display:flex;justify-content:flex-end;gap:.75rem;margin-top:1rem"><button type="button" class="btn btn-secondary" id="workUpdateCancel">Cancel</button><button type="button" class="btn btn-primary" id="workUpdateSubmit">Submit update &amp; check out</button></div></div>`;
+        document.body.appendChild(modal);
+        const close = value => { modal.remove(); resolve(value); };
+        const input = modal.querySelector('#workUpdate');
+        input.focus();
+        modal.querySelector('#workUpdateCancel').onclick = () => close(null);
+        modal.querySelector('#workUpdateSubmit').onclick = () => {
+            const value = input.value.trim();
+            if (!value) { showAlert('Enter your work update before checking out.', 'error'); return; }
             close(value);
         };
     });

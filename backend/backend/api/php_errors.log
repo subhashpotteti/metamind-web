@@ -2715,3 +2715,59 @@
 [04-Sep-2026 15:15:36 Asia/Kolkata] Delete completed
 [04-Sep-2026 15:15:36 Asia/Kolkata] Insert completed
 [04-Sep-2026 15:15:36 Asia/Kolkata] Transaction committed
+[04-Sep-2026 17:41:50 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 17:41:50 Asia/Kolkata] Role: manager, Permissions: ["dashboard.view"]
+[04-Sep-2026 17:41:50 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 17:41:50 Asia/Kolkata] Transaction started
+[04-Sep-2026 17:41:50 Asia/Kolkata] Delete completed
+[04-Sep-2026 17:41:50 Asia/Kolkata] Insert completed
+[04-Sep-2026 17:41:50 Asia/Kolkata] Transaction committed
+[04-Sep-2026 17:43:37 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 17:43:37 Asia/Kolkata] Role: hr, Permissions: ["dashboard.view","attendance.self"]
+[04-Sep-2026 17:43:37 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 17:43:37 Asia/Kolkata] Transaction started
+[04-Sep-2026 17:43:37 Asia/Kolkata] Delete completed
+[04-Sep-2026 17:43:37 Asia/Kolkata] Insert completed
+[04-Sep-2026 17:43:37 Asia/Kolkata] Transaction committed
+[04-Sep-2026 17:43:39 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 17:43:39 Asia/Kolkata] Role: hr, Permissions: ["dashboard.view","attendance.self"]
+[04-Sep-2026 17:43:39 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 17:43:39 Asia/Kolkata] Transaction started
+[04-Sep-2026 17:43:39 Asia/Kolkata] Delete completed
+[04-Sep-2026 17:43:39 Asia/Kolkata] Insert completed
+[04-Sep-2026 17:43:39 Asia/Kolkata] Transaction committed
+[04-Sep-2026 17:43:41 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 17:43:41 Asia/Kolkata] Role: hr, Permissions: ["dashboard.view","attendance.self"]
+[04-Sep-2026 17:43:41 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 17:43:41 Asia/Kolkata] Transaction started
+[04-Sep-2026 17:43:41 Asia/Kolkata] Delete completed
+[04-Sep-2026 17:43:41 Asia/Kolkata] Insert completed
+[04-Sep-2026 17:43:41 Asia/Kolkata] Transaction committed
+[04-Sep-2026 17:54:14 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 17:54:14 Asia/Kolkata] Role: hr, Permissions: ["dashboard.view","attendance.self"]
+[04-Sep-2026 17:54:14 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 17:54:14 Asia/Kolkata] Transaction started
+[04-Sep-2026 17:54:14 Asia/Kolkata] Delete completed
+[04-Sep-2026 17:54:14 Asia/Kolkata] Insert completed
+[04-Sep-2026 17:54:14 Asia/Kolkata] Transaction committed
+[04-Sep-2026 17:56:01 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 17:56:01 Asia/Kolkata] Role: hr, Permissions: ["dashboard.view","attendance.self","attendance.read","attendance.create","attendance.update","attendance.delete"]
+[04-Sep-2026 17:56:01 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 17:56:01 Asia/Kolkata] Transaction started
+[04-Sep-2026 17:56:01 Asia/Kolkata] Delete completed
+[04-Sep-2026 17:56:01 Asia/Kolkata] Insert completed
+[04-Sep-2026 17:56:02 Asia/Kolkata] Transaction committed
+[04-Sep-2026 17:56:45 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 17:56:45 Asia/Kolkata] Role: hr, Permissions: ["dashboard.view","attendance.self","attendance.read","attendance.create","attendance.update","attendance.delete"]
+[04-Sep-2026 17:56:45 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 17:56:45 Asia/Kolkata] Transaction started
+[04-Sep-2026 17:56:45 Asia/Kolkata] Delete completed
+[04-Sep-2026 17:56:45 Asia/Kolkata] Insert completed
+[04-Sep-2026 17:56:45 Asia/Kolkata] Transaction committed
+[04-Sep-2026 18:21:25 Asia/Kolkata] save_role_permissions called
+[04-Sep-2026 18:21:25 Asia/Kolkata] Role: hr, Permissions: ["dashboard.view","attendance.self","attendance.read","attendance_logs.read","work_updates.read","attendance.create","attendance.update","attendance.delete","notes.self","notes.read","notes.create","notes.update","notes.delete"]
+[04-Sep-2026 18:21:25 Asia/Kolkata] Validation passed, starting database operations
+[04-Sep-2026 18:21:25 Asia/Kolkata] Transaction started
+[04-Sep-2026 18:21:25 Asia/Kolkata] Delete completed
+[04-Sep-2026 18:21:25 Asia/Kolkata] Insert completed
+[04-Sep-2026 18:21:25 Asia/Kolkata] Transaction committed

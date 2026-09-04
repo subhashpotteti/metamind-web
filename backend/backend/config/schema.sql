@@ -147,6 +147,15 @@ INSERT IGNORE INTO role_permissions (role_key, permission_key) VALUES
 ('frontend_intern', 'dashboard.view'), ('frontend_intern', 'attendance.self'), ('frontend_intern', 'attendance.create'), ('frontend_intern', 'attendance.update'), ('frontend_intern', 'profile.self'), ('frontend_intern', 'notifications.self'), ('frontend_intern', 'notifications.read'), ('frontend_intern', 'tasks.read'),
 ('backend_intern', 'dashboard.view'), ('backend_intern', 'attendance.self'), ('backend_intern', 'attendance.create'), ('backend_intern', 'attendance.update'), ('backend_intern', 'profile.self'), ('backend_intern', 'notifications.self'), ('backend_intern', 'notifications.read'), ('backend_intern', 'tasks.read');
 
+-- Leadership-only access to the immutable check-in/check-out audit trail.
+INSERT IGNORE INTO role_permissions (role_key, permission_key) VALUES
+('manager', 'attendance_logs.read'), ('hr', 'attendance_logs.read'),
+('frontend_tl', 'attendance_logs.read'), ('backend_tl', 'attendance_logs.read');
+
+INSERT IGNORE INTO role_permissions (role_key, permission_key) VALUES
+('manager', 'work_updates.read'), ('hr', 'work_updates.read'),
+('frontend_tl', 'work_updates.read'), ('backend_tl', 'work_updates.read');
+
 -- Email Logs Table
 CREATE TABLE IF NOT EXISTS email_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -212,6 +221,20 @@ CREATE TABLE IF NOT EXISTS leave_requests (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
+);
+
+-- Work Updates Table
+CREATE TABLE IF NOT EXISTS work_updates (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT NOT NULL,
+    attendance_id INT NOT NULL,
+    work_update TEXT NOT NULL,
+    work_date DATE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_work_updates_date (work_date, created_at),
+    INDEX idx_work_updates_employee (employee_id),
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE,
+    FOREIGN KEY (attendance_id) REFERENCES attendance(id) ON DELETE CASCADE
 );
 
 -- Notifications Table

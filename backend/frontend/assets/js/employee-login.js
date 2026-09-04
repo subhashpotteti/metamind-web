@@ -72,11 +72,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else if (data.employee.status === 'approved') {
                         localStorage.setItem('employeeUser', JSON.stringify(data.user));
                         localStorage.setItem('employeeData', JSON.stringify(data.employee));
-                        const managementRoles = ['ceo', 'manager'];
-                        if (managementRoles.includes(data.employee.designation)) localStorage.setItem('adminUser', JSON.stringify(data.user));
+                        // All approved employee designations use the employee workspace.
+                        // Only accounts authenticated through the admin login can open the admin panel.
+                        localStorage.removeItem('adminUser');
                         showAlert('Login successful! Redirecting...', 'success');
                         setTimeout(() => {
-                            window.location.href = managementRoles.includes(data.employee.designation) ? '../admin/dashboard.php' : 'dashboard.php';
+                            window.location.href = 'dashboard.php';
                         }, 1000);
                     } else if (data.employee.status === 'rejected') {
                         showAlert('Your registration has been rejected. Please contact admin.', 'error');

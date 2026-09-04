@@ -217,6 +217,14 @@ require_once '../../backend/config/auth.php';
                                     <span>Read Attendance</span>
                                 </label>
                                 <label class="permission-item">
+                                    <input type="checkbox" class="permission-checkbox" value="attendance_logs.read">
+                                    <span>View Attendance Logs</span>
+                                </label>
+                                <label class="permission-item">
+                                    <input type="checkbox" class="permission-checkbox" value="work_updates.read">
+                                    <span>View Work Updates</span>
+                                </label>
+                                <label class="permission-item">
                                     <input type="checkbox" class="permission-checkbox" value="attendance.create">
                                     <span>Create Attendance</span>
                                 </label>

@@ -110,10 +110,11 @@
                     </div>
                 </div>
             </section>
+
         </main>
     </div>
     
-    <script src="../assets/js/employee-dashboard-new.js"></script>
+    <script src="../assets/js/employee-dashboard-new.js?v=20260904-work-update"></script>
 </body>
 </html>
 

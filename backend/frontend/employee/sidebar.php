@@ -52,6 +52,18 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </a>
         </li>
         <li>
+            <a data-permission="work_updates.read" href="work-updates.php" <?php echo $currentPage == 'work-updates.php' ? 'class="active"' : ''; ?>>
+                <i data-lucide="clipboard-list"></i>
+                Work Updates
+            </a>
+        </li>
+        <li>
+            <a data-permission="attendance_logs.read" href="attendance-logs.php" <?php echo $currentPage == 'attendance-logs.php' ? 'class="active"' : ''; ?>>
+                <i data-lucide="history"></i>
+                Attendance Logs
+            </a>
+        </li>
+        <li>
             <a data-permission="notifications.read" href="notifications.php" <?php echo $currentPage == 'notifications.php' ? 'class="active"' : ''; ?>>
                 <i data-lucide="bell"></i>
                 Notifications
@@ -86,3 +98,4 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 </aside>
 <script src="../assets/js/common.js"></script>
 <script src="../assets/js/role-sidebar.js"></script>
+<script src="../assets/js/ui-access-controls.js?v=20260904"></script>

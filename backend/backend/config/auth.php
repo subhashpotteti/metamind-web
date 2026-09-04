@@ -22,6 +22,8 @@ if (!$is_admin && !$has_full_access) {
         'requests.php' => 'requests.read',
         'employees.php' => 'employees.read',
         'attendance.php' => 'attendance.read',
+        'work-updates.php' => 'work_updates.read',
+        'attendance-logs.php' => 'attendance_logs.read',
         'notifications.php' => 'notifications.read',
         'roles.php' => 'roles.manage',
         'notes.php' => 'notes.read',

@@ -14,6 +14,8 @@ INSERT INTO role_permissions (role_key, permission_key) VALUES
 -- Manager permissions
 ('manager', 'dashboard.view'), 
 ('manager', 'attendance.self'), ('manager', 'attendance.read'), ('manager', 'attendance.create'), ('manager', 'attendance.update'), ('manager', 'attendance.delete'),
+('manager', 'attendance_logs.read'),
+('manager', 'work_updates.read'),
 ('manager', 'leaves.self'), ('manager', 'leaves.read'), ('manager', 'leaves.create'), ('manager', 'leaves.update'), ('manager', 'leaves.delete'),
 ('manager', 'notes.self'), ('manager', 'notes.read'), ('manager', 'notes.create'), ('manager', 'notes.update'), ('manager', 'notes.delete'),
 ('manager', 'profile.self'),
@@ -25,6 +27,8 @@ INSERT INTO role_permissions (role_key, permission_key) VALUES
 -- HR permissions
 ('hr', 'dashboard.view'), 
 ('hr', 'attendance.self'), ('hr', 'attendance.read'), ('hr', 'attendance.create'), ('hr', 'attendance.update'),
+('hr', 'attendance_logs.read'),
+('hr', 'work_updates.read'),
 ('hr', 'leaves.self'), ('hr', 'leaves.read'), ('hr', 'leaves.create'), ('hr', 'leaves.update'), ('hr', 'leaves.delete'),
 ('hr', 'notes.self'), ('hr', 'notes.read'), ('hr', 'notes.create'), ('hr', 'notes.update'),
 ('hr', 'profile.self'),
@@ -35,6 +39,8 @@ INSERT INTO role_permissions (role_key, permission_key) VALUES
 -- Frontend Team Lead permissions
 ('frontend_tl', 'dashboard.view'), 
 ('frontend_tl', 'attendance.self'), ('frontend_tl', 'attendance.read'), ('frontend_tl', 'attendance.create'), ('frontend_tl', 'attendance.update'),
+('frontend_tl', 'attendance_logs.read'),
+('frontend_tl', 'work_updates.read'),
 ('frontend_tl', 'profile.self'),
 ('frontend_tl', 'projects.read'), ('frontend_tl', 'projects.create'), ('frontend_tl', 'projects.update'),
 ('frontend_tl', 'notes.self'), ('frontend_tl', 'notes.read'), ('frontend_tl', 'notes.create'), ('frontend_tl', 'notes.update'),
@@ -44,6 +50,8 @@ INSERT INTO role_permissions (role_key, permission_key) VALUES
 -- Backend Team Lead permissions
 ('backend_tl', 'dashboard.view'), 
 ('backend_tl', 'attendance.self'), ('backend_tl', 'attendance.read'), ('backend_tl', 'attendance.create'), ('backend_tl', 'attendance.update'),
+('backend_tl', 'attendance_logs.read'),
+('backend_tl', 'work_updates.read'),
 ('backend_tl', 'profile.self'),
 ('backend_tl', 'projects.read'), ('backend_tl', 'projects.create'), ('backend_tl', 'projects.update'),
 ('backend_tl', 'notes.self'), ('backend_tl', 'notes.read'), ('backend_tl', 'notes.create'), ('backend_tl', 'notes.update'),

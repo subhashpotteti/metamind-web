@@ -228,7 +228,8 @@ async function viewNote(noteId) {
     `;
     
     document.getElementById('noteDetails').innerHTML = details;
-    document.getElementById('viewModal').style.display = 'block';
+    document.getElementById('viewModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
 }
 
 // Mark note as read
@@ -287,16 +288,19 @@ async function deleteNote(noteId) {
 
 // Compose note modal
 function openComposeModal() {
-    document.getElementById('composeModal').style.display = 'block';
+    document.getElementById('composeModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
     document.getElementById('composeForm').reset();
 }
 
 function closeComposeModal() {
-    document.getElementById('composeModal').style.display = 'none';
+    document.getElementById('composeModal').classList.remove('active');
+    document.body.style.overflow = '';
 }
 
 function closeViewModal() {
-    document.getElementById('viewModal').style.display = 'none';
+    document.getElementById('viewModal').classList.remove('active');
+    document.body.style.overflow = '';
 }
 
 // Handle compose form submission

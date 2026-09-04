@@ -123,8 +123,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     } elseif ($action === 'check_out') {
         $employee_id = $data['employee_id'] ?? '';
         $checkout_reason = $data['checkout_reason'] ?? '';
+        // Accept the current API field and the legacy browser field while
+        // users refresh cached dashboard JavaScript.
+        $work_update = trim((string)($data['work_update'] ?? $data['workUpdate'] ?? ''));
         if (!in_array($checkout_reason, ['break', 'complete', 'permission'], true)) {
             echo json_encode(['success' => false, 'message' => 'Choose a valid check-out reason']);
+            exit;
+        }
+        if ($checkout_reason === 'complete' && $work_update === '') {
+            echo json_encode(['success' => false, 'message' => 'A work update is required when marking work complete']);
+            exit;
+        }
+        if (mb_strlen($work_update) > 5000) {
+            echo json_encode(['success' => false, 'message' => 'Work update must be 5,000 characters or fewer']);
             exit;
         }
         $date = date('Y-m-d');
@@ -157,13 +168,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $stmt = $conn->prepare("UPDATE attendance SET check_out_time = ?, total_hours = ?, checkout_reason = ? WHERE id = ?");
         $stmt->bind_param("sdsi", $datetime, $total_hours, $checkout_reason, $row['id']);
         
+        $conn->begin_transaction();
         if ($stmt->execute()) {
+            if ($checkout_reason === 'complete') {
+                $workUpdateStmt = $conn->prepare('INSERT INTO work_updates (employee_id, attendance_id, work_update, work_date) VALUES (?, ?, ?, ?)');
+                $workUpdateStmt->bind_param('iiss', $employee_id, $row['id'], $work_update, $date);
+                if (!$workUpdateStmt->execute()) {
+                    $workUpdateStmt->close();
+                    $conn->rollback();
+                    echo json_encode(['success' => false, 'message' => 'Could not save the work update. Please try again.']);
+                    exit;
+                }
+                $workUpdateStmt->close();
+            }
             $log = $conn->prepare("INSERT INTO attendance_logs (attendance_id, employee_id, action, action_time, reason) VALUES (?, ?, 'check_out', ?, ?)");
             $log->bind_param('iiss', $row['id'], $employee_id, $datetime, $checkout_reason);
             $log->execute();
             $log->close();
+            $conn->commit();
             echo json_encode(['success' => true, 'message' => 'Checked out successfully', 'check_out_time' => date('h:i:s A'), 'total_hours' => round($total_hours, 2), 'checkout_reason' => $checkout_reason]);
         } else {
+            $conn->rollback();
             echo json_encode(['success' => false, 'message' => 'Failed to check out']);
         }
         $stmt->close();
