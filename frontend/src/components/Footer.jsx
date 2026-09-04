@@ -41,8 +41,12 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-brand-600 flex items-center justify-center">
-                <span className="text-white font-black text-lg">M</span>
+              <div className="w-15 h-15 rounded-lg  flex items-center justify-center">
+                <img
+      src="/METAMINDS.png"
+      alt="Meta Minds Pvt Ltd"
+      className="h-12 w-auto object-contain"
+    />
               </div>
               <span className="text-lg font-bold text-gray-900 dark:text-white">META MINDS</span>
             </Link>
