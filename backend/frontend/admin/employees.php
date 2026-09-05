@@ -154,7 +154,7 @@ require_once '../../backend/config/auth.php';
     
     <!-- View Employee Modal -->
     <div class="modal" id="viewEmployeeModal">
-        <div class="modal-content" style="max-width: 900px; max-height: 90vh;">
+        <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
             <div class="modal-header">
                 <h3>Employee Details</h3>
                 <button class="modal-close" onclick="closeViewEmployeeModal()">&times;</button>
@@ -165,7 +165,7 @@ require_once '../../backend/config/auth.php';
     
     <!-- Edit Employee Modal -->
     <div class="modal" id="editEmployeeModal">
-        <div class="modal-content" style="max-width: 800px;">
+        <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
             <div class="modal-header">
                 <h3>Edit Employee</h3>
                 <button class="modal-close" onclick="closeEditEmployeeModal()">&times;</button>
@@ -173,28 +173,43 @@ require_once '../../backend/config/auth.php';
             <form id="editEmployeeForm" style="padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                 <input type="hidden" id="editEmployeeId">
                 <div>
-                    <label class="form-label">Full Name *</label>
-                    <input type="text" id="editFullName" class="form-control" required>
+                    <label class="form-label">Employee Code</label>
+                    <input type="text" id="editEmployeeCode" class="form-control">
                 </div>
                 <div>
-                    <label class="form-label">Email *</label>
-                    <input type="email" id="editEmail" class="form-control" required>
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="editFullName" class="form-control">
                 </div>
                 <div>
-                    <label class="form-label">Phone *</label>
-                    <input type="tel" id="editPhone" class="form-control" required>
+                    <label class="form-label">Email</label>
+                    <input type="email" id="editEmail" class="form-control">
                 </div>
                 <div>
-                    <label class="form-label">Department *</label>
-                    <input type="text" id="editDepartment" class="form-control" required>
+                    <label class="form-label">Phone</label>
+                    <input type="tel" id="editPhone" class="form-control">
                 </div>
                 <div>
-                    <label class="form-label">Designation *</label>
-                    <input type="text" id="editDesignation" class="form-control" required>
+                    <label class="form-label">Department</label>
+                    <input type="text" id="editDepartment" class="form-control">
+                </div>
+                <div>
+                    <label class="form-label">Designation</label>
+                    <select id="editDesignation" class="form-control">
+                        <option value="">Select Designation</option>
+                        <option value="ceo">CEO</option>
+                        <option value="manager">Manager</option>
+                        <option value="hr">HR</option>
+                        <option value="frontend_tl">Frontend Team Lead</option>
+                        <option value="frontend_employee">Frontend Employee</option>
+                        <option value="frontend_intern">Frontend Intern</option>
+                        <option value="backend_tl">Backend Team Lead</option>
+                        <option value="backend_employee">Backend Employee</option>
+                        <option value="backend_intern">Backend Intern</option>
+                    </select>
                 </div>
                 <div>
                     <label class="form-label">Salary</label>
-                    <input type="number" id="editSalary" class="form-control">
+                    <input type="number" id="editSalary" class="form-control" step="0.01">
                 </div>
                 <div>
                     <label class="form-label">Joining Date</label>
@@ -213,13 +228,45 @@ require_once '../../backend/config/auth.php';
                         <option value="other">Other</option>
                     </select>
                 </div>
+                <div>
+                    <label class="form-label">Age</label>
+                    <input type="number" id="editAge" class="form-control">
+                </div>
+                <div>
+                    <label class="form-label">Blood Group</label>
+                    <input type="text" id="editBloodGroup" class="form-control" maxlength="5">
+                </div>
+                <div>
+                    <label class="form-label">Aadhaar Number</label>
+                    <input type="text" id="editAadhaarNumber" class="form-control" maxlength="12">
+                </div>
+                <div>
+                    <label class="form-label">PAN Number</label>
+                    <input type="text" id="editPanNumber" class="form-control" maxlength="10">
+                </div>
                 <div style="grid-column: span 2;">
                     <label class="form-label">Address</label>
                     <textarea id="editAddress" class="form-control" rows="2"></textarea>
                 </div>
                 <div>
+                    <label class="form-label">Door Number</label>
+                    <input type="text" id="editDoorNumber" class="form-control">
+                </div>
+                <div>
+                    <label class="form-label">Street</label>
+                    <input type="text" id="editStreet" class="form-control">
+                </div>
+                <div>
+                    <label class="form-label">Area/Locality</label>
+                    <input type="text" id="editAreaLocality" class="form-control">
+                </div>
+                <div>
                     <label class="form-label">City</label>
                     <input type="text" id="editCity" class="form-control">
+                </div>
+                <div>
+                    <label class="form-label">District</label>
+                    <input type="text" id="editDistrict" class="form-control">
                 </div>
                 <div>
                     <label class="form-label">State</label>
@@ -227,14 +274,66 @@ require_once '../../backend/config/auth.php';
                 </div>
                 <div>
                     <label class="form-label">Pincode</label>
-                    <input type="text" id="editPincode" class="form-control">
+                    <input type="text" id="editPincode" class="form-control" maxlength="10">
+                </div>
+                <div>
+                    <label class="form-label">Emergency Contact Name</label>
+                    <input type="text" id="editEmergencyContactName" class="form-control">
+                </div>
+                <div>
+                    <label class="form-label">Emergency Contact Relationship</label>
+                    <input type="text" id="editEmergencyContactRelationship" class="form-control">
+                </div>
+                <div>
+                    <label class="form-label">Emergency Contact Number</label>
+                    <input type="tel" id="editEmergencyContactNumber" class="form-control" maxlength="15">
+                </div>
+                <div>
+                    <label class="form-label">Higher Education</label>
+                    <input type="text" id="editHigherEducation" class="form-control">
+                </div>
+                <div>
+                    <label class="form-label">Experience Level</label>
+                    <input type="text" id="editExperienceLevel" class="form-control">
+                </div>
+                <div>
+                    <label class="form-label">Company Name</label>
+                    <input type="text" id="editCompanyName" class="form-control">
+                </div>
+                <div>
+                    <label class="form-label">Company Contact</label>
+                    <input type="text" id="editCompanyContact" class="form-control">
+                </div>
+                <div>
+                    <label class="form-label">Position</label>
+                    <input type="text" id="editPosition" class="form-control">
                 </div>
                 <div>
                     <label class="form-label">Status</label>
                     <select id="editStatus" class="form-control">
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
                     </select>
+                </div>
+                <div style="grid-column: span 2;">
+                    <label class="form-label">Photo URL</label>
+                    <input type="text" id="editPhoto" class="form-control">
+                </div>
+                <div style="grid-column: span 2;">
+                    <label class="form-label">Signature URL</label>
+                    <input type="text" id="editSignature" class="form-control">
+                </div>
+                <div style="grid-column: span 2;">
+                    <label class="form-label">NDA Accepted</label>
+                    <select id="editNdaAccepted" class="form-control">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <div style="grid-column: span 2; margin-top: 1rem;">
+                    <h4 style="margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Document Previews</h4>
+                    <div id="editDocumentPreviews" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;"></div>
                 </div>
                 <div style="grid-column: span 2; display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1rem;">
                     <button type="button" class="btn btn-secondary" onclick="closeEditEmployeeModal()">Cancel</button>

@@ -2792,3 +2792,24 @@
 [05-Sep-2026 12:46:44 Asia/Kolkata] Delete completed
 [05-Sep-2026 12:46:44 Asia/Kolkata] Insert completed
 [05-Sep-2026 12:46:44 Asia/Kolkata] Transaction committed
+[05-Sep-2026 17:55:35 Asia/Kolkata] Uncaught Exception: Call to a member function bind_param() on bool
+[05-Sep-2026 17:56:40 Asia/Kolkata] Uncaught Exception: Call to a member function bind_param() on bool
+[05-Sep-2026 17:56:55 Asia/Kolkata] Uncaught Exception: Call to a member function bind_param() on bool
+[05-Sep-2026 17:58:22 Asia/Kolkata] User prepare failed: Unknown column 'email' in 'field list'
+[05-Sep-2026 17:59:04 Asia/Kolkata] User prepare failed: Unknown column 'email' in 'field list'
+[05-Sep-2026 18:00:06 Asia/Kolkata] Employee data: {"user_id":196}
+[05-Sep-2026 18:00:06 Asia/Kolkata] Email: thummapavan999@gmail.com, Phone: 9515592296
+[05-Sep-2026 18:00:06 Asia/Kolkata] Uncaught Exception: The number of elements in the type definition string must match the number of bind variables
+[05-Sep-2026 18:01:44 Asia/Kolkata] Employee data: {"user_id":196}
+[05-Sep-2026 18:01:44 Asia/Kolkata] Email: thummapavan999@gmail.com, Phone: 9515592296
+[05-Sep-2026 18:01:44 Asia/Kolkata] Uncaught Exception: The number of elements in the type definition string must match the number of bind variables
+[05-Sep-2026 18:02:28 Asia/Kolkata] Employee data: {"user_id":196}
+[05-Sep-2026 18:02:28 Asia/Kolkata] Email: thummapavan999@gmail.com, Phone: 9515592296
+[05-Sep-2026 18:02:28 Asia/Kolkata] Uncaught Exception: The number of elements in the type definition string must match the number of bind variables
+[05-Sep-2026 18:03:32 Asia/Kolkata] Employee data: {"user_id":196}
+[05-Sep-2026 18:03:32 Asia/Kolkata] Email: thummapavan999@gmail.com, Phone: 9515592296
+[05-Sep-2026 18:03:32 Asia/Kolkata] Type string length: 26
+[05-Sep-2026 18:03:32 Asia/Kolkata] Params count: 29
+[05-Sep-2026 18:03:32 Asia/Kolkata] Uncaught Exception: The number of elements in the type definition string must match the number of bind variables
+[05-Sep-2026 18:11:11 Asia/Kolkata] Employee data: {"user_id":196}
+[05-Sep-2026 18:11:11 Asia/Kolkata] PHP Error: [2] Undefined variable $email in C:\xampp\htdocs\metamind-web\backend\backend\api\admin.php on line 805

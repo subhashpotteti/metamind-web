@@ -1,13 +1,27 @@
 <?php
 session_start();
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 ini_set('error_log', 'php_errors.log');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET');
 header('Access-Control-Allow-Headers: Content-Type');
+
+// Custom error handler to catch errors and return as JSON
+set_error_handler(function($errno, $errstr, $errfile, $errline) {
+    error_log("PHP Error: [$errno] $errstr in $errfile on line $errline");
+    echo json_encode(['success' => false, 'message' => 'Server error: ' . $errstr]);
+    exit;
+});
+
+// Custom exception handler
+set_exception_handler(function($exception) {
+    error_log("Uncaught Exception: " . $exception->getMessage());
+    echo json_encode(['success' => false, 'message' => 'Server error: ' . $exception->getMessage()]);
+    exit;
+});
 
 try {
     require_once '../config/database.php';
@@ -757,25 +771,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $emp_stmt->close();
         
     } elseif ($action === 'update_employee') {
-        // Update existing employee
-        $employee_id = $data['employee_id'] ?? '';
-        $full_name = $data['full_name'] ?? '';
-        $email = $data['email'] ?? '';
-        $phone = $data['phone'] ?? '';
-        $department = $data['department'] ?? '';
-        $designation = $data['designation'] ?? '';
-        $salary = $data['salary'] ?? null;
-        $joining_date = $data['joining_date'] ?? null;
-        $date_of_birth = $data['date_of_birth'] ?? null;
-        $gender = $data['gender'] ?? null;
-        $address = $data['address'] ?? null;
-        $city = $data['city'] ?? null;
-        $state = $data['state'] ?? null;
-        $pincode = $data['pincode'] ?? null;
-        $status = $data['status'] ?? 'active';
+        $employee_id = (int)($data['employee_id'] ?? 0);
+        $employee_code = trim((string)($data['employee_code'] ?? ''));
+        $full_name = trim((string)($data['full_name'] ?? ''));
+        $email = trim((string)($data['email'] ?? ''));
+        $phone = trim((string)($data['phone'] ?? ''));
+        $department = trim((string)($data['department'] ?? ''));
+        $designation = trim((string)($data['designation'] ?? ''));
+        $salary = $data['salary'] ?? '';
+        $joining_date = $data['joining_date'] ?? '';
+        $date_of_birth = $data['date_of_birth'] ?? '';
+        $gender = $data['gender'] ?? '';
+        $age = $data['age'] ?? '';
+        $blood_group = trim((string)($data['blood_group'] ?? ''));
+        $aadhaar_number = trim((string)($data['aadhaar_number'] ?? ''));
+        $pan_number = trim((string)($data['pan_number'] ?? ''));
+        $address = trim((string)($data['address'] ?? ''));
+        $door_number = trim((string)($data['door_number'] ?? ''));
+        $street = trim((string)($data['street'] ?? ''));
+        $area_locality = trim((string)($data['area_locality'] ?? ''));
+        $city = trim((string)($data['city'] ?? ''));
+        $district = trim((string)($data['district'] ?? ''));
+        $state = trim((string)($data['state'] ?? ''));
+        $pincode = trim((string)($data['pincode'] ?? ''));
+        $emergency_contact_name = trim((string)($data['emergency_contact_name'] ?? ''));
+        $emergency_contact_relationship = trim((string)($data['emergency_contact_relationship'] ?? ''));
+        $emergency_contact_number = trim((string)($data['emergency_contact_number'] ?? ''));
+        $higher_education = trim((string)($data['higher_education'] ?? ''));
+        $experience_level = trim((string)($data['experience_level'] ?? ''));
+        $company_name = trim((string)($data['company_name'] ?? ''));
+        $company_contact = trim((string)($data['company_contact'] ?? ''));
+        $position = trim((string)($data['position'] ?? ''));
+        $status = $data['status'] ?? 'approved';
+        $photo = trim((string)($data['photo'] ?? ''));
+        $signature = trim((string)($data['signature'] ?? ''));
+        $nda_accepted = (string)($data['nda_accepted'] ?? '0');
         
-        if (empty($employee_id) || empty($full_name) || empty($email) || empty($phone) || empty($department) || empty($designation)) {
-            echo json_encode(['success' => false, 'message' => 'Required fields are missing']);
+        if (!$employee_id || !$employee_code || !$full_name || !$email || !$phone || !$department || !$designation) {
+            echo json_encode(['success' => false, 'message' => 'Employee ID is required']);
+            exit;
+        }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || !preg_match('/^[0-9]{10}$/', $phone)) {
+            echo json_encode(['success' => false, 'message' => 'Enter a valid email address and 10-digit phone number']);
             exit;
         }
         
@@ -793,28 +830,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         }
         
         $conn->begin_transaction();
-        
-        // Update user record
-        $user_stmt = $conn->prepare("UPDATE users SET email = ?, phone = ? WHERE id = ?");
-        $user_stmt->bind_param("ssi", $email, $phone, $employee['user_id']);
-        
-        if (!$user_stmt->execute()) {
+
+        $user_update_stmt = $conn->prepare('UPDATE users SET phone = ? WHERE id = ?');
+        $user_update_stmt->bind_param('si', $phone, $employee['user_id']);
+        if (!$user_update_stmt->execute()) {
+            $user_update_stmt->close();
             $conn->rollback();
-            echo json_encode(['success' => false, 'message' => 'Failed to update user record']);
+            echo json_encode(['success' => false, 'message' => 'Failed to update login phone number: ' . $conn->error]);
             exit;
         }
-        $user_stmt->close();
+        $user_update_stmt->close();
+
+        $emp_update_stmt = $conn->prepare('UPDATE employees SET employee_code = ?, full_name = ?, email = ?, phone = ?, department = ?, designation = ?, salary = ?, joining_date = NULLIF(?, \'\'), date_of_birth = NULLIF(?, \'\'), gender = NULLIF(?, \'\'), age = NULLIF(?, \'\'), blood_group = NULLIF(?, \'\'), aadhaar_number = NULLIF(?, \'\'), pan_number = NULLIF(?, \'\'), address = NULLIF(?, \'\'), door_number = NULLIF(?, \'\'), street = NULLIF(?, \'\'), area_locality = NULLIF(?, \'\'), city = NULLIF(?, \'\'), district = NULLIF(?, \'\'), state = NULLIF(?, \'\'), pincode = NULLIF(?, \'\'), emergency_contact_name = NULLIF(?, \'\'), emergency_contact_relationship = NULLIF(?, \'\'), emergency_contact_number = NULLIF(?, \'\'), higher_education = NULLIF(?, \'\'), experience_level = NULLIF(?, \'\'), company_name = NULLIF(?, \'\'), company_contact = NULLIF(?, \'\'), position = NULLIF(?, \'\'), status = ?, photo = NULLIF(?, \'\'), signature = NULLIF(?, \'\'), nda_accepted = ? WHERE id = ?');
         
-        // Update employee record
-        $emp_update_stmt = $conn->prepare("UPDATE employees SET full_name = ?, department = ?, designation = ?, salary = ?, joining_date = ?, date_of_birth = ?, gender = ?, address = ?, city = ?, state = ?, pincode = ?, status = ? WHERE id = ?");
-        $emp_update_stmt->bind_param("ssssssssssssi", $full_name, $department, $designation, $salary, $joining_date, $date_of_birth, $gender, $address, $city, $state, $pincode, $status, $employee_id);
+        if ($emp_update_stmt === false) {
+            error_log('Employee prepare failed: ' . $conn->error);
+            $conn->rollback();
+            echo json_encode(['success' => false, 'message' => 'Failed to prepare statement: ' . $conn->error]);
+            exit;
+        }
+        
+        $emp_update_stmt->bind_param(str_repeat('s', 34) . 'i', $employee_code, $full_name, $email, $phone, $department, $designation, $salary, $joining_date, $date_of_birth, $gender, $age, $blood_group, $aadhaar_number, $pan_number, $address, $door_number, $street, $area_locality, $city, $district, $state, $pincode, $emergency_contact_name, $emergency_contact_relationship, $emergency_contact_number, $higher_education, $experience_level, $company_name, $company_contact, $position, $status, $photo, $signature, $nda_accepted, $employee_id);
         
         if ($emp_update_stmt->execute()) {
             $conn->commit();
             echo json_encode(['success' => true, 'message' => 'Employee updated successfully']);
         } else {
             $conn->rollback();
-            echo json_encode(['success' => false, 'message' => 'Failed to update employee record']);
+            echo json_encode(['success' => false, 'message' => 'Failed to update employee record: ' . $emp_update_stmt->error]);
         }
         $emp_update_stmt->close();
         

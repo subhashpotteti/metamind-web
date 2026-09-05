@@ -130,7 +130,20 @@ function renderCompleteEmployeeProfile(container, employee) {
         let files = raw;
         if (typeof files === 'string' && files.trim().startsWith('{')) { try { files = Object.values(JSON.parse(files)); } catch (_) {} }
         if (!Array.isArray(files)) files = [files];
-        return files.filter(Boolean).map(file => `<div class="info-item"><label>${escape(label(key))}</label><span><a href="${fileUrl(file)}" target="_blank" rel="noopener">Open / Download document</a></span></div>`).join('');
+        return files.filter(Boolean).map(file => {
+            const url = fileUrl(file);
+            const isPdf = /\.pdf($|\?)/i.test(url);
+            const isImage = /\.(jpg|jpeg|png|gif|bmp|webp)($|\?)/i.test(url);
+            let preview = '';
+            if (isPdf) {
+                preview = `<iframe src="${url}#toolbar=0" style="width:100%;height:200px;border:1px solid var(--gray-200);border-radius:8px;margin-bottom:0.5rem;"></iframe>`;
+            } else if (isImage) {
+                preview = `<img src="${url}" alt="${escape(label(key))}" style="width:100%;max-height:200px;object-fit:contain;border:1px solid var(--gray-200);border-radius:8px;margin-bottom:0.5rem;">`;
+            } else {
+                preview = `<div style="padding:1rem;background:var(--gray-100);border-radius:8px;margin-bottom:0.5rem;color:var(--gray-500);text-align:center;">File preview not available</div>`;
+            }
+            return `<div class="info-item" style="grid-column: span 2;"><label>${escape(label(key))}</label><div>${preview}<a href="${url}" target="_blank" rel="noopener" style="display:inline-block;margin-top:0.5rem;color:var(--primary);text-decoration:none;font-size:0.875rem;">Open / Download</a></div></div>`;
+        }).join('');
     };
     const documentKeys = Object.keys(employee).filter(key => employee[key] && /(?:photo|signature|document|_docs|_front|_back|_letter|pay_slip)/i.test(key));
     const hiddenKeys = new Set(['id', 'user_id', 'password']);

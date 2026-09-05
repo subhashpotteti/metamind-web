@@ -449,6 +449,7 @@ async function editEmployee(employeeId) {
         if (data.success) {
             const employee = data.employee;
             document.getElementById('editEmployeeId').value = employee.id;
+            document.getElementById('editEmployeeCode').value = employee.employee_code || '';
             document.getElementById('editFullName').value = employee.full_name;
             document.getElementById('editEmail').value = employee.email;
             document.getElementById('editPhone').value = employee.phone;
@@ -458,11 +459,33 @@ async function editEmployee(employeeId) {
             document.getElementById('editJoiningDate').value = employee.joining_date || '';
             document.getElementById('editDateOfBirth').value = employee.date_of_birth || '';
             document.getElementById('editGender').value = employee.gender || '';
+            document.getElementById('editAge').value = employee.age || '';
+            document.getElementById('editBloodGroup').value = employee.blood_group || '';
+            document.getElementById('editAadhaarNumber').value = employee.aadhaar_number || '';
+            document.getElementById('editPanNumber').value = employee.pan_number || '';
             document.getElementById('editAddress').value = employee.address || '';
+            document.getElementById('editDoorNumber').value = employee.door_number || '';
+            document.getElementById('editStreet').value = employee.street || '';
+            document.getElementById('editAreaLocality').value = employee.area_locality || '';
             document.getElementById('editCity').value = employee.city || '';
+            document.getElementById('editDistrict').value = employee.district || '';
             document.getElementById('editState').value = employee.state || '';
             document.getElementById('editPincode').value = employee.pincode || '';
+            document.getElementById('editEmergencyContactName').value = employee.emergency_contact_name || '';
+            document.getElementById('editEmergencyContactRelationship').value = employee.emergency_contact_relationship || '';
+            document.getElementById('editEmergencyContactNumber').value = employee.emergency_contact_number || '';
+            document.getElementById('editHigherEducation').value = employee.higher_education || '';
+            document.getElementById('editExperienceLevel').value = employee.experience_level || '';
+            document.getElementById('editCompanyName').value = employee.company_name || '';
+            document.getElementById('editCompanyContact').value = employee.company_contact || '';
+            document.getElementById('editPosition').value = employee.position || '';
             document.getElementById('editStatus').value = employee.status;
+            document.getElementById('editPhoto').value = employee.photo || '';
+            document.getElementById('editSignature').value = employee.signature || '';
+            document.getElementById('editNdaAccepted').value = employee.nda_accepted || '0';
+            
+            // Render document previews
+            renderEditDocumentPreviews(employee);
             
             document.getElementById('editEmployeeModal').classList.add('active');
         }
@@ -476,6 +499,38 @@ async function editEmployee(employeeId) {
     }
 }
 
+function renderEditDocumentPreviews(employee) {
+    const getFileUrl = (filename) => {
+        if (!filename) return null;
+        const cleanFilename = filename.replace(/^uploads\//, '');
+        return `../../backend/uploads/${cleanFilename}`;
+    };
+    
+    const renderPreview = (label, filename) => {
+        if (!filename) return '';
+        const url = getFileUrl(filename);
+        const isPdf = /\.pdf($|\?)/i.test(url);
+        const preview = isPdf 
+            ? `<iframe src="${url}#toolbar=0" style="width:100%;height:150px;border:1px solid #e2e8f0;border-radius:6px;"></iframe>`
+            : `<img src="${url}" alt="${label}" style="width:100%;height:150px;object-fit:contain;border:1px solid #e2e8f0;border-radius:6px;">`;
+        return `
+            <div style="border:1px solid #e2e8f0;border-radius:8px;padding:0.75rem;">
+                <p style="font-size:0.75rem;color:#64748b;margin-bottom:0.5rem;font-weight:600;">${label}</p>
+                ${preview}
+                <a href="${url}" target="_blank" style="display:block;text-align:center;margin-top:0.5rem;font-size:0.75rem;color:#667eea;text-decoration:none;">Open Full Document</a>
+            </div>
+        `;
+    };
+    
+    const documentFields = Object.entries(employee).filter(([key, value]) => value && /(?:photo|signature|document|_docs|_front|_back|_letter|pay_slip)/i.test(key));
+    const previewsHtml = documentFields.map(([key, value]) => {
+        const label = key.replace(/_/g, ' ').replace(/\b\w/g, letter => letter.toUpperCase());
+        return renderPreview(label, value);
+    }).join('');
+    
+    document.getElementById('editDocumentPreviews').innerHTML = previewsHtml || '<p style="color:#64748b;font-style:italic;">No documents available</p>';
+}
+
 function closeEditEmployeeModal() {
     document.getElementById('editEmployeeModal').classList.remove('active');
 }
@@ -486,6 +541,7 @@ async function updateEmployee(event) {
     const employeeData = {
         action: 'update_employee',
         employee_id: document.getElementById('editEmployeeId').value,
+        employee_code: document.getElementById('editEmployeeCode').value,
         full_name: document.getElementById('editFullName').value,
         email: document.getElementById('editEmail').value,
         phone: document.getElementById('editPhone').value,
@@ -495,11 +551,30 @@ async function updateEmployee(event) {
         joining_date: document.getElementById('editJoiningDate').value,
         date_of_birth: document.getElementById('editDateOfBirth').value,
         gender: document.getElementById('editGender').value,
+        age: document.getElementById('editAge').value,
+        blood_group: document.getElementById('editBloodGroup').value,
+        aadhaar_number: document.getElementById('editAadhaarNumber').value,
+        pan_number: document.getElementById('editPanNumber').value,
         address: document.getElementById('editAddress').value,
+        door_number: document.getElementById('editDoorNumber').value,
+        street: document.getElementById('editStreet').value,
+        area_locality: document.getElementById('editAreaLocality').value,
         city: document.getElementById('editCity').value,
+        district: document.getElementById('editDistrict').value,
         state: document.getElementById('editState').value,
         pincode: document.getElementById('editPincode').value,
-        status: document.getElementById('editStatus').value
+        emergency_contact_name: document.getElementById('editEmergencyContactName').value,
+        emergency_contact_relationship: document.getElementById('editEmergencyContactRelationship').value,
+        emergency_contact_number: document.getElementById('editEmergencyContactNumber').value,
+        higher_education: document.getElementById('editHigherEducation').value,
+        experience_level: document.getElementById('editExperienceLevel').value,
+        company_name: document.getElementById('editCompanyName').value,
+        company_contact: document.getElementById('editCompanyContact').value,
+        position: document.getElementById('editPosition').value,
+        status: document.getElementById('editStatus').value,
+        photo: document.getElementById('editPhoto').value,
+        signature: document.getElementById('editSignature').value,
+        nda_accepted: document.getElementById('editNdaAccepted').value
     };
     
     // Validate phone
@@ -528,13 +603,25 @@ async function updateEmployee(event) {
     document.getElementById('pageLoader').classList.add('active');
     
     try {
+        console.log('Sending employee update request:', employeeData);
         const response = await fetch('../../backend/api/admin.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(employeeData)
         });
         
-        const data = await response.json();
+        console.log('Response status:', response.status);
+        console.log('Response ok:', response.ok);
+        
+        const responseText = await response.text();
+        console.log('Response text:', responseText);
+        
+        if (!responseText.trim()) {
+            throw new Error('Empty response from server');
+        }
+        
+        const data = JSON.parse(responseText);
+        console.log('Response data:', data);
         
         // Hide loader
         document.getElementById('pageLoader').classList.remove('active');
@@ -558,10 +645,11 @@ async function updateEmployee(event) {
         }
     } catch (error) {
         document.getElementById('pageLoader').classList.remove('active');
+        console.error('Network error:', error);
         Swal.fire({
             icon: 'error',
             title: 'Network Error',
-            text: 'Please try again',
+            text: error.message || 'Please try again',
             confirmButtonColor: '#ef4444'
         });
     }
