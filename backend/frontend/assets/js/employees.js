@@ -412,31 +412,13 @@ async function viewEmployee(employeeId) {
                     ` : ''}
                     
                     <!-- NDA Information (if any) -->
-                    ${employee.nda_accepted ? `
-                    <div class="profile-section">
-                        <h4 class="section-title">NDA Information</h4>
-                        <div class="info-grid">
-                            <div class="info-item">
-                                <label>NDA Accepted</label>
-                                <span>${employee.nda_accepted ? 'Yes' : 'No'}</span>
-                            </div>
-                            <div class="info-item">
-                                <label>NDA Version</label>
-                                <span>${employee.nda_version || 'N/A'}</span>
-                            </div>
-                            <div class="info-item">
-                                <label>NDA Record</label>
-                                <span>${employee.nda_record || 'N/A'}</span>
-                            </div>
-                        </div>
-                    </div>
-                    ` : ''}
+                    
                 </div>
             `;
 
-            if (documentFields.length) {
-                viewBody.querySelector('.employee-profile-view').insertAdjacentHTML('beforeend', `<div class="profile-section"><h4 class="section-title">All Available Documents</h4><div class="documents-grid">${documentFields.map(([key, value]) => renderDocument(displayLabel(key), value, key)).join('')}</div></div>`);
-            }
+            // if (documentFields.length) {
+            //     viewBody.querySelector('.employee-profile-view').insertAdjacentHTML('beforeend', `<div class="profile-section"><h4 class="section-title">All Available Documents</h4><div class="documents-grid">${documentFields.map(([key, value]) => renderDocument(displayLabel(key), value, key)).join('')}</div></div>`);
+            // }
             if (additionalFields.length) {
                 viewBody.querySelector('.employee-profile-view').insertAdjacentHTML('beforeend', `<div class="profile-section"><h4 class="section-title">Additional Employee Information</h4><div class="info-grid">${additionalFields.map(([key, value]) => `<div class="info-item"><label>${displayLabel(key)}</label><span>${displayValue(key, value)}</span></div>`).join('')}</div></div>`);
             }
