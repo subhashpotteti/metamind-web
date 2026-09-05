@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load data
     loadLeaveStats();
     loadLeaveRequests();
+    loadLeaveEmployees();
+    ['leaveFromDate','leaveToDate','leaveEmployee'].forEach(id => document.getElementById(id).addEventListener('change', loadLeaveRequests));
+    document.getElementById('resetLeaveFilters').addEventListener('click', () => { ['leaveFromDate','leaveToDate'].forEach(id => document.getElementById(id).value = ''); document.getElementById('leaveEmployee').value = ''; loadLeaveRequests(); });
     loadNotificationCount();
     
     // Real-time updates
@@ -36,10 +39,24 @@ async function loadLeaveStats() {
         console.error('Error loading leave stats:', error);
     }
 }
+async function loadLeaveEmployees() {
+    const select = document.getElementById('leaveEmployee');
+    try {
+        const response = await fetch('../../backend/api/admin.php?action=get_employees');
+        const data = await response.json();
+        if (!data.success || !Array.isArray(data.employees)) throw new Error(data.message || 'Unable to load employees');
+        select.innerHTML = '<option value="">All Employees</option>' + data.employees.map(e => `<option value="${e.id}">${e.full_name || 'Unnamed employee'}${e.employee_code ? ` (${e.employee_code})` : ''}</option>`).join('');
+    } catch (error) {
+        select.innerHTML = '<option value="">Unable to load employees</option>';
+        select.disabled = true;
+        console.error('Error loading leave employees:', error);
+    }
+}
 
 async function loadLeaveRequests() {
     try {
-        const response = await fetch('../../backend/api/leave.php?action=get_leave_requests');
+        const params = new URLSearchParams({action:'get_leave_requests', from_date:document.getElementById('leaveFromDate').value, to_date:document.getElementById('leaveToDate').value, employee_id:document.getElementById('leaveEmployee').value});
+        const response = await fetch('../../backend/api/leave.php?' + params);
         const data = await response.json();
         
         if (data.success) {
@@ -75,6 +92,7 @@ async function loadLeaveRequests() {
                                 <i data-lucide="eye" style="width: 16px; height: 16px;"></i>
                             </button>
                         `}
+                        <button class="btn btn-danger btn-sm" onclick="deleteLeave(${request.id})"><i data-lucide="trash-2" style="width:16px;height:16px;"></i></button>
                     </td>
                 </tr>
             `).join('');
@@ -85,6 +103,8 @@ async function loadLeaveRequests() {
         console.error('Error loading leave requests:', error);
     }
 }
+
+async function deleteLeave(id) { const confirm = await Swal.fire({title:'Delete leave request?', text:'This action cannot be undone.', icon:'warning', showCancelButton:true, confirmButtonColor:'#ef4444'}); if (!confirm.isConfirmed) return; const r = await fetch('../../backend/api/leave.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'delete_leave',leave_id:id})}); const d = await r.json(); Swal.fire({icon:d.success?'success':'error',title:d.success?'Deleted':'Delete failed',text:d.message}); if (d.success) { loadLeaveRequests(); loadLeaveStats(); } }
 
 function formatLeaveType(type) {
     return type.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());

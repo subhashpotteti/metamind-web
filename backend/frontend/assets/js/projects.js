@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load data
     loadProjectStats();
     loadProjects();
+    loadProjectEmployees();
     loadNotificationCount();
     
     // Real-time updates
@@ -39,6 +40,21 @@ async function loadProjectStats() {
     }
 }
 
+async function loadProjectEmployees() {
+    const select = document.getElementById('projectEmployee');
+    try {
+        const response = await fetch('../../backend/api/admin.php?action=get_employees');
+        const data = await response.json();
+        if (!data.success || !Array.isArray(data.employees)) throw new Error(data.message || 'Unable to load employees');
+        select.innerHTML = '<option value="">Unassigned</option>' + data.employees.map(e => `<option value="${e.id}">${e.full_name || 'Unnamed employee'}${e.employee_code ? ` (${e.employee_code})` : ''}</option>`).join('');
+        select.disabled = false;
+    } catch (error) {
+        select.innerHTML = '<option value="">Unable to load employees</option>';
+        select.disabled = true;
+        console.error('Error loading project employees:', error);
+    }
+}
+
 async function loadProjects() {
     try {
         const response = await fetch('../../backend/api/projects.php?action=get_projects');
@@ -59,7 +75,7 @@ async function loadProjects() {
                         <div style="font-size: 0.8rem; color: var(--gray-500);">${project.description || 'No description'}</div>
                     </td>
                     <td>${project.client_name || 'N/A'}</td>
-                    <td><span class="badge badge-${project.status}">${formatStatus(project.status)}</span></td>
+                    <td><span class="badge badge-${project.status || 'unknown'}">${formatStatus(project.status)}</span></td>
                     <td><span class="badge badge-${project.priority}">${project.priority}</span></td>
                     <td>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
@@ -90,7 +106,7 @@ async function loadProjects() {
 }
 
 function formatStatus(status) {
-    return status.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+    return String(status || 'Not set').replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
 }
 
 function getProgressColor(progress) {
@@ -104,6 +120,7 @@ function openProjectModal() {
     document.getElementById('projectModalTitle').textContent = 'New Project';
     document.getElementById('projectForm').reset();
     document.getElementById('projectId').value = '';
+    document.getElementById('projectEmployee').value = '';
     document.getElementById('projectModal').classList.add('active');
 }
 
@@ -128,6 +145,7 @@ function editProject(projectId) {
                 document.getElementById('projectProgress').value = project.progress || 0;
                 document.getElementById('projectStatus').value = project.status;
                 document.getElementById('projectPriority').value = project.priority;
+                document.getElementById('projectEmployee').value = project.assignments?.[0]?.employee_id || '';
                 document.getElementById('projectModal').classList.add('active');
             }
         });
@@ -177,6 +195,7 @@ document.getElementById('projectForm').addEventListener('submit', async function
         progress: parseInt(document.getElementById('projectProgress').value) || 0,
         status: document.getElementById('projectStatus').value,
         priority: document.getElementById('projectPriority').value
+        ,employee_id: parseInt(document.getElementById('projectEmployee').value || 0)
     };
     
     if (projectId) {

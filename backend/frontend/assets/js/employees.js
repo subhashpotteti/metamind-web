@@ -203,6 +203,38 @@ async function viewEmployee(employeeId) {
                 }).join('');
                 return previews ? `<div class="doc-item"><p style="color: var(--gray-500); font-size: 0.875rem;">${label}</p>${previews}</div>` : '';
             };
+
+            const educationLabel = (key) => {
+                const labels = { tenth: '10th', tenth_certificate: '10th', intermediate: 'Inter', intermediate_certificate: 'Inter', diploma: 'Diploma', diploma_certificate: 'Diploma', degree: 'Degree', degree_certificate: 'Degree', btech: 'B.Tech', btech_certificate: 'B.Tech' };
+                const normalized = String(key).toLowerCase().replace(/[^a-z0-9_]/g, '');
+                return labels[normalized] || String(key).replace(/_/g, ' ').replace(/\b\w/g, letter => letter.toUpperCase());
+            };
+            const renderEducationDocuments = (value) => {
+                if (!value) return '';
+                let records = value;
+                if (typeof records === 'string') { try { records = JSON.parse(records); } catch (_) { records = {}; } }
+                if (!records || typeof records !== 'object') return '';
+                return Object.entries(records).filter(([, file]) => file).map(([level, file]) => renderDocument(`Open ${educationLabel(level)} Education Documents`, file, level)).join('');
+            };
+
+            const displayLabel = (key) => String(key).replace(/_/g, ' ').replace(/\b\w/g, letter => letter.toUpperCase());
+            const displayValue = (key, value) => {
+                if (value === null || value === undefined || value === '') return 'N/A';
+                if (typeof value === 'object') return Object.entries(value).map(([childKey, childValue]) => `<div><strong>${displayLabel(childKey)}:</strong> ${displayValue(childKey, childValue)}</div>`).join('');
+                if (typeof value === 'string' && value.trim().startsWith('{')) {
+                    try { return displayValue(key, JSON.parse(value)); } catch (_) { /* display as regular text */ }
+                }
+                return String(value).replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+            };
+            const displayedFields = new Set([
+                'id', 'user_id', 'user_phone', 'phone', 'employee_code', 'full_name', 'email', 'date_of_birth', 'gender', 'blood_group',
+                'address', 'city', 'state', 'district', 'pincode', 'department', 'designation', 'joining_date', 'salary', 'experience_level',
+                'status', 'aadhaar_number', 'pan_number', 'emergency_contact_name', 'emergency_contact_relationship', 'emergency_contact_number',
+                'company_name', 'company_contact', 'photo', 'signature', 'aadhaar_front', 'aadhaar_back', 'pan_front', 'education_docs',
+                'experience_letter', 'pay_slip', 'offer_letter'
+            ]);
+            const documentFields = Object.entries(employee).filter(([key, value]) => value && /(?:photo|signature|document|_docs|_front|_back|_letter|pay_slip)/i.test(key));
+            const additionalFields = Object.entries(employee).filter(([key]) => !displayedFields.has(key) && !documentFields.some(([documentKey]) => documentKey === key));
             
             viewBody.innerHTML = `
                 <div class="employee-profile-view">
@@ -335,7 +367,7 @@ async function viewEmployee(employeeId) {
                     <div class="profile-section">
                         <h4 class="section-title">Documents</h4>
                         <div class="documents-grid">
-                            ${renderDocument('Education Documents', employee.education_docs, 'education_docs')}
+                            ${renderEducationDocuments(employee.education_docs)}
                             ${renderDocument('Experience Letter', employee.experience_letter, 'experience_letter')}
                             ${renderDocument('Pay Slip', employee.pay_slip, 'pay_slip')}
                             ${renderDocument('Offer Letter', employee.offer_letter, 'offer_letter')}
@@ -401,6 +433,13 @@ async function viewEmployee(employeeId) {
                     ` : ''}
                 </div>
             `;
+
+            if (documentFields.length) {
+                viewBody.querySelector('.employee-profile-view').insertAdjacentHTML('beforeend', `<div class="profile-section"><h4 class="section-title">All Available Documents</h4><div class="documents-grid">${documentFields.map(([key, value]) => renderDocument(displayLabel(key), value, key)).join('')}</div></div>`);
+            }
+            if (additionalFields.length) {
+                viewBody.querySelector('.employee-profile-view').insertAdjacentHTML('beforeend', `<div class="profile-section"><h4 class="section-title">Additional Employee Information</h4><div class="info-grid">${additionalFields.map(([key, value]) => `<div class="info-item"><label>${displayLabel(key)}</label><span>${displayValue(key, value)}</span></div>`).join('')}</div></div>`);
+            }
             
             document.getElementById('viewEmployeeModal').classList.add('active');
             lucide.createIcons();

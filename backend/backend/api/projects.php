@@ -6,6 +6,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 
 require_once '../config/database.php';
 require_once '../config/permissions.php';
+require_once 'email-functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $action = $_GET['action'] ?? '';
@@ -90,30 +91,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($map[$action])) require_permission($conn, $map[$action]);
     
     if ($action === 'create_project') {
+        $employee_id = (int)($data['employee_id'] ?? 0);
+        $conn->begin_transaction();
         $stmt = $conn->prepare("INSERT INTO projects (name, description, client_name, start_date, end_date, budget, status, priority, progress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssdsisi", $data['name'], $data['description'], $data['client_name'], $data['start_date'], $data['end_date'], $data['budget'], $data['status'], $data['priority'], $data['progress']);
-        
-        if ($stmt->execute()) {
-            echo json_encode(['success' => true, 'message' => 'Project created successfully']);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Failed to create project']);
+        $stmt->bind_param("sssss" . "d" . "ssi", $data['name'], $data['description'], $data['client_name'], $data['start_date'], $data['end_date'], $data['budget'], $data['status'], $data['priority'], $data['progress']);
+        if (!$stmt->execute()) { $conn->rollback(); echo json_encode(['success' => false, 'message' => 'Failed to create project']); $stmt->close(); exit; }
+        $project_id = $conn->insert_id;
+        if ($employee_id > 0) {
+            $assign = $conn->prepare('INSERT INTO project_assignments (project_id, employee_id, role) VALUES (?, ?, ?)');
+            $role = 'team_member'; $assign->bind_param('iis', $project_id, $employee_id, $role);
+            if (!$assign->execute()) { $conn->rollback(); echo json_encode(['success' => false, 'message' => 'Failed to assign employee']); $assign->close(); $stmt->close(); exit; }
+            $assign->close();
         }
+        $conn->commit();
+        if ($employee_id > 0) send_project_assignment_email($conn, $employee_id, $project_id, $data, true);
+        echo json_encode(['success' => true, 'message' => 'Project created successfully']);
         $stmt->close();
         
     } elseif ($action === 'update_project') {
+        $employee_id = (int)($data['employee_id'] ?? 0);
+        $old_employee_id = 0;
+        $old = $conn->prepare('SELECT employee_id FROM project_assignments WHERE project_id = ? ORDER BY id LIMIT 1');
+        $old->bind_param('i', $data['id']); $old->execute(); $old_employee_id = (int)($old->get_result()->fetch_assoc()['employee_id'] ?? 0); $old->close();
         $stmt = $conn->prepare("UPDATE projects SET name = ?, description = ?, client_name = ?, start_date = ?, end_date = ?, budget = ?, status = ?, priority = ?, progress = ? WHERE id = ?");
-        $stmt->bind_param("ssssdsisii", $data['name'], $data['description'], $data['client_name'], $data['start_date'], $data['end_date'], $data['budget'], $data['status'], $data['priority'], $data['progress'], $data['id']);
+        $stmt->bind_param("sssss" . "d" . "ssii", $data['name'], $data['description'], $data['client_name'], $data['start_date'], $data['end_date'], $data['budget'], $data['status'], $data['priority'], $data['progress'], $data['id']);
         
-        if ($stmt->execute()) {
-            echo json_encode(['success' => true, 'message' => 'Project updated successfully']);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Failed to update project']);
-        }
+        if (!$stmt->execute()) { echo json_encode(['success' => false, 'message' => 'Failed to update project']); $stmt->close(); exit; }
+        $clear = $conn->prepare('DELETE FROM project_assignments WHERE project_id = ?'); $clear->bind_param('i', $data['id']); $clear->execute(); $clear->close();
+        if ($employee_id > 0) { $assign = $conn->prepare('INSERT INTO project_assignments (project_id, employee_id, role) VALUES (?, ?, ?)'); $role = 'team_member'; $assign->bind_param('iis', $data['id'], $employee_id, $role); $assign->execute(); $assign->close(); }
+        if ($employee_id > 0 && $employee_id !== $old_employee_id) send_project_assignment_email($conn, $employee_id, (int)$data['id'], $data, true);
+        echo json_encode(['success' => true, 'message' => 'Project updated successfully']);
         $stmt->close();
         
     } elseif ($action === 'assign_employee') {
         $stmt = $conn->prepare("INSERT INTO project_assignments (project_id, employee_id, role) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE role = ?");
-        $stmt->bind_param("iiis", $data['project_id'], $data['employee_id'], $data['role'], $data['role']);
+        $stmt->bind_param("iiss", $data['project_id'], $data['employee_id'], $data['role'], $data['role']);
         
         if ($stmt->execute()) {
             echo json_encode(['success' => true, 'message' => 'Employee assigned successfully']);
@@ -147,6 +159,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+}
+
+function send_project_assignment_email($conn, $employee_id, $project_id, $project, $send) {
+    if (!$send) return;
+    $stmt = $conn->prepare('SELECT full_name, email FROM employees WHERE id = ? LIMIT 1');
+    $stmt->bind_param('i', $employee_id); $stmt->execute(); $employee = $stmt->get_result()->fetch_assoc(); $stmt->close();
+    if (!$employee || !filter_var($employee['email'], FILTER_VALIDATE_EMAIL)) return;
+    try { $send_assignment = 'send_project_assignment_to_employee'; $send_assignment($employee['full_name'], $employee['email'], $project['name'], $project); }
+    catch (Throwable $e) { error_log('Project assignment email failed: ' . $e->getMessage()); }
 }
 
 $conn->close();

@@ -127,6 +127,10 @@ require_once '../../backend/config/auth.php';
                     <label class="form-label">Client Name</label>
                     <input type="text" class="form-control" id="clientName">
                 </div>
+                <div class="form-group">
+                    <label class="form-label">Assigned Employee</label>
+                    <select class="form-control" id="projectEmployee"><option value="">Unassigned</option></select>
+                </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="form-group">
                         <label class="form-label">Start Date</label>

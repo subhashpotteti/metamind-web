@@ -13,7 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($permissionMap[$action])) require_permission($conn, $permissionMap[$action]);
     
     if ($action === 'get_leave_requests') {
-        $stmt = $conn->prepare("SELECT lr.*, e.full_name, e.department, e.designation FROM leave_requests lr JOIN employees e ON lr.employee_id = e.id ORDER BY lr.created_at DESC");
+        $where = []; $params = []; $types = '';
+        if (!empty($_GET['from_date'])) { $where[] = 'lr.start_date >= ?'; $params[] = $_GET['from_date']; $types .= 's'; }
+        if (!empty($_GET['to_date'])) { $where[] = 'lr.end_date <= ?'; $params[] = $_GET['to_date']; $types .= 's'; }
+        if (!empty($_GET['employee_id'])) { $where[] = 'lr.employee_id = ?'; $params[] = (int)$_GET['employee_id']; $types .= 'i'; }
+        $sql = "SELECT lr.*, e.full_name, e.department, e.designation FROM leave_requests lr JOIN employees e ON lr.employee_id = e.id" . ($where ? ' WHERE ' . implode(' AND ', $where) : '') . ' ORDER BY lr.created_at DESC';
+        $stmt = $conn->prepare($sql); if ($params) $stmt->bind_param($types, ...$params);
         $stmt->execute();
         $result = $stmt->get_result();
         
@@ -245,6 +250,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             echo json_encode(['success' => false, 'message' => 'Failed to reject leave']);
         }
         $stmt->close();
+    } elseif ($action === 'delete_leave') {
+        $leave_id = (int)($data['leave_id'] ?? 0);
+        if ($leave_id <= 0) { echo json_encode(['success' => false, 'message' => 'Leave request ID is required']); exit; }
+        $stmt = $conn->prepare('DELETE FROM leave_requests WHERE id = ?'); $stmt->bind_param('i', $leave_id);
+        echo json_encode($stmt->execute() ? ['success' => true, 'message' => 'Leave request deleted successfully'] : ['success' => false, 'message' => 'Failed to delete leave request']); $stmt->close();
     }
     
 } else {

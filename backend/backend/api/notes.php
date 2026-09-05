@@ -37,10 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 LEFT JOIN users u_receiver ON n.receiver_id = u_receiver.id
                 LEFT JOIN employees e_sender ON n.sender_id = e_sender.user_id
                 LEFT JOIN employees e_receiver ON n.receiver_id = e_receiver.user_id
-                WHERE n.sender_id = ? OR n.receiver_id = ?
+                WHERE (n.sender_id = ? OR n.receiver_id = ?)
+                " . (!empty($_GET['employee_id']) ? ' AND (n.sender_id = ? OR n.receiver_id = ?)' : '') . "
                 ORDER BY n.created_at DESC
             ");
-            $stmt->bind_param("ii", $user_id, $user_id);
+            if (!empty($_GET['employee_id'])) { $employee_id = (int)$_GET['employee_id']; $stmt->bind_param("iiii", $user_id, $user_id, $employee_id, $employee_id); }
+            else $stmt->bind_param("ii", $user_id, $user_id);
             
             if (!$stmt->execute()) {
                 echo json_encode(['success' => false, 'message' => 'Database error: ' . $stmt->error]);
@@ -67,10 +69,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             // Get all active employees for admin dropdown
             // full_name is in employees table, not users table
             $stmt = $conn->prepare("
-                SELECT u.id, e.full_name, e.employee_code 
-                FROM users u
-                INNER JOIN employees e ON u.id = e.user_id
-                WHERE u.role = 'employee'
+                SELECT u.id, e.id AS employee_id, e.full_name, e.employee_code
+                FROM employees e
+                LEFT JOIN users u ON u.id = e.user_id
                 ORDER BY e.full_name ASC
             ");
             $stmt->execute();

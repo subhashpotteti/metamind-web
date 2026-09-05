@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     loadNotes();
     loadEmployees();
+    document.getElementById('notesEmployeeFilter').addEventListener('change', loadNotes);
     loadNotificationCount();
     lucide.createIcons();
 });
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadNotes() {
     try {
         console.log('Loading notes for user ID:', currentUserId);
-        const response = await fetch(`../../backend/api/notes.php?action=get_notes&user_id=${currentUserId}`);
+        const response = await fetch(`../../backend/api/notes.php?action=get_notes&user_id=${currentUserId}&employee_id=${encodeURIComponent(document.getElementById('notesEmployeeFilter').value)}`);
         console.log('Response status:', response.status);
         
         const responseText = await response.text();
@@ -114,6 +115,9 @@ async function loadEmployees() {
                     option.textContent = `${emp.full_name} (${emp.employee_code})`;
                     select.appendChild(option);
                 });
+                const filter = document.getElementById('notesEmployeeFilter');
+                filter.innerHTML = '<option value="">All Employees</option>';
+                result.employees.forEach(emp => { const option = document.createElement('option'); option.value = emp.id; option.textContent = `${emp.full_name} (${emp.employee_code})`; filter.appendChild(option); });
                 console.log('Loaded', result.employees.length, 'employees');
             } else {
                 console.log('No employees found');

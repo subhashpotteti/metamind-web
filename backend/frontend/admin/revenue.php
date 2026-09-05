@@ -153,6 +153,7 @@ require_once '../../backend/config/auth.php';
             </form>
         </div>
     </div>
+    <div class="modal" id="revenueViewModal"><div class="modal-content"><div class="modal-header"><h3>Revenue Details</h3><button class="modal-close" onclick="document.getElementById('revenueViewModal').classList.remove('active')">&times;</button></div><div id="revenueViewBody" style="padding:1.5rem"></div></div></div>
     
     <script src="../assets/js/revenue.js"></script>
 </body>

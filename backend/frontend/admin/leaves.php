@@ -58,6 +58,12 @@ require_once '../../backend/config/auth.php';
             
             <!-- Leave Requests Table -->
             <div class="card">
+                <div class="card-header" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:end">
+                    <div><label class="form-label">From Date</label><input type="date" class="form-control" id="leaveFromDate"></div>
+                    <div><label class="form-label">To Date</label><input type="date" class="form-control" id="leaveToDate"></div>
+                    <div><label class="form-label">Employee</label><select class="form-control" id="leaveEmployee"><option value="">All Employees</option></select></div>
+                    <button class="btn btn-secondary" id="resetLeaveFilters" type="button">Reset</button>
+                </div>
                 <div class="card-header">
                     <h2 class="card-title">All Leave Requests</h2>
                 </div>

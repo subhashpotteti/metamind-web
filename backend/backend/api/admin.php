@@ -79,8 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         echo json_encode(['success' => true, 'requests' => $requests]);
         $stmt->close();
     } elseif ($action === 'get_employees') {
-        // Get all approved employees
-        $stmt = $conn->prepare("SELECT e.*, u.phone FROM employees e LEFT JOIN users u ON e.user_id = u.id WHERE e.status = 'approved' ORDER BY e.created_at DESC");
+        // Employee dropdowns must include every employee record, regardless of status.
+        $stmt = $conn->prepare("SELECT e.*, u.phone FROM employees e LEFT JOIN users u ON e.user_id = u.id ORDER BY e.created_at DESC");
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -95,8 +95,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         // Get every session in the selected date range.
         $from_date = $_GET['from_date'] ?? ($_GET['date'] ?? date('Y-m-d'));
         $to_date = $_GET['to_date'] ?? $from_date;
-        $stmt = $conn->prepare("SELECT a.*, e.full_name, e.department, e.designation FROM attendance a JOIN employees e ON a.employee_id = e.id WHERE a.date BETWEEN ? AND ? ORDER BY a.date DESC, a.check_in_time DESC");
-        $stmt->bind_param("ss", $from_date, $to_date);
+        $employee_id = (int)($_GET['employee_id'] ?? 0);
+        $sql = "SELECT a.*, e.full_name, e.department, e.designation FROM attendance a JOIN employees e ON a.employee_id = e.id WHERE a.date BETWEEN ? AND ?";
+        if ($employee_id > 0) $sql .= ' AND a.employee_id = ' . $employee_id;
+        $sql .= ' ORDER BY a.date DESC, a.check_in_time DESC';
+        $stmt = $conn->prepare($sql); $stmt->bind_param("ss", $from_date, $to_date);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -308,6 +311,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $stmt->bind_param('si', $phone, $admin_id);
         echo json_encode($stmt->execute() ? ['success' => true, 'message' => 'Profile updated successfully'] : ['success' => false, 'message' => 'Could not update profile']);
         $stmt->close();
+    } elseif ($action === 'change_admin_password') {
+        if (($_SESSION['role'] ?? '') !== 'admin') { http_response_code(403); echo json_encode(['success' => false, 'message' => 'Admin access required']); exit; }
+        $admin_id = (int)($data['admin_id'] ?? 0);
+        $current = (string)($data['current_password'] ?? '');
+        $new = (string)($data['new_password'] ?? '');
+        if (strlen($new) < 8 || !preg_match('/[A-Za-z]/', $new) || !preg_match('/\d/', $new)) { echo json_encode(['success' => false, 'message' => 'New password must be at least 8 characters and include a letter and number']); exit; }
+        $stmt = $conn->prepare("SELECT password FROM users WHERE id = ? AND role = 'admin'"); $stmt->bind_param('i', $admin_id); $stmt->execute(); $row = $stmt->get_result()->fetch_assoc(); $stmt->close();
+        if (!$row || !password_verify($current, $row['password'])) { echo json_encode(['success' => false, 'message' => 'Current password is incorrect']); exit; }
+        $hash = password_hash($new, PASSWORD_DEFAULT); $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ? AND role = 'admin'"); $stmt->bind_param('si', $hash, $admin_id);
+        echo json_encode($stmt->execute() ? ['success' => true, 'message' => 'Password changed successfully'] : ['success' => false, 'message' => 'Could not change password']); $stmt->close();
     } elseif ($action === 'save_role_permissions') {
         $role = $data['role'] ?? '';
         $permissions = $data['permissions'] ?? [];

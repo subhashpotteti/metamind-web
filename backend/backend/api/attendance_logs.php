@@ -27,8 +27,15 @@ if (!$isAdmin && !in_array($designation, $allowedDesignations, true)) {
 require_permission($conn, 'attendance_logs.read');
 
 $limit = min(max((int)($_GET['limit'] ?? 50), 1), 100);
-$stmt = $conn->prepare("SELECT al.id, al.action, al.action_time, al.reason, e.full_name, e.employee_code, e.designation, e.department FROM attendance_logs al INNER JOIN employees e ON e.id = al.employee_id ORDER BY al.action_time DESC, al.id DESC LIMIT ?");
-$stmt->bind_param('i', $limit);
+$where = []; $params = []; $types = '';
+if (!empty($_GET['from_date'])) { $where[] = 'DATE(al.action_time) >= ?'; $params[] = $_GET['from_date']; $types .= 's'; }
+if (!empty($_GET['to_date'])) { $where[] = 'DATE(al.action_time) <= ?'; $params[] = $_GET['to_date']; $types .= 's'; }
+if (!empty($_GET['employee_id'])) { $where[] = 'al.employee_id = ?'; $params[] = (int)$_GET['employee_id']; $types .= 'i'; }
+if (!empty($_GET['department'])) { $where[] = 'e.department = ?'; $params[] = $_GET['department']; $types .= 's'; }
+if (!empty($_GET['check_in'])) { $where[] = "al.action = 'check_in'"; }
+if (!empty($_GET['check_out'])) { $where[] = "al.action = 'check_out'"; }
+$sql = "SELECT al.id, al.action, al.action_time, al.reason, e.full_name, e.employee_code, e.designation, e.department FROM attendance_logs al INNER JOIN employees e ON e.id = al.employee_id" . ($where ? ' WHERE ' . implode(' AND ', $where) : '') . ' ORDER BY al.action_time DESC, al.id DESC LIMIT ?';
+$params[] = $limit; $types .= 'i'; $stmt = $conn->prepare($sql); $stmt->bind_param($types, ...$params);
 $stmt->execute();
 $result = $stmt->get_result();
 $logs = [];

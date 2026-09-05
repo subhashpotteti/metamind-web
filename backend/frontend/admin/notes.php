@@ -31,6 +31,7 @@ require_once '../../backend/config/auth.php';
             <div id="alertContainer"></div>
             
             <div class="card">
+                <div class="card-header"><label class="form-label">Employee Filter</label><select class="form-control" id="notesEmployeeFilter"><option value="">All Employees</option></select></div>
                 <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                     <h2>Send Note to Employee</h2>
                     <button class="btn btn-primary" onclick="openComposeModal()">

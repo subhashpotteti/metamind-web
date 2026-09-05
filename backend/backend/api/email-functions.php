@@ -107,6 +107,27 @@ function send_registration_confirmation_to_employee($name, $email) {
     return meta_minds_send_email($email, 'Registration Received - META MINDS PVT LTD', $html);
 }
 
+// Notify an employee when they are newly assigned (or reassigned) to a project.
+function send_project_assignment_to_employee($employee_name, $employee_email, $project_name, $project_details = []) {
+    $safe_name = htmlspecialchars($employee_name, ENT_QUOTES, 'UTF-8');
+    $safe_project = htmlspecialchars($project_name, ENT_QUOTES, 'UTF-8');
+    $details = '';
+    foreach (['client_name' => 'Client', 'start_date' => 'Start date', 'end_date' => 'End date', 'role' => 'Role'] as $key => $label) {
+        if (!empty($project_details[$key])) {
+            $details .= '<p><strong>' . $label . ':</strong> ' . htmlspecialchars($project_details[$key], ENT_QUOTES, 'UTF-8') . '</p>';
+        }
+    }
+    $content = "
+        <p>Dear $safe_name,</p>
+        <p><strong>Congratulations! You have been selected/assigned to this project.</strong></p>
+        <div class='info-box'><p><strong>Project:</strong> $safe_project</p>$details</div>
+        <p>We are excited to have you contribute to this project. Please contact your manager if you need any additional information.</p>
+        <p>Best regards,<br>META MINDS PVT LTD Team</p>
+    ";
+    $html = build_email_template('Congratulations — Project Assignment', $content, '#16a34a');
+    return meta_minds_send_email($employee_email, 'Congratulations! You have been assigned to ' . $project_name, $html);
+}
+
 // Send approval email to employee with credentials
 function send_approval_to_employee($name, $email, $employee_code, $password) {
     $safe_name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');

@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Load data
     loadAttendance();
+    loadAttendanceEmployees();
     loadNotificationCount();
     
     // Real-time updates
@@ -24,6 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
         loadNotificationCount();
     }, 30000);
 });
+
+async function loadAttendanceEmployees() {
+    const response = await fetch('../../backend/api/admin.php?action=get_employees');
+    const data = await response.json();
+    if (data.success) document.getElementById('attendanceEmployee').innerHTML = '<option value="">All Employees</option>' + data.employees.map(e => `<option value="${e.id}">${e.full_name}</option>`).join('');
+}
 
 async function loadAttendance() {
     const fromDate = document.getElementById('attendanceFromDate').value;
@@ -35,7 +42,7 @@ async function loadAttendance() {
     }
     
     try {
-        const response = await fetch(`../../backend/api/admin.php?action=get_attendance&from_date=${encodeURIComponent(fromDate)}&to_date=${encodeURIComponent(toDate)}`);
+        const response = await fetch(`../../backend/api/admin.php?action=get_attendance&from_date=${encodeURIComponent(fromDate)}&to_date=${encodeURIComponent(toDate)}&employee_id=${encodeURIComponent(document.getElementById('attendanceEmployee').value)}`);
         const data = await response.json();
         
         if (data.success) {

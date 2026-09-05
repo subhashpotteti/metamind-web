@@ -38,6 +38,8 @@ require_once '../../backend/config/auth.php';
                     <input type="date" class="form-control" id="attendanceFromDate" onchange="loadAttendance()">
                     <label for="attendanceToDate">To Date</label>
                     <input type="date" class="form-control" id="attendanceToDate" onchange="loadAttendance()">
+                    <label for="attendanceEmployee">Employee</label>
+                    <select class="form-control" id="attendanceEmployee" onchange="loadAttendance()"><option value="">All Employees</option></select>
                 </div>
                 <div class="table-container">
                     <table>

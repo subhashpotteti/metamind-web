@@ -66,6 +66,8 @@ async function loadRevenue() {
                     <td><span class="badge badge-${rev.type}">${formatRevenueType(rev.type)}</span></td>
                     <td style="font-weight: 600;">₹${rev.amount.toLocaleString()}</td>
                     <td>
+                        <button class="btn btn-secondary btn-sm" onclick="viewRevenue(${rev.id})" title="View"><i data-lucide="eye" style="width:16px;height:16px;"></i></button>
+                        <button class="btn btn-primary btn-sm" onclick="editRevenue(${rev.id})" title="Edit"><i data-lucide="edit-2" style="width:16px;height:16px;"></i></button>
                         <button class="btn btn-danger btn-sm" onclick="deleteRevenue(${rev.id})">
                             <i data-lucide="trash-2" style="width: 16px; height: 16px;"></i>
                         </button>
@@ -78,6 +80,22 @@ async function loadRevenue() {
     } catch (error) {
         console.error('Error loading revenue:', error);
     }
+}
+
+async function viewRevenue(id) {
+    const response = await fetch(`../../backend/api/revenue.php?action=get_revenue`); const data = await response.json();
+    const rev = data.revenue?.find(item => Number(item.id) === Number(id)); if (!rev) return;
+    document.getElementById('revenueViewBody').innerHTML = `<div class="info-grid"><div class="info-item"><label>Record ID</label><span>#${rev.id}</span></div><div class="info-item"><label>Date</label><span>${formatDate(rev.date)}</span></div><div class="info-item"><label>Project</label><span>${rev.project_name || 'N/A'}</span></div><div class="info-item"><label>Type</label><span>${formatRevenueType(rev.type)}</span></div><div class="info-item"><label>Amount</label><span>₹${Number(rev.amount).toLocaleString()}</span></div><div class="info-item full-width"><label>Description</label><span>${rev.description || 'N/A'}</span></div></div>`;
+    document.getElementById('revenueViewModal').classList.add('active');
+}
+
+async function editRevenue(id) {
+    const response = await fetch(`../../backend/api/revenue.php?action=get_revenue`); const data = await response.json();
+    const rev = data.revenue?.find(item => Number(item.id) === Number(id)); if (!rev) return;
+    document.getElementById('revenueModalTitle').textContent = 'Edit Revenue'; document.getElementById('revenueId').value = rev.id;
+    document.getElementById('revenueProject').value = rev.project_id || ''; document.getElementById('revenueAmount').value = rev.amount;
+    document.getElementById('revenueType').value = rev.type; document.getElementById('revenueDescription').value = rev.description || ''; document.getElementById('revenueDate').value = rev.date;
+    document.getElementById('revenueModal').classList.add('active');
 }
 
 async function loadProjectsForDropdown() {
@@ -191,13 +209,14 @@ document.getElementById('revenueForm').addEventListener('submit', async function
     e.preventDefault();
     
     const revenueData = {
-        action: 'add_revenue',
+        action: document.getElementById('revenueId').value ? 'update_revenue' : 'add_revenue',
         project_id: document.getElementById('revenueProject').value || null,
         amount: parseFloat(document.getElementById('revenueAmount').value),
         type: document.getElementById('revenueType').value,
         description: document.getElementById('revenueDescription').value,
         date: document.getElementById('revenueDate').value
     };
+    if (revenueData.action === 'update_revenue') revenueData.id = parseInt(document.getElementById('revenueId').value);
     
     try {
         const response = await fetch('../../backend/api/revenue.php', {
