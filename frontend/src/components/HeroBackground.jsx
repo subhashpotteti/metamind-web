@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { useMousePosition, useReducedMotion } from '../hooks/useScrollPosition'
-import { images } from '../data/images'
+
 
 const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
   id: i,
@@ -22,8 +22,17 @@ export default function HeroBackground() {
 
   return (
     <div className="absolute inset-0 overflow-hidden">
-      <img src={images.heroOffice} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-45 dark:opacity-40" />
-      <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/65 to-white/25 dark:from-surface-dark/85 dark:via-surface-dark/60 dark:to-surface-dark/25" />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover object-center"
+      >
+        <source src="/bgvideo.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/65 to-white/25 dark:from-surface-dark/55 dark:via-surface-dark/25 dark:to-surface-dark/25" />
 
       <motion.div
         className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-brand-600/20 blur-[120px]"

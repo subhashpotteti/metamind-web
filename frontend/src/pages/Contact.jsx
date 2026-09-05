@@ -117,9 +117,9 @@ export default function Contact() {
                 </p>
               </div>
               {[
-                { label: 'Email', value: 'hello@metaminds.com', icon: '✉️' },
-                { label: 'Phone', value: '+91 98765 43210', icon: '📞' },
-                { label: 'Location', value: 'Bangalore, India', icon: '📍' },
+                { label: 'Email', value: 'info@metamindspvtltd.com', icon: '✉️' },
+                { label: 'Phone', value: '+91 9494890262', icon: '📞' },
+                { label: 'Location', value: 'mangalagiri, AP', icon: '📍' },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
                   <span className="text-2xl">{item.icon}</span>
@@ -261,3 +261,5 @@ export default function Contact() {
     </main>
   )
 }
+
+
