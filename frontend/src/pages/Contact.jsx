@@ -46,12 +46,25 @@ export default function Contact() {
     if (!validate()) return
 
     setLoading(true)
-    await new Promise((r) => setTimeout(r, 1500))
-    setLoading(false)
-    setSuccess(true)
-    setToast({ visible: true, message: 'Thank you! Your message has been received.' })
-    setForm({ name: '', email: '', phone: '', company: '', service: '', message: '' })
-    setTimeout(() => setToast({ visible: false, message: '' }), 5000)
+    try {
+      const apiUrl = import.meta.env.VITE_CONTACT_API_URL || 'http://localhost/metamind-web/backend/backend/api/contact.php'
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const data = await response.json()
+      if (!response.ok || !data.success) throw new Error(data.message || 'Unable to submit your message.')
+      setSuccess(true)
+      setToast({ visible: true, message: 'Thank you! Your message has been received.' })
+      setForm({ name: '', email: '', phone: '', company: '', service: '', message: '' })
+      setTimeout(() => setToast({ visible: false, message: '' }), 5000)
+    } catch (error) {
+      setToast({ visible: true, message: error.message || 'Unable to submit your message. Please try again.' })
+      setTimeout(() => setToast({ visible: false, message: '' }), 5000)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleChange = (e) => {

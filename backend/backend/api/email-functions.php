@@ -128,6 +128,22 @@ function send_project_assignment_to_employee($employee_name, $employee_email, $p
     return meta_minds_send_email($employee_email, 'Congratulations! You have been assigned to ' . $project_name, $html);
 }
 
+function send_contact_submission_to_admin($name, $email, $phone, $company, $service, $message, $admin_email) {
+    $content = '<p>A new contact form submission was received from the public website.</p><div class="info-box">'
+        . '<p><strong>Name:</strong> ' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '</p>'
+        . '<p><strong>Email:</strong> ' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '</p>'
+        . '<p><strong>Phone:</strong> ' . htmlspecialchars($phone, ENT_QUOTES, 'UTF-8') . '</p>'
+        . '<p><strong>Company:</strong> ' . htmlspecialchars($company ?: 'N/A', ENT_QUOTES, 'UTF-8') . '</p>'
+        . '<p><strong>Service:</strong> ' . htmlspecialchars($service ?: 'N/A', ENT_QUOTES, 'UTF-8') . '</p>'
+        . '</div><p><strong>Message:</strong></p><p>' . nl2br(htmlspecialchars($message, ENT_QUOTES, 'UTF-8')) . '</p>';
+    return meta_minds_send_email($admin_email, 'New Website Contact Submission - META MINDS', build_email_template('New Contact Submission', $content, '#2563eb'));
+}
+
+function send_contact_confirmation_to_user($name, $email, $service) {
+    $content = '<p>Dear ' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . ',</p><p>Thank you for contacting META MINDS PVT LTD. We have received your message and our team will get back to you within 24 hours.</p><div class="info-box"><p><strong>Service:</strong> ' . htmlspecialchars($service ?: 'General enquiry', ENT_QUOTES, 'UTF-8') . '</p></div><p>Best regards,<br>META MINDS PVT LTD Team</p>';
+    return meta_minds_send_email($email, 'We received your message - META MINDS', build_email_template('Message Received', $content, '#16a34a'));
+}
+
 // Send approval email to employee with credentials
 function send_approval_to_employee($name, $email, $employee_code, $password) {
     $safe_name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');

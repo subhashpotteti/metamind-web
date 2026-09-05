@@ -2813,3 +2813,30 @@
 [05-Sep-2026 18:03:32 Asia/Kolkata] Uncaught Exception: The number of elements in the type definition string must match the number of bind variables
 [05-Sep-2026 18:11:11 Asia/Kolkata] Employee data: {"user_id":196}
 [05-Sep-2026 18:11:11 Asia/Kolkata] PHP Error: [2] Undefined variable $email in C:\xampp\htdocs\metamind-web\backend\backend\api\admin.php on line 805
+[05-Sep-2026 15:17:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:17:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:18:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:18:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:19:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:19:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:20:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:20:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:21:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:21:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:22:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:22:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:23:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:23:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:24:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 15:24:13 Europe/Berlin] PHP Error: [2] mysqli::__construct(): (HY000/1049): Unknown database 'mm1' in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\config\database.php on line 16
+[05-Sep-2026 18:56:40 Asia/Kolkata] Contact insert prepare failed: Table 'metaminds-web.contact_submissions' doesn't exist
+[05-Sep-2026 18:56:56 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function execute() on bool in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\api\contact.php:56
+Stack trace:
+#0 {main}
+  thrown in C:\Workspace\8.2.12_new\htdocs\metamind-web\backend\backend\api\contact.php on line 56
+[05-Sep-2026 18:57:37 Asia/Kolkata] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[05-Sep-2026 18:57:37 Asia/Kolkata] Attempting SMTP connection to smtp.gmail.com:587
+[05-Sep-2026 18:57:44 Asia/Kolkata] Email sent successfully to admin@metaminds.com
+[05-Sep-2026 18:57:44 Asia/Kolkata] SMTP Config - Host: smtp.gmail.com, Port: 587, User: metamindshr@gmail.com, Encryption: tls
+[05-Sep-2026 18:57:44 Asia/Kolkata] Attempting SMTP connection to smtp.gmail.com:587
+[05-Sep-2026 18:57:51 Asia/Kolkata] Email sent successfully to subhashpotteti@gmail.com

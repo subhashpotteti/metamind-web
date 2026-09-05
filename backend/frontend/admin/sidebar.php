@@ -46,6 +46,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </a>
         </li>
         <li>
+            <a data-permission="contacts.read" href="contacts.php" <?php echo $currentPage == 'contacts.php' ? 'class="active"' : ''; ?>>
+                <i data-lucide="mail"></i>
+                Contact Messages
+            </a>
+        </li>
+        <li>
             <a data-permission="attendance.read" href="attendance.php" <?php echo $currentPage == 'attendance.php' ? 'class="active"' : ''; ?>>
                 <i data-lucide="clock"></i>
                 Attendance
