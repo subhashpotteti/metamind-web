@@ -16,11 +16,11 @@ const navLinks = [
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
   { name: 'Careers', path: '/careers' },
-  {
-    name: 'Employees',
-    path: 'http://localhost/metamind-web/backend/frontend/employee/login.php'
-  },
   { name: 'Contact', path: '/contact' },
+  // {
+  //   name: 'Employees',
+  //   path: 'http://localhost/metamind-web/backend/frontend/employee/login.php'
+  // },
 ]
 
 
@@ -82,26 +82,26 @@ export default function Navbar() {
   title="Double-click for Admin Login"
 >
   <motion.div
-    className="w-13 h-13 rounded-lg flex items-center justify-center"
+    className="w-15 h-15 rounded-lg bg-gray-50 flex items-center justify-center"
     whileHover={{ scale: 1.05, rotate: 3 }}
     transition={{ type: 'spring', stiffness: 400 }}
   >
     <img
-      src="/METAMINDS.png"
+      src="METAMINDS.png"
       alt="Meta Minds Pvt Ltd"
       className="h-12 w-auto object-contain"
     />
   </motion.div>
 
-  <div>
-    <span className="text-lg font-bold tracking-tight text-gray-900 dark:text-white group-hover:text-brand-500 transition-colors">
+  <div> 
+    {/* <span className="text-lg font-bold tracking-tight text-gray-900 dark:text-white group-hover:text-brand-500 transition-colors">
       META MINDS
-    </span>
+    </span> */}
   </div>
 </div>
 
             {/* ================= DESKTOP NAV ================= */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-15">
               {navLinks.map((link) => {
   const isEmployee = link.name === 'Employees'
   const isActive = location.pathname === link.path
@@ -182,10 +182,25 @@ export default function Navbar() {
                 )}
               </button>
 
-              {/* Let's Talk */}
-              <Button to="/contact" magnetic>
-                Let&apos;s Talk
-              </Button>
+              
+
+{/* Let's Talk */}
+<Button to="/contact" magnetic>
+  Let&apos;s Talk
+</Button>
+
+{/* Employee Login */}
+<a
+  href={employeeLoginUrl}
+  className="px-4 py-2 rounded-lg text-sm font-medium
+             text-gray-700 dark:text-gray-200
+             hover:text-brand-500
+             hover:bg-gray-100 dark:hover:bg-white/10
+             transition-all duration-300"
+>
+  Employees
+</a>
+              
             </div>
 
             {/* ================= MOBILE BUTTON ================= */}

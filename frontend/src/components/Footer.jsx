@@ -13,11 +13,7 @@ const footerLinks = {
     { name: 'Cloud Solutions', path: '/services' },
     { name: 'AI & Automation', path: '/services' },
   ],
-  Resources: [
-    { name: 'Insights', path: '/' },
-    { name: 'Case Studies', path: '/' },
-    { name: 'Technologies', path: '/services' },
-  ],
+  
 }
 
 const socialLinks = [
@@ -32,7 +28,7 @@ export default function Footer() {
     <footer className="relative bg-gray-50 dark:bg-surface-darker border-t border-gray-200 dark:border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8"
+className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-12 lg:gap-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -98,11 +94,33 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
               <li>hello@metaminds.com</li>
-              <li>+91 98765 43210</li>
-              <li>Bangalore, India</li>
+              <li>+91 9494890262</li>
+              <li>Mangalagiri, AP</li>
             </ul>
           </div>
+{/* Google Map */}
+<div className="lg:col-span-2">
+  <h4 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+    Location
+  </h4>
+
+  <div className="w-full max-w-sm h-44 rounded-xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-sm">
+    <iframe
+      title="Meta Minds Mangalagiri Location"
+      src="https://www.google.com/maps?q=Mangalagiri,Andhra+Pradesh,India&output=embed"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen=""
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</div>
+
         </motion.div>
+
+        
 
         <div className="mt-16 pt-8 border-t border-gray-200 dark:border-white/5 text-center text-sm text-gray-500 dark:text-gray-500">
           © 2026 Meta Minds. All Rights Reserved.

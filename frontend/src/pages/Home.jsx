@@ -265,9 +265,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GLOBAL PRESENCE */}
+      {/* GLOBAL PRESENCE — temporarily disabled */}
+      {false && (
       <section className="relative overflow-hidden py-24 lg:py-32">
-        <SectionBackdrop src={images.homeGlobal} />
+        {/* <SectionBackdrop src={images.homeGlobal} /> */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Technology Without Boundaries." />
           <div className="relative max-w-4xl mx-auto aspect-[2/1]">
@@ -352,6 +353,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* PROJECTS */}
       <motion.section 
