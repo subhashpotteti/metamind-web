@@ -13,9 +13,12 @@ require_once '../config/permissions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $action = $_GET['action'] ?? '';
-    $permissionMap = ['get_notes' => 'notes.read', 'get_employees' => 'notes.read'];
-    if (isset($permissionMap[$action])) require_permission($conn, $permissionMap[$action]);
+    $permissionMap = ['get_employees' => 'notes.read'];
+    if ($action === 'get_notes') require_any_permission($conn, ['notes.self', 'notes.read']);
+    elseif (isset($permissionMap[$action])) require_permission($conn, $permissionMap[$action]);
     $user_id = $_GET['user_id'] ?? 0;
+
+    if ($action === 'get_notes' && ($_SESSION['role'] ?? '') !== 'admin') $user_id = (int)($_SESSION['user_id'] ?? 0);
 
     if ($action === 'get_notes') {
         if (empty($user_id)) {

@@ -46,19 +46,19 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </a>
         </li>
         <li>
-            <a data-permission="attendance.read" href="../admin/attendance.php" <?php echo $currentPage == 'attendance.php' ? 'class="active"' : ''; ?>>
+            <a data-permission="attendance.self" href="attendance.php" <?php echo $currentPage == 'attendance.php' ? 'class="active"' : ''; ?>>
                 <i data-lucide="clock"></i>
                 Attendance
             </a>
         </li>
         <li>
-            <a data-permission="work_updates.read" href="work-updates.php" <?php echo $currentPage == 'work-updates.php' ? 'class="active"' : ''; ?>>
+            <a data-permission="attendance.self" href="work-updates.php" <?php echo $currentPage == 'work-updates.php' ? 'class="active"' : ''; ?>>
                 <i data-lucide="clipboard-list"></i>
                 Work Updates
             </a>
         </li>
         <li>
-            <a data-permission="attendance_logs.read" href="attendance-logs.php" <?php echo $currentPage == 'attendance-logs.php' ? 'class="active"' : ''; ?>>
+            <a data-permission="attendance.self" href="attendance-logs.php" <?php echo $currentPage == 'attendance-logs.php' ? 'class="active"' : ''; ?>>
                 <i data-lucide="history"></i>
                 Attendance Logs
             </a>
@@ -77,7 +77,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </a>
         </li>
         <li>
-            <a data-permission="notes.read" href="../admin/notes.php" <?php echo $currentPage == 'notes.php' ? 'class="active"' : ''; ?>>
+            <a data-permission="notes.self" href="notes.php" <?php echo $currentPage == 'notes.php' ? 'class="active"' : ''; ?>>
                 <i data-lucide="message-square"></i>
                 Notes
             </a>

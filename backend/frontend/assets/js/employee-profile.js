@@ -42,6 +42,10 @@ function loadProfile() {
 
 function loadViewProfile(employeeData) {
     const profileContent = document.getElementById('profileContent');
+    renderCompleteEmployeeProfile(profileContent, employeeData);
+    return;
+    /* Legacy renderer retained below for reference. */
+    /*
     profileContent.innerHTML = `
         <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
             <div style="text-align: center;">
@@ -109,7 +113,30 @@ function loadViewProfile(employeeData) {
             </div>
         </div>
     `;
-    lucide.createIcons();
+    lucide.createIcons(); */
+}
+
+function renderCompleteEmployeeProfile(container, employee) {
+    const escape = value => String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    const label = key => String(key).replace(/_/g, ' ').replace(/\b\w/g, character => character.toUpperCase());
+    const value = raw => {
+        if (raw === null || raw === undefined || raw === '') return 'N/A';
+        if (typeof raw === 'object') return Object.entries(raw).map(([key, item]) => `<div><strong>${escape(label(key))}:</strong> ${value(item)}</div>`).join('');
+        if (typeof raw === 'string' && raw.trim().startsWith('{')) { try { return value(JSON.parse(raw)); } catch (_) {} }
+        return escape(raw).replace(/\n/g, '<br>');
+    };
+    const fileUrl = file => `../../backend/uploads/${String(file).replace(/^uploads\//, '')}`;
+    const documentHtml = (key, raw) => {
+        let files = raw;
+        if (typeof files === 'string' && files.trim().startsWith('{')) { try { files = Object.values(JSON.parse(files)); } catch (_) {} }
+        if (!Array.isArray(files)) files = [files];
+        return files.filter(Boolean).map(file => `<div class="info-item"><label>${escape(label(key))}</label><span><a href="${fileUrl(file)}" target="_blank" rel="noopener">Open / Download document</a></span></div>`).join('');
+    };
+    const documentKeys = Object.keys(employee).filter(key => employee[key] && /(?:photo|signature|document|_docs|_front|_back|_letter|pay_slip)/i.test(key));
+    const hiddenKeys = new Set(['id', 'user_id', 'password']);
+    const detailKeys = Object.keys(employee).filter(key => !hiddenKeys.has(key) && !documentKeys.includes(key));
+    const photo = employee.photo ? `<img src="${fileUrl(employee.photo)}" style="width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid var(--gray-200);margin-bottom:1rem" alt="${escape(employee.full_name || 'Employee')}">` : '<div class="user-avatar" style="width:150px;height:150px;font-size:3rem;margin:0 auto 1rem">?</div>';
+    container.innerHTML = `<div class="employee-profile-view"><div style="text-align:center;margin-bottom:2rem">${photo}<h3 style="font-size:1.5rem;font-weight:700;margin-bottom:.5rem">${escape(employee.full_name || 'Employee')}</h3><p style="color:var(--gray-500)">${escape(employee.designation || 'Employee')}</p><span class="badge badge-${escape(employee.status || 'unknown')}">${escape(employee.status || 'N/A')}</span></div><div class="profile-section"><h4 class="section-title">All Employee Information</h4><div class="info-grid">${detailKeys.map(key => `<div class="info-item"><label>${escape(label(key))}</label><span>${value(employee[key])}</span></div>`).join('')}</div></div>${documentKeys.length ? `<div class="profile-section"><h4 class="section-title">Documents and Files</h4><div class="documents-grid">${documentKeys.map(key => documentHtml(key, employee[key])).join('')}</div></div>` : ''}</div>`;
 }
 
 function loadEditProfile(employeeData) {
