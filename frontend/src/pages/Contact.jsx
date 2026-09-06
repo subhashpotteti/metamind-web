@@ -47,7 +47,7 @@ export default function Contact() {
 
     setLoading(true)
     try {
-      const apiUrl = import.meta.env.VITE_CONTACT_API_URL || 'http://localhost/metamind-web/backend/backend/api/contact.php'
+      const apiUrl = import.meta.env.VITE_CONTACT_API_URL || 'https://metamindspvtltd.com/backend/frontend/admin/contacts.php'
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

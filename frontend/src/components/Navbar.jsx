@@ -6,10 +6,10 @@ import { useScrollPosition } from '../hooks/useScrollPosition'
 import { useTheme } from '../context/ThemeContext'
 import Button from './Button'
 const employeeLoginUrl =
-  'http://localhost/metamind-web/backend/frontend/employee/login.php'
+  'https://metamindspvtltd.com/backend/frontend/employee/dashboard.php'
 
 const adminLoginUrl =
-  'http://localhost/metamind-web/backend/frontend/admin/login.php'
+  'https://metamindspvtltd.com/backend/frontend/admin/dashboard.php'
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -19,7 +19,7 @@ const navLinks = [
   { name: 'Contact', path: '/contact' },
   // {
   //   name: 'Employees',
-  //   path: 'http://localhost/metamind-web/backend/frontend/employee/login.php'
+  //   path: 'https://metamindspvtltd.com/backend/frontend/employee/dashboard.php'
   // },
 ]
 
@@ -53,7 +53,7 @@ export default function Navbar() {
 
   // Employee login
   const employeeLoginUrl =
-'http://localhost/metamind-web/backend/frontend/employee/login.php'
+'https://metamindspvtltd.com/backend/frontend/employee/dashboard.php'
   return (
     <>
       {/* Header */}

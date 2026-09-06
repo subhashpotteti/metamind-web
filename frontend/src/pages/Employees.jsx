@@ -4,7 +4,7 @@ export default function Employees() {
 
  const handleEmployeeClick = () => {
   window.location.href =
-    'http://localhost/metamind-web/backend/frontend/employee/login.php'
+    'https://metamindspvtltd.com/backend/frontend/employee/dashboard.php'
 }
   return (
     <main className="min-h-screen pt-32 pb-20">
